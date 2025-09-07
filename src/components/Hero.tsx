@@ -75,10 +75,14 @@ const Hero: React.FC = () => {
               <Mail size={20} />
               Me contacter
             </button>
-            <button className="flex items-center gap-2 border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-200">
+            <a
+              href="/CV_Rodrigue_GBADOU.pdf"
+              download
+              className="flex items-center gap-2 border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-200"
+            >
               <Download size={20} />
               Télécharger CV
-            </button>
+            </a>
           </motion.div>
 
           <motion.button

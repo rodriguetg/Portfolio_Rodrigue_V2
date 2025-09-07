@@ -35,6 +35,11 @@ export interface Testimonial {
   avatar: string;
 }
 
+export interface Language {
+  name: string;
+  level: string;
+}
+
 export const personalInfo = {
   name: "Rodrigue GBADOU",
   title: "Étudiant en Master Brand Content & Management",
@@ -55,6 +60,11 @@ export const aboutText = `Étudiant en Master Brand Content & Management à Pari
 Avec plus de 36 mois d'expérience en freelance et plusieurs stages enrichissants, j'ai développé une expertise solide en SEO, automatisation no-code, développement web et création de contenus. Mon parcours m'a permis de maîtriser des outils comme Zapier, Make, WordPress, et diverses technologies de web scraping.
 
 Je suis passionné par l'intersection entre créativité et technologie, cherchant toujours à optimiser les processus et créer des solutions innovantes. Mon engagement associatif et mes expériences variées m'ont appris l'importance du travail d'équipe et de l'adaptabilité dans un monde digital en constante évolution.`;
+
+export const languages: Language[] = [
+  { name: "Français", level: "Langue maternelle" },
+  { name: "Anglais", level: "Niveau A2" }
+];
 
 export const experiences: Experience[] = [
   {
@@ -211,6 +221,16 @@ export const projects: Project[] = [
     category: "Creative AI",
     codeUrl: "https://github.com/rodriguetg/nails-generator",
     highlight: "IA Créative & Beauté"
+  },
+  {
+    id: "5",
+    title: "Bande Annonce - Projet Vidéo",
+    description: "Création collaborative d'une bande annonce captivante, démontrant nos compétences en production vidéo et storytelling.",
+    image: "https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=600&h=400&fit=crop",
+    technologies: ["Production Vidéo", "Montage", "Storytelling", "Travail d'équipe"],
+    category: "Production Vidéo",
+    demoUrl: "https://www.youtube.com/watch?v=hLpx2YvBJ6k",
+    highlight: "Storytelling Visuel"
   }
 ];
 
@@ -245,7 +265,7 @@ export const testimonials: Testimonial[] = [
     id: "1",
     name: "Sarah Martin",
     role: "Chef de Projet Digital",
-    company: "Marketkit",
+    company: "Web Agency",
     content: "Rodrigue a démontré une excellente maîtrise du SEO et des outils d'analyse. Sa capacité à intégrer l'IA dans nos stratégies marketing a vraiment apporté une valeur ajoutée à nos campagnes.",
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
   },
@@ -253,7 +273,7 @@ export const testimonials: Testimonial[] = [
     id: "2",
     name: "Thomas Dubois",
     role: "Directeur Technique",
-    company: "Haskn",
+    company: "Innovatech",
     content: "Rodrigue maîtrise parfaitement les outils d'automatisation no-code. Son travail sur nos workflows Zapier et Make a considérablement optimisé nos processus internes. Un profil très prometteur !",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
   },
@@ -261,7 +281,7 @@ export const testimonials: Testimonial[] = [
     id: "3",
     name: "Julie Lambert",
     role: "Responsable SEO",
-    company: "InnovQube",
+    company: "Digital Growth",
     content: "Excellent sens analytique et grande rigueur dans l'optimisation SEO. Rodrigue a su améliorer significativement nos performances de référencement en peu de temps. Je recommande vivement !",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
   }

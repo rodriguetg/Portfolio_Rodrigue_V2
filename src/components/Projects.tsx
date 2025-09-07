@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
-import { ExternalLink, Github, Filter, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Filter, Sparkles, Youtube } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -90,7 +90,7 @@ const Projects: React.FC = () => {
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <a
-                    href={project.codeUrl}
+                    href={project.codeUrl || project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group"
@@ -135,10 +135,14 @@ const Projects: React.FC = () => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-sm"
+                      className={`flex items-center gap-2 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-sm ${
+                        project.demoUrl.includes('youtube')
+                          ? 'bg-red-600 hover:bg-red-700'
+                          : 'bg-primary-600 hover:bg-primary-700'
+                      }`}
                     >
-                      <ExternalLink size={16} />
-                      Live Demo
+                      {project.demoUrl.includes('youtube') ? <Youtube size={16} /> : <ExternalLink size={16} />}
+                      Voir la démo
                     </a>
                   )}
                 </div>

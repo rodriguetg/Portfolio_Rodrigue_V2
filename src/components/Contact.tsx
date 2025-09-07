@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Send, CheckCircle } from 'lucide-react';
+import axios from 'axios';
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Send, CheckCircle, AlertTriangle } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 interface FormData {
@@ -11,19 +12,24 @@ interface FormData {
 }
 
 const Contact: React.FC = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionState, setSubmissionState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
+  
+  // IMPORTANT: Replace with your own Formspree endpoint
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
   const onSubmit = async (data: FormData) => {
-    // Simulate form submission
-    console.log('Form submitted:', data);
-    setIsSubmitted(true);
-    reset();
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
+    setSubmissionState('loading');
+    try {
+      await axios.post(FORMSPREE_ENDPOINT, data);
+      setSubmissionState('success');
+      reset();
+      setTimeout(() => setSubmissionState('idle'), 5000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmissionState('error');
+      setTimeout(() => setSubmissionState('idle'), 5000);
+    }
   };
 
   const socialLinks = [
@@ -31,6 +37,43 @@ const Contact: React.FC = () => {
     { icon: Linkedin, url: personalInfo.socialLinks.linkedin, label: 'LinkedIn' },
     { icon: Twitter, url: personalInfo.socialLinks.twitter, label: 'Twitter' },
   ];
+
+  const getButtonContent = () => {
+    switch (submissionState) {
+      case 'loading':
+        return (
+          <>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+            />
+            Envoi en cours...
+          </>
+        );
+      case 'success':
+        return (
+          <>
+            <CheckCircle size={20} />
+            Message envoyé !
+          </>
+        );
+      case 'error':
+        return (
+          <>
+            <AlertTriangle size={20} />
+            Erreur, réessayez.
+          </>
+        );
+      default:
+        return (
+          <>
+            <Send size={20} />
+            Envoyer le message
+          </>
+        );
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
@@ -194,20 +237,15 @@ const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                disabled={isSubmitted}
-                className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-lg"
+                disabled={submissionState !== 'idle'}
+                className={`w-full font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg
+                  ${submissionState === 'success' ? 'bg-green-600 text-white' : ''}
+                  ${submissionState === 'error' ? 'bg-red-600 text-white' : ''}
+                  ${submissionState === 'idle' || submissionState === 'loading' ? 'bg-primary-600 hover:bg-primary-700 text-white' : ''}
+                  ${submissionState === 'loading' ? 'cursor-wait' : ''}
+                `}
               >
-                {isSubmitted ? (
-                  <>
-                    <CheckCircle size={20} />
-                    Message envoyé !
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} />
-                    Envoyer le message
-                  </>
-                )}
+                {getButtonContent()}
               </button>
             </form>
           </motion.div>
