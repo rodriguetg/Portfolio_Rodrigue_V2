@@ -76,8 +76,9 @@ const Hero: React.FC = () => {
               Me contacter
             </button>
             <a
-              href="/CV_Rodrigue_GBADOU.pdf"
-              download
+              href="https://drive.google.com/file/d/1ncPKkAulYE3ZntrBvEF3MnZeaXPj2ms5/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-200"
             >
               <Download size={20} />
