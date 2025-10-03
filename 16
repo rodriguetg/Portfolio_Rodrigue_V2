@@ -47,7 +47,7 @@ export const personalInfo = {
   email: "rodrigue.gbadou@gmail.com",
   phone: "07 53 98 24 80",
   location: "Paris, France",
-  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+  avatar: "https://i.ibb.co/7r2L0x3/IMG-20240316-WA0009.jpg",
   socialLinks: {
     github: "https://github.com/rodriguetg",
     linkedin: "https://www.linkedin.com/in/rodrigue-gbadou/",
