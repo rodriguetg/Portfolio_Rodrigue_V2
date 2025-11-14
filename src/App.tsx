@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Spinner from './components/common/Spinner';
+
+const About = lazy(() => import('./components/About'));
+const Experience = lazy(() => import('./components/Experience'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   return (
@@ -15,12 +17,14 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Testimonials />
-        <Contact />
+        <Suspense fallback={<Spinner />}>
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Testimonials />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

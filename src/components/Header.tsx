@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
@@ -26,13 +26,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  }, []);
 
   return (
     <motion.header
@@ -46,26 +44,25 @@ const Header: React.FC = () => {
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold text-gray-900 dark:text-white"
-          >
+          <a href="#home" onClick={(e) => scrollToSection(e, '#home')} className="text-xl font-bold text-gray-900 dark:text-white hover:scale-105 transition-transform">
             RG
-          </motion.div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
                 className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
             <button
               onClick={toggleTheme}
+              aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -76,12 +73,14 @@ const Header: React.FC = () => {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={toggleTheme}
+              aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Ouvrir le menu de navigation"
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -98,13 +97,14 @@ const Header: React.FC = () => {
             className="md:hidden mt-4 py-4 bg-white dark:bg-gray-900 rounded-lg shadow-lg"
           >
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
+                className="block w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </motion.div>
         )}

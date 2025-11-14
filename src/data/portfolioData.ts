@@ -1,46 +1,6 @@
-export interface Experience {
-  id: string;
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-  achievements: string[];
-  type: 'work' | 'education' | 'certification';
-}
+import type { Experience, Project, Skill, Testimonial, Language, PersonalInfo } from '../types';
 
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  category: string;
-  demoUrl?: string;
-  codeUrl?: string;
-  highlight?: string;
-}
-
-export interface Skill {
-  name: string;
-  level: number;
-  category: 'technical' | 'soft';
-}
-
-export interface Testimonial {
-  id: string;
-  name: string;
-  role: string;
-  company: string;
-  content: string;
-  avatar: string;
-}
-
-export interface Language {
-  name: string;
-  level: string;
-}
-
-export const personalInfo = {
+export const personalInfo: PersonalInfo = {
   name: "Rodrigue GBADOU",
   title: "Étudiant en Master Brand Content & Management",
   bio: "Passionné par le marketing digital, l'automatisation et l'innovation technologique. Je crée des solutions créatives alliant stratégie de contenu et technologies modernes.",
