@@ -64,40 +64,165 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="relative py-32 bg-gradient-to-br from-white via-primary-50/20 to-blue-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-10 w-96 h-96 bg-primary-200/20 dark:bg-primary-800/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="section-title">Me Contacter</h2>
-          <div className="w-24 h-1 bg-primary-600 mx-auto mb-4"></div>
-          <p className="section-subtitle">Intéressé par une collaboration ? N'hésitez pas à me contacter.</p>
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5, type: "spring" }}
+            viewport={{ once: true }}
+            className="inline-block mb-4"
+          >
+            <span className="px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-semibold">
+              Contact
+            </span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-primary-700 dark:from-white dark:to-primary-300 mb-6">
+            Me Contacter
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Intéressé par une collaboration ? N'hésitez pas à me contacter.
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Informations</h3>
-            <div className="space-y-6">
-              {/* Info items */}
+        <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-10"
+          >
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
+                <div className="w-1 h-8 bg-gradient-to-b from-primary-500 to-blue-600 rounded-full"></div>
+                Informations
+              </h3>
+              <div className="space-y-4">
+                <div className="group p-6 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400">
+                      <Mail size={24} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-1">Email</p>
+                      <p className="text-gray-900 dark:text-white font-medium">{personalInfo.email}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group p-6 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400">
+                      <Phone size={24} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-1">Téléphone</p>
+                      <p className="text-gray-900 dark:text-white font-medium">{personalInfo.phone}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group p-6 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400">
+                      <MapPin size={24} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-1">Localisation</p>
+                      <p className="text-gray-900 dark:text-white font-medium">{personalInfo.location}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white pt-4">Réseaux Sociaux</h3>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110" title={social.label}>
-                  <social.icon size={24} />
-                </a>
-              ))}
+
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Réseaux Sociaux</h3>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl text-gray-600 dark:text-gray-300 hover:border-primary-500 dark:hover:border-primary-500 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+                    title={social.label}
+                  >
+                    <social.icon size={28} className="group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Form fields */}
-              <button type="submit" disabled={submissionState !== 'idle'} className={`w-full font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg ${submissionState === 'success' ? 'bg-green-600 text-white' : ''} ${submissionState === 'error' ? 'bg-red-600 text-white' : ''} ${submissionState === 'idle' || submissionState === 'loading' ? 'bg-primary-600 hover:bg-primary-700 text-white' : ''} ${submissionState === 'loading' ? 'cursor-wait' : ''}`}>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-8 rounded-3xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-2xl">
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Nom</label>
+                <input
+                  type="text"
+                  {...register('name', { required: 'Le nom est requis' })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  placeholder="Votre nom"
+                />
+                {errors.name && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Email</label>
+                <input
+                  type="email"
+                  {...register('email', {
+                    required: 'L\'email est requis',
+                    pattern: { value: /^\S+@\S+$/i, message: 'Email invalide' }
+                  })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  placeholder="votre@email.com"
+                />
+                {errors.email && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Message</label>
+                <textarea
+                  {...register('message', { required: 'Le message est requis' })}
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+                  placeholder="Votre message..."
+                />
+                {errors.message && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message.message}</p>}
+              </div>
+
+              <button
+                type="submit"
+                disabled={submissionState !== 'idle'}
+                className={`w-full font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl hover:scale-105 ${
+                  submissionState === 'success'
+                    ? 'bg-gradient-to-r from-green-600 to-green-700 text-white'
+                    : submissionState === 'error'
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white'
+                    : 'bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white'
+                } ${submissionState === 'loading' ? 'cursor-wait' : ''}`}
+              >
                 {getButtonContent()}
               </button>
             </form>
