@@ -8,7 +8,6 @@ const About = lazy(() => import('./components/About'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
 const Skills = lazy(() => import('./components/Skills'));
-const Testimonials = lazy(() => import('./components/Testimonials'));
 const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Experience />
           <Projects />
           <Skills />
-          <Testimonials />
           <Contact />
         </Suspense>
       </main>
