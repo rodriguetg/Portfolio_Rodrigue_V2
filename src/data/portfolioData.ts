@@ -2,7 +2,7 @@ import type { Experience, Project, Skill, Testimonial, Language, PersonalInfo } 
 
 export const personalInfo: PersonalInfo = {
   name: "Rodrigue GBADOU",
-  title: "Master Brand Content & Management",
+  title: "No-Code Automation Specialist & Content Creator",
   bio: "Passionné par le marketing digital, l'automatisation et l'innovation technologique. Je crée des solutions créatives alliant stratégie de contenu et technologies modernes.",
   email: "rodrigue.gbadou@gmail.com",
   phone: "07 53 98 24 80",
