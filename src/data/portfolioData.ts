@@ -43,21 +43,21 @@ export const experiences: Experience[] = [
   },
   {
     id: "2",
-    title: "Freelance - Créateur de contenu",
-    company: "Indépendant",
-    period: "2021 - 2024 (36 mois)",
-    description: "Création de contenus audio/vidéo, gestion de partenariats et animation de communautés sur les réseaux sociaux.",
+    title: "Alternance - Automatisation No code / low code & Développement Web",
+    company: "Primelis",
+    period: "2024 (4 mois)",
+    description: "Intégration WordPress/AEM, développement de workflows no-code et automatisation d'API.",
     achievements: [
-      "Création de contenus multimedia engageants",
-      "Gestion de partenariats stratégiques",
-      "Croissance organique des communautés",
-      "Développement de calendriers éditoriaux"
+      "Intégration WordPress et AEM",
+      "Workflows avec Zapier, Make, N8N",
+      "Développement HTML/CSS/JS/Python",
+      "Automatisation de processus via API"
     ],
     type: "work"
   },
   {
     id: "3",
-    title: "Stage - Développement Web & Automatisation",
+    title: "Stage - Automatisation No code / low code & Développement Web",
     company: "Haskn",
     period: "2024 (4 mois)",
     description: "Intégration WordPress/AEM, développement de workflows no-code et automatisation d'API.",
@@ -138,6 +138,20 @@ export const experiences: Experience[] = [
       "Développement de partenariats institutionnels"
     ],
     type: "certification"
+  },
+  {
+    id: "9",
+    title: "Freelance - Créateur de contenu",
+    company: "Indépendant",
+    period: "2021 - 2024 (36 mois)",
+    description: "Création de contenus audio/vidéo, gestion de partenariats et animation de communautés sur les réseaux sociaux.",
+    achievements: [
+      "Création de contenus multimedia engageants",
+      "Gestion de partenariats stratégiques",
+      "Croissance organique des communautés",
+      "Développement de calendriers éditoriaux"
+    ],
+    type: "work"
   }
 ];
 
