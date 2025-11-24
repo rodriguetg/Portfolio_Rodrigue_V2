@@ -67,18 +67,6 @@ const About: React.FC = () => {
               <InfoItem icon={<Mail size={20} className="text-primary-600" />} text={personalInfo.email} />
               <InfoItem icon={<Phone size={20} className="text-primary-600" />} text={personalInfo.phone} />
             </div>
-
-            <div className="pt-6">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                <Languages size={22} className="text-primary-600" />
-                Langues
-              </h3>
-              <div className="space-y-2">
-                {languages.map((lang) => (
-                  <LanguageItem key={lang.name} lang={lang} />
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
