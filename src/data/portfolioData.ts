@@ -7,7 +7,7 @@ export const personalInfo: PersonalInfo = {
   email: "rodrigue.gbadou@gmail.com",
   phone: "07 53 98 24 80",
   location: "Strasbourg, France",
-  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+  avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=face",
   socialLinks: {
     github: "https://github.com/rodriguetg",
     linkedin: "https://www.linkedin.com/in/rodrigue-gbadou/",
@@ -23,7 +23,7 @@ Je suis passionné par l'intersection entre créativité et technologie, chercha
 
 export const languages: Language[] = [
   { name: "Français", level: "Langue maternelle" },
-  { name: "Anglais", level: "Niveau A2" }
+  { name: "Anglais", level: "Professionnel" }
 ];
 
 export const experiences: Experience[] = [
@@ -146,7 +146,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Love Chat Assistant",
     description: "IA de coaching amoureux : chatbot intelligent qui donne des conseils personnalisés sur les relations amoureuses avec une approche empathique et moderne.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     technologies: ["Python", "Flask", "IA", "SQLite", "Web"],
     category: "IA/ML",
     codeUrl: "https://github.com/rodriguetg/love-chat-assistant",
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     id: "2",
     title: "Anime Quotes Generator",
     description: "Générateur de citations d'anime avec interface interactive, citations aléatoires et fonctionnalité de partage sur les réseaux sociaux pour les fans d'anime.",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/7991316/pexels-photo-7991316.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     technologies: ["React", "Node.js", "MongoDB", "Material UI"],
     category: "Web App",
     codeUrl: "https://github.com/rodriguetg/anime-quotes-generator",
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     id: "3",
     title: "Générateur de Persona Marketing",
     description: "Outil automatisé qui génère des personas marketing complets et détaillés avec export PDF professionnel pour optimiser les stratégies marketing.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     technologies: ["Python", "Flask", "Bootstrap", "fpdf2"],
     category: "Business Tool",
     codeUrl: "https://github.com/rodriguetg/Generateur-de-Persona",
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     id: "4",
     title: "Nails Generator",
     description: "Générateur d'art d'ongles par IA avec prompts personnalisés et adaptation automatique aux différents formats de réseaux sociaux pour nail artists.",
-    image: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=600&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/3993212/pexels-photo-3993212.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     technologies: ["React", "TypeScript", "Tailwind", "API IA"],
     category: "Creative AI",
     codeUrl: "https://github.com/rodriguetg/nails-generator",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
     id: "5",
     title: "Bande Annonce - Projet Vidéo",
     description: "Création collaborative d'une bande annonce captivante, démontrant nos compétences en production vidéo et storytelling.",
-    image: "https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=600&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/7991310/pexels-photo-7991310.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     technologies: ["Production Vidéo", "Montage", "Storytelling", "Travail d'équipe"],
     category: "Production Vidéo",
     demoUrl: "https://www.youtube.com/watch?v=hLpx2YvBJ6k",
@@ -227,7 +227,7 @@ export const testimonials: Testimonial[] = [
     role: "Chef de Projet Digital",
     company: "Web Agency",
     content: "Rodrigue a démontré une excellente maîtrise du SEO et des outils d'analyse. Sa capacité à intégrer l'IA dans nos stratégies marketing a vraiment apporté une valeur ajoutée à nos campagnes.",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
   },
   {
     id: "2",
@@ -235,7 +235,7 @@ export const testimonials: Testimonial[] = [
     role: "Directeur Technique",
     company: "Innovatech",
     content: "Rodrigue maîtrise parfaitement les outils d'automatisation no-code. Son travail sur nos workflows Zapier et Make a considérablement optimisé nos processus internes. Un profil très prometteur !",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+    avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
   },
   {
     id: "3",
@@ -243,6 +243,6 @@ export const testimonials: Testimonial[] = [
     role: "Responsable SEO",
     company: "Digital Growth",
     content: "Excellent sens analytique et grande rigueur dans l'optimisation SEO. Rodrigue a su améliorer significativement nos performances de référencement en peu de temps. Je recommande vivement !",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+    avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
   }
 ];

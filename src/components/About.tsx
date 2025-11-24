@@ -41,8 +41,8 @@ const About: React.FC = () => {
             viewport={{ once: true }}
           >
             <img
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
-              alt="Espace de travail collaboratif"
+              src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+              alt="Stratégie marketing digitale et création de contenu"
               className="rounded-lg shadow-lg"
             />
           </motion.div>

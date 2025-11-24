@@ -51,7 +51,7 @@ const Experience: React.FC = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-primary-600"></div>
+            <div className="absolute left-2 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-primary-600"></div>
             {filteredExperiences.map((exp, index) => (
               <ExperienceCard key={exp.id} experience={exp} index={index} />
             ))}
