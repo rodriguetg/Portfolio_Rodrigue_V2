@@ -6,7 +6,7 @@ export const personalInfo: PersonalInfo = {
   bio: "Passionné par le marketing digital, l'automatisation et l'innovation technologique. Je crée des solutions créatives alliant stratégie de contenu et technologies modernes.",
   email: "rodrigue.gbadou@gmail.com",
   phone: "07 53 98 24 80",
-  location: "Strasbourg, France",
+  location: "Paris, France",
   avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=face",
   socialLinks: {
     github: "https://github.com/rodriguetg",
