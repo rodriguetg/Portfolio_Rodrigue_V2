@@ -9,6 +9,7 @@ const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
 const Skills = lazy(() => import('./components/Skills'));
 const Contact = lazy(() => import('./components/Contact'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
 
 function App() {
   return (
@@ -18,9 +19,20 @@ function App() {
         <Hero />
         <Suspense fallback={<Spinner />}>
           <About />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
           <Experience />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
           <Projects />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
           <Skills />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
+          <Testimonials />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
           <Contact />
         </Suspense>
       </main>
