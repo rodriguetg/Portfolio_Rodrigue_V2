@@ -45,7 +45,7 @@ export const experiences: Experience[] = [
     id: "2",
     title: "Alternance - Automatisation No code / low code & Développement Web",
     company: "Primelis",
-    period: "2024 (4 mois)",
+    period: "2026",
     description: "Intégration WordPress/AEM, développement de workflows no-code et automatisation d'API.",
     achievements: [
       "Intégration WordPress et AEM",
@@ -59,7 +59,7 @@ export const experiences: Experience[] = [
     id: "3",
     title: "Stage - Automatisation No code / low code & Développement Web",
     company: "Haskn",
-    period: "2024 (4 mois)",
+    period: "2026",
     description: "Intégration WordPress/AEM, développement de workflows no-code et automatisation d'API.",
     achievements: [
       "Intégration WordPress et AEM",
@@ -73,7 +73,7 @@ export const experiences: Experience[] = [
     id: "4",
     title: "Stage - Marketing Digital & SEO",
     company: "Marketkit",
-    period: "2024 (2 mois)",
+    period: "2024",
     description: "Optimisation SEO, analyses de mots-clés et utilisation d'IA pour le marketing digital.",
     achievements: [
       "Analyses approfondies de mots-clés",
@@ -87,7 +87,7 @@ export const experiences: Experience[] = [
     id: "5",
     title: "Stage - SEO Specialist",
     company: "InnovQube",
-    period: "2024 (2 mois)",
+    period: "2024",
     description: "Optimisation SEO avancée et suivi analytique avec Google Analytics.",
     achievements: [
       "Optimisation technique SEO",
@@ -101,7 +101,7 @@ export const experiences: Experience[] = [
     id: "6",
     title: "Stage - Chef de Projet Social Media",
     company: "StudHelp",
-    period: "2024 (2 mois)",
+    period: "2024",
     description: "Communication digitale, gestion de partenariats et production vidéo.",
     achievements: [
       "Gestion de projets social media",
@@ -143,7 +143,7 @@ export const experiences: Experience[] = [
     id: "9",
     title: "Freelance - Créateur de contenu",
     company: "Indépendant",
-    period: "2021 - 2024 (36 mois)",
+    period: "2021 - 2024",
     description: "Création de contenus audio/vidéo, gestion de partenariats et animation de communautés sur les réseaux sociaux.",
     achievements: [
       "Création de contenus multimedia engageants",
