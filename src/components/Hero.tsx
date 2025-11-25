@@ -1,9 +1,12 @@
 import React, { useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Download, Mail, Sparkles } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { content } from '../data/content';
 
 const Hero: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const scrollTo = useCallback((selector: string) => {
     document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
   }, []);
@@ -13,7 +16,7 @@ const Hero: React.FC = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? {} : {
             scale: [1, 1.2, 1],
             rotate: [0, 90, 0],
             opacity: [0.3, 0.2, 0.3],
@@ -22,7 +25,7 @@ const Hero: React.FC = () => {
           className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-primary-300/20 dark:bg-primary-600/10 rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? {} : {
             scale: [1, 1.3, 1],
             rotate: [0, -90, 0],
             opacity: [0.2, 0.3, 0.2],
@@ -44,7 +47,7 @@ const Hero: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary-200 dark:border-primary-800 shadow-lg">
               <Sparkles className="w-4 h-4 text-primary-600 dark:text-primary-400" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Disponible pour de nouvelles opportunités
+                {content.hero.badge}
               </span>
             </div>
           </motion.div>
@@ -99,20 +102,22 @@ const Hero: React.FC = () => {
           >
             <button
               onClick={() => scrollTo('#contact')}
+              aria-label={content.hero.aria.contact}
               className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-primary-600 to-blue-600 text-white font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
               <Mail size={20} />
-              Me contacter
+              {content.hero.contactButton}
               <div className="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </button>
             <a
               href="https://drive.google.com/file/d/1ncPKkAulYE3ZntrBvEF3MnZeaXPj2ms5/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={content.hero.aria.download}
               className="group relative px-8 py-4 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold border-2 border-gray-300 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:scale-105 hover:border-primary-500 dark:hover:border-primary-500 transition-all duration-300 flex items-center gap-2"
             >
               <Download size={20} />
-              Télécharger CV
+              {content.hero.downloadCv}
             </a>
           </motion.div>
 
@@ -125,10 +130,10 @@ const Hero: React.FC = () => {
           >
             <button
               onClick={() => scrollTo('#about')}
-              aria-label="Faire défiler vers la section À propos"
+              aria-label={content.hero.aria.scrollToAbout}
               className="group flex flex-col items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
             >
-              <span className="text-sm font-medium">Découvrir</span>
+              <span className="text-sm font-medium">{content.hero.scrollDown}</span>
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

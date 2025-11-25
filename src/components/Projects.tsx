@@ -1,17 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
+import { content } from '../data/content';
 import { Github } from 'lucide-react';
 import ProjectCard from './projects/ProjectCard';
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  
+
   const categories = useMemo(() => ['All', ...new Set(projects.map(project => project.category))], []);
-  
-  const filteredProjects = useMemo(() => 
-    selectedCategory === 'All' 
-      ? projects 
+
+  const filteredProjects = useMemo(() =>
+    selectedCategory === 'All'
+      ? projects
       : projects.filter(project => project.category === selectedCategory),
     [selectedCategory]
   );
@@ -40,14 +41,14 @@ const Projects: React.FC = () => {
             className="inline-block mb-4"
           >
             <span className="px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-semibold">
-              Portfolio
+              {content.projects.badge}
             </span>
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-primary-700 dark:from-white dark:to-primary-300 mb-6">
-            Mes Projets
+            {content.projects.title}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Découvrez une sélection de mes projets récents, alliant innovation technologique et solutions créatives.
+            {content.projects.subtitle}
           </p>
 
           <motion.div
@@ -61,11 +62,10 @@ const Projects: React.FC = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  selectedCategory === category
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${selectedCategory === category
                     ? 'bg-gradient-to-r from-primary-600 to-blue-600 text-white shadow-lg scale-105'
                     : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-lg'
-                }`}
+                  }`}
               >
                 {category}
               </button>
@@ -87,16 +87,17 @@ const Projects: React.FC = () => {
           className="text-center mt-20"
         >
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 font-medium">
-            Curieux d'en voir plus ? Consultez tous mes projets sur GitHub !
+            {content.projects.viewAllSub}
           </p>
           <a
             href="https://github.com/rodriguetg"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={content.projects.aria.viewAll}
             className="group inline-flex items-center gap-3 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-700 dark:to-gray-600 hover:from-gray-800 hover:to-gray-700 dark:hover:from-gray-600 dark:hover:to-gray-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
           >
             <Github size={24} />
-            Voir tous mes projets
+            {content.projects.viewAll}
             <motion.div
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
