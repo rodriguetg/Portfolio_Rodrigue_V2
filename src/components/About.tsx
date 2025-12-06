@@ -77,7 +77,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="space-y-6">
+            <div className="space-y-6 bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-gray-800 p-6 md:p-10 rounded-2xl shadow-2xl relative z-20">
               {aboutText.split('\n\n').map((paragraph, index) => (
                 <motion.p
                   key={index}
@@ -85,7 +85,7 @@ const About: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
+                  className="text-base md:text-lg text-gray-900 dark:text-gray-100 leading-relaxed font-normal tracking-wide"
                 >
                   {paragraph}
                 </motion.p>

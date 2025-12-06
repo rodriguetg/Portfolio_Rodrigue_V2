@@ -1,149 +1,145 @@
-import React, { useCallback } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown, Download, Mail, Sparkles } from 'lucide-react';
+import React, { useCallback, Suspense } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronDown, Download, Mail, Terminal, Cpu } from 'lucide-react';
+import { Canvas } from '@react-three/fiber';
+import { Float, PerspectiveCamera, MeshDistortMaterial, Sphere, Icosahedron } from '@react-three/drei';
 import { personalInfo } from '../data/portfolioData';
 import { content } from '../data/content';
 
-const Hero: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+const Hero3DElement = () => {
+  return (
+    <group>
+      <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+        <Icosahedron args={[1, 0]} position={[2, 0, 0]} scale={[1.8, 1.8, 1.8]}>
+          <meshStandardMaterial color="#00f3ff" wireframe opacity={0.3} transparent />
+        </Icosahedron>
+        <Sphere args={[1, 32, 32]} position={[2, 0, 0]} scale={[1, 1, 1]}>
+          <MeshDistortMaterial
+            color="#bc13fe"
+            attach="material"
+            distort={0.4}
+            speed={2}
+            roughness={0}
+            metalness={0.8}
+          />
+        </Sphere>
+      </Float>
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, 5]} intensity={1} color="#00f3ff" />
+      <pointLight position={[-10, -10, -10]} intensity={1} color="#bc13fe" />
+    </group>
+  );
+};
 
+const Hero: React.FC = () => {
   const scrollTo = useCallback((selector: string) => {
     document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-blue-50 to-primary-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={shouldReduceMotion ? {} : {
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            opacity: [0.3, 0.2, 0.3],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-primary-300/20 dark:bg-primary-600/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={shouldReduceMotion ? {} : {
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-1/2 -left-1/4 w-96 h-96 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl"
-        />
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* 3D Scene Layer for Hero Object */}
+      <div className="absolute inset-0 z-0 opacity-80 pointer-events-none md:pointer-events-auto">
+        <Canvas>
+          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+          <Suspense fallback={null}>
+            <Hero3DElement />
+          </Suspense>
+        </Canvas>
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          {/* Badge animé */}
+      <div className="container relative z-10 mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div className="text-left">
+          {/* Tech Badge */}
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, type: "spring" }}
-            className="flex justify-center mb-8"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-blue/10 border border-neon-blue/30 text-neon-blue mb-6 backdrop-blur-md"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary-200 dark:border-primary-800 shadow-lg">
-              <Sparkles className="w-4 h-4 text-primary-600 dark:text-primary-400" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                {content.hero.badge}
-              </span>
-            </div>
+            <Terminal size={16} />
+            <span className="text-sm font-mono tracking-wider">{content.hero.badge}</span>
           </motion.div>
 
-          {/* Nom avec effet gradient */}
+          {/* Main Title */}
           <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-6xl md:text-8xl font-extrabold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-primary-700 to-blue-900 dark:from-white dark:via-primary-300 dark:to-blue-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-7xl font-black font-tech leading-tight mb-4"
           >
-            {personalInfo.name.split(' ')[0]}
-            <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-blue-600 dark:from-primary-400 dark:to-blue-400">
+            <span className="text-white block">{personalInfo.name.split(' ')[0]}</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple filter drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
               {personalInfo.name.split(' ')[1]}
             </span>
           </motion.h1>
 
-          {/* Titre avec bordure décorative */}
+          {/* Subtitle */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex items-center gap-3 text-xl md:text-2xl text-gray-400 mb-8 font-light"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-blue-500 blur-lg opacity-30"></div>
-              <h2 className="relative text-2xl md:text-4xl font-bold text-center px-8 py-3 rounded-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-primary-200 dark:border-primary-800 shadow-xl">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-blue-600 dark:from-primary-400 dark:to-blue-400">
-                  {personalInfo.title}
-                </span>
-              </h2>
-            </div>
+            <Cpu className="text-neon-purple animate-pulse" />
+            <span>{personalInfo.title}</span>
           </motion.div>
 
-          {/* Bio avec style élégant */}
+          {/* Bio */}
           <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed text-center font-light"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg text-gray-400 max-w-lg mb-10 leading-relaxed border-l-2 border-neon-blue/30 pl-6"
           >
             {personalInfo.bio}
           </motion.p>
 
-          {/* Boutons avec effet moderne */}
+          {/* Buttons */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-wrap gap-4"
           >
             <button
               onClick={() => scrollTo('#contact')}
-              aria-label={content.hero.aria.contact}
-              className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-primary-600 to-blue-600 text-white font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="btn btn-primary group"
             >
-              <Mail size={20} />
-              {content.hero.contactButton}
-              <div className="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
+              <Mail size={20} className="group-hover:rotate-12 transition-transform" />
+              <span>{content.hero.contactButton}</span>
             </button>
             <a
               href="https://drive.google.com/file/d/1ncPKkAulYE3ZntrBvEF3MnZeaXPj2ms5/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={content.hero.aria.download}
-              className="group relative px-8 py-4 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold border-2 border-gray-300 dark:border-gray-700 shadow-lg hover:shadow-2xl hover:scale-105 hover:border-primary-500 dark:hover:border-primary-500 transition-all duration-300 flex items-center gap-2"
+              className="btn btn-secondary group"
             >
-              <Download size={20} />
-              {content.hero.downloadCv}
+              <Download size={20} className="group-hover:translate-y-1 transition-transform" />
+              <span>{content.hero.downloadCv}</span>
             </a>
           </motion.div>
-
-          {/* Scroll indicator amélioré */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="flex justify-center"
-          >
-            <button
-              onClick={() => scrollTo('#about')}
-              aria-label={content.hero.aria.scrollToAbout}
-              className="group flex flex-col items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
-            >
-              <span className="text-sm font-medium">{content.hero.scrollDown}</span>
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ChevronDown size={32} className="drop-shadow-lg" />
-              </motion.div>
-            </button>
-          </motion.div>
         </div>
+
+        {/* Right side empty for 3D element on desktop */}
+        <div className="hidden md:block h-full min-h-[500px]"></div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <button
+          onClick={() => scrollTo('#about')}
+          className="flex flex-col items-center gap-2 text-neon-blue/50 hover:text-neon-blue transition-colors"
+        >
+          <span className="text-xs font-mono tracking-[0.2em]">INITIALIZE</span>
+          <ChevronDown size={24} className="animate-bounce-slow" />
+        </button>
+      </motion.div>
     </section>
   );
 };

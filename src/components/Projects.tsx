@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
 import { content } from '../data/content';
-import { Github } from 'lucide-react';
+import { Github, Code } from 'lucide-react';
 import ProjectCard from './projects/ProjectCard';
 
 const Projects: React.FC = () => {
@@ -18,12 +18,9 @@ const Projects: React.FC = () => {
   );
 
   return (
-    <section id="projects" className="relative py-32 bg-gradient-to-br from-gray-50 via-white to-primary-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950/30 overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-200/20 dark:bg-primary-800/10 rounded-full blur-3xl"></div>
-      </div>
+    <section id="projects" className="relative py-32 overflow-hidden">
+      {/* Tech Grid Background Overlay */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
 
       <div className="container relative z-10 mx-auto px-6">
         <motion.div
@@ -38,16 +35,19 @@ const Projects: React.FC = () => {
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
             viewport={{ once: true }}
-            className="inline-block mb-4"
+            className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-neon-purple/10 border border-neon-purple/30 text-neon-purple"
           >
-            <span className="px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-semibold">
+            <Code size={16} />
+            <span className="text-sm font-mono tracking-wider">
               {content.projects.badge}
             </span>
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-primary-700 dark:from-white dark:to-primary-300 mb-6">
+
+          <h2 className="section-title">
             {content.projects.title}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+
+          <p className="section-subtitle">
             {content.projects.subtitle}
           </p>
 
@@ -56,18 +56,21 @@ const Projects: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-3"
+            className="flex flex-wrap justify-center gap-3 mt-8"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${selectedCategory === category
-                    ? 'bg-gradient-to-r from-primary-600 to-blue-600 text-white shadow-lg scale-105'
-                    : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-lg'
+                className={`px-6 py-2 rounded-lg font-mono text-sm transition-all duration-300 relative overflow-hidden group ${selectedCategory === category
+                  ? 'text-black bg-neon-blue shadow-[0_0_15px_rgba(0,243,255,0.4)]'
+                  : 'text-gray-400 border border-white/10 hover:border-neon-blue/50 hover:text-white bg-dark-surface/50'
                   }`}
               >
-                {category}
+                <span className="relative z-10">{category}</span>
+                {selectedCategory !== category && (
+                  <span className="absolute inset-0 bg-neon-blue/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                )}
               </button>
             ))}
           </motion.div>
@@ -86,7 +89,7 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-20"
         >
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 font-medium">
+          <p className="text-lg text-gray-400 mb-8 font-light">
             {content.projects.viewAllSub}
           </p>
           <a
@@ -94,9 +97,9 @@ const Projects: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={content.projects.aria.viewAll}
-            className="group inline-flex items-center gap-3 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-700 dark:to-gray-600 hover:from-gray-800 hover:to-gray-700 dark:hover:from-gray-600 dark:hover:to-gray-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="btn btn-secondary group inline-flex"
           >
-            <Github size={24} />
+            <Github size={20} />
             {content.projects.viewAll}
             <motion.div
               animate={{ x: [0, 5, 0] }}

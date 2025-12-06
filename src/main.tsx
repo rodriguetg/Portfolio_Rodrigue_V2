@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import ErrorBoundary from './components/common/ErrorBoundary.tsx';
+import '@fontsource/orbitron'; // Tech/Sci-Fi Font
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(

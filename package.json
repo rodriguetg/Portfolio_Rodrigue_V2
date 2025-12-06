@@ -10,13 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/orbitron": "^5.2.8",
+    "@google/generative-ai": "^0.24.1",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.2",
     "@tailwindcss/typography": "^0.5.19",
     "axios": "^1.9.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
+    "maath": "^0.10.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.62.0"
+    "react-hook-form": "^7.62.0",
+    "three": "^0.181.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",

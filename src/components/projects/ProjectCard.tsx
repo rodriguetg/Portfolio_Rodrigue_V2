@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ExternalLink, Github, Sparkles, Youtube } from 'lucide-react';
 import type { Project } from '../../types';
 
@@ -9,87 +9,144 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
+  const isYoutube = project.demoUrl?.includes('youtube');
+
+  // 3D Tilt Motion Values
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
+  const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
+
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], ["-7deg", "7deg"]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], ["7deg", "-7deg"]);
+
+  const glareOpacity = useTransform(mouseY, [-0.5, 0.5], [0, 0.4]);
+  const glareX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]);
+  const glareY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.05 }}
       viewport={{ once: true }}
-      className="group relative"
+      className="group perspective-1000"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: 1000 }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 group-hover:-translate-y-2">
-        <div className="relative overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+      <motion.div
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative h-full"
+      >
+        <div className="absolute inset-0 bg-neon-blue/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+
+        <div className="relative h-full bg-dark-surface/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-lg overflow-hidden transition-colors duration-500 group-hover:border-neon-blue/30 group-hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]">
+
+          {/* Glare Effect */}
+          <motion.div
+            style={{
+              opacity: glareOpacity,
+              background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.3) 0%, transparent 80%)`,
+              zIndex: 20
+            }}
+            className="absolute inset-0 pointer-events-none mix-blend-overlay"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-          <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
-            <div className="flex items-center justify-between w-full">
-              <span className="text-white font-semibold bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl border border-white/30">
+
+          <div className="relative overflow-hidden h-56 transform-style-3d">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-all duration-500"></div>
+
+            <div className="absolute top-4 right-4 flex gap-2 translate-z-20">
+              <span className="text-xs font-mono font-bold text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg border border-white/20 shadow-xl">
                 {project.category}
               </span>
+            </div>
+
+            <div className="absolute bottom-4 left-4 z-10 w-full pr-8 translate-z-20">
               {project.highlight && (
-                <div className="flex items-center gap-2 text-yellow-300 bg-yellow-500/20 backdrop-blur-md px-3 py-2 rounded-xl border border-yellow-400/30">
-                  <Sparkles size={16} />
-                  <span className="font-semibold text-sm">{project.highlight}</span>
+                <div className="flex items-center gap-2 text-neon-green mb-2">
+                  <Sparkles size={14} />
+                  <span className="font-mono text-xs tracking-wider uppercase">{project.highlight}</span>
                 </div>
               )}
             </div>
           </div>
-        </div>
 
-        <div className="p-8">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed h-20 overflow-hidden">
-            {project.description}
-          </p>
+          <div className="p-8 transform-style-3d">
+            <h3 className="text-2xl font-bold font-tech text-white mb-3 group-hover:text-neon-blue transition-colors translate-z-10">
+              {project.title}
+            </h3>
+            <p className="text-gray-400 mb-6 leading-relaxed h-20 overflow-hidden text-sm translate-z-10">
+              {project.description}
+            </p>
 
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="text-xs bg-gradient-to-r from-primary-100 to-blue-100 dark:from-primary-900/50 dark:to-blue-900/50 text-primary-700 dark:text-primary-300 px-3 py-1.5 rounded-full border border-primary-200 dark:border-primary-700 font-semibold"
-              >
-                {tech}
-              </span>
-            ))}
+            <div className="flex flex-wrap gap-2 mb-8 h-16 overflow-hidden translate-z-10">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-[10px] uppercase tracking-wider bg-white/5 text-gray-300 px-3 py-1 rounded border border-white/10 font-mono hover:bg-neon-blue/10 hover:border-neon-blue/30 hover:text-neon-blue transition-colors"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex gap-3 mt-auto translate-z-20 relative z-30">
+              {project.codeUrl && (
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 bg-transparent hover:bg-white/10 text-white border border-white/20 hover:border-white/50 py-3 rounded-xl font-semibold transition-all duration-300 group/btn"
+                >
+                  <Github size={18} className="group-hover/btn:scale-110 transition-transform" />
+                  Code
+                </a>
+              )}
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex-1 flex items-center justify-center gap-2 text-black font-bold py-3 rounded-xl shadow-[0_0_15px_rgba(0,243,255,0.3)] hover:shadow-[0_0_25px_rgba(0,243,255,0.5)] transition-all duration-300 transform hover:scale-[1.02] ${isYoutube
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-400 hover:to-red-500 text-white'
+                    : 'bg-gradient-to-r from-neon-blue to-blue-500 hover:from-cyan-300 hover:to-blue-400'
+                    }`}
+                >
+                  {isYoutube ? <Youtube size={18} /> : <ExternalLink size={18} />}
+                  Live
+                </a>
+              )}
+            </div>
           </div>
-
-          <div className="flex gap-3">
-            {project.codeUrl && (
-              <a
-                href={project.codeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white px-5 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <Github size={18} />
-                Code
-              </a>
-            )}
-            {project.demoUrl && (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center gap-2 text-white px-5 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 ${
-                  project.demoUrl.includes('youtube')
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'
-                    : 'bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700'
-                }`}
-              >
-                {project.demoUrl.includes('youtube') ? <Youtube size={18} /> : <ExternalLink size={18} />}
-                Démo
-              </a>
-            )}
-          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

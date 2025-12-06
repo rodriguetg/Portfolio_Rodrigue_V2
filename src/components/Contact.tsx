@@ -27,10 +27,18 @@ const submissionReducer = (state: SubmissionState, action: Action): SubmissionSt
 const Contact: React.FC = () => {
   const [submissionState, dispatch] = useReducer(submissionReducer, 'idle');
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
-  
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"; // IMPORTANT: Replace with your form ID
+
+  // ⚠️ ACTION REQUIRED: Replace 'YOUR_FORM_ID' with your actual Formspree ID (e.g., 'xpznqrzb')
+  const FORMSPREE_ID = "YOUR_FORM_ID";
+  const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 
   const onSubmit = async (data: FormData) => {
+    // Basic validation check to prevent sending with default ID
+    if (FORMSPREE_ID === "YOUR_FORM_ID") {
+      alert("Erreur de configuration : L'ID du formulaire Formspree n'a pas été défini dans le code.");
+      return;
+    }
+
     dispatch({ type: 'SUBMIT' });
     try {
       await axios.post(FORMSPREE_ENDPOINT, data);
@@ -215,13 +223,12 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={submissionState !== 'idle'}
-                className={`w-full font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl hover:scale-105 ${
-                  submissionState === 'success'
+                className={`w-full font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl hover:scale-105 ${submissionState === 'success'
                     ? 'bg-gradient-to-r from-green-600 to-green-700 text-white'
                     : submissionState === 'error'
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white'
-                    : 'bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white'
-                } ${submissionState === 'loading' ? 'cursor-wait' : ''}`}
+                      ? 'bg-gradient-to-r from-red-600 to-red-700 text-white'
+                      : 'bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white'
+                  } ${submissionState === 'loading' ? 'cursor-wait' : ''}`}
               >
                 {getButtonContent()}
               </button>

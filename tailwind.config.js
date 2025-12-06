@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
   ],
-  darkMode: 'class',
+  darkMode: 'class', // Managed manually or by system preference, but we'll enforce dark for this theme
   theme: {
     extend: {
       colors: {
@@ -17,28 +18,29 @@ module.exports = {
           600: '#0284c7',
           700: '#0369a1',
           800: '#075985',
-          900: '#0c4a6e'
+          900: '#0c4a6e',
+          950: '#082f49',
         },
-        accent: {
-          50: '#fef3c7',
-          100: '#fde68a',
-          200: '#fcd34d',
-          300: '#fbbf24',
-          400: '#f59e0b',
-          500: '#d97706',
-          600: '#b45309',
-          700: '#92400e',
-          800: '#78350f',
-          900: '#451a03'
+        // Cyberpunk / Tech Accents
+        neon: {
+          blue: '#00f3ff',
+          purple: '#bc13fe',
+          green: '#0aff00',
+        },
+        dark: {
+          bg: '#050505',
+          surface: '#0a0a12',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        tech: ['Orbitron', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'bounce-slow': 'bounce 2s infinite',
+        'pulse-glow': 'pulseGlow 2s infinite',
       },
       keyframes: {
         fadeIn: {
@@ -49,7 +51,14 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 10px rgba(0, 243, 255, 0.5)' },
+          '50%': { boxShadow: '0 0 20px rgba(0, 243, 255, 0.8)' },
+        }
       },
+      backgroundImage: {
+        'tech-gradient': 'linear-gradient(to right, #050505, #0a0a12)',
+      }
     },
   },
   plugins: [
