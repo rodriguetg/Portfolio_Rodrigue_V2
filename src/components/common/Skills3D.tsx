@@ -4,10 +4,9 @@ import { Text, TrackballControls, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 const skills = [
-    'React', 'TypeScript', 'Node.js', 'Next.js',
-    'Tailwind', 'Three.js', 'Python', 'AI/ML',
+    'AirOps', 'Python', 'AI/ML',
     'Automation', 'n8n', 'Zapier', 'API',
-    'Framer', 'Git', 'Vite', 'Firebase'
+    'Git', 'Vite', 'Firebase'
 ];
 
 function Word({ children, ...props }: { children: string;[key: string]: any }) {
@@ -34,7 +33,7 @@ function Word({ children, ...props }: { children: string;[key: string]: any }) {
     useFrame(({ camera }) => {
         if (ref.current) {
             ref.current.quaternion.copy(camera.quaternion);
-            (ref.current.material as THREE.MeshBasicMaterial).color.lerp(color.set(hovered ? '#00f3ff' : '#ffffff'), 0.1);
+            (ref.current.material as THREE.MeshBasicMaterial).color.lerp(color.set(hovered ? '#6366f1' : '#cbd5e1'), 0.1);
         }
     });
 

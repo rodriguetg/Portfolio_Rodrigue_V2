@@ -72,11 +72,11 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="relative py-32 bg-gradient-to-br from-white via-primary-50/20 to-blue-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+    <section id="contact" className="relative py-24 bg-slate-50 dark:bg-slate-950 overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-primary-200/20 dark:bg-primary-800/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-10 w-96 h-96 bg-primary-200/20 dark:bg-primary-900/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-6">
@@ -224,10 +224,10 @@ const Contact: React.FC = () => {
                 type="submit"
                 disabled={submissionState !== 'idle'}
                 className={`w-full font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl hover:scale-105 ${submissionState === 'success'
-                    ? 'bg-gradient-to-r from-green-600 to-green-700 text-white'
-                    : submissionState === 'error'
-                      ? 'bg-gradient-to-r from-red-600 to-red-700 text-white'
-                      : 'bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white'
+                  ? 'bg-gradient-to-r from-green-600 to-green-700 text-white'
+                  : submissionState === 'error'
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white'
+                    : 'bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white'
                   } ${submissionState === 'loading' ? 'cursor-wait' : ''}`}
               >
                 {getButtonContent()}

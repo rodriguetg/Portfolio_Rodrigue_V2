@@ -20,8 +20,8 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="relative py-32 bg-gradient-to-br from-white via-primary-50/20 to-blue-50/20 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
-      {/* Decorative background */}
+    <section id="experience" className="relative py-24 bg-slate-900 overflow-hidden">
+      {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/3 right-0 w-96 h-96 bg-primary-200/20 dark:bg-primary-800/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl"></div>
@@ -61,11 +61,10 @@ const Experience: React.FC = () => {
               <button
                 key={filterOption.key}
                 onClick={() => setFilter(filterOption.key)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  filter === filterOption.key
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${filter === filterOption.key
                     ? 'bg-gradient-to-r from-primary-600 to-blue-600 text-white shadow-lg scale-105'
                     : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-lg'
-                }`}
+                  }`}
               >
                 {filterOption.label}
               </button>

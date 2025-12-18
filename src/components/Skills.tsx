@@ -10,8 +10,9 @@ const Skills: React.FC = () => {
   const filteredSkills = skills.filter(skill => skill.category === activeTab);
 
   return (
-    <section id="skills" className="relative py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950/30 overflow-hidden">
-      {/* Decorative background */}
+    <section id="skills" className="relative py-24 bg-slate-950 overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] opacity-20 pointer-events-none" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-300/10 dark:bg-blue-600/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary-300/10 dark:bg-primary-600/5 rounded-full blur-3xl"></div>

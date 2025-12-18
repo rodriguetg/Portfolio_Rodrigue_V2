@@ -20,8 +20,8 @@ const LanguageItem: React.FC<{ lang: Language }> = ({ lang }) => (
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="relative py-32 bg-gradient-to-br from-white via-blue-50/30 to-primary-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
-      {/* Decorative elements */}
+    <section id="about" className="relative py-24 bg-slate-50 overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary-200/20 dark:bg-primary-900/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-3xl"></div>

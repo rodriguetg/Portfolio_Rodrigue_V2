@@ -13,7 +13,7 @@ export type ExperienceFilter = 'all' | 'work' | 'education' | 'certification';
 export interface Project {
   id: string;
   title: string;
-  description:string;
+  description: string;
   image: string;
   technologies: string[];
   category: string;
@@ -43,16 +43,25 @@ export interface Language {
 }
 
 export interface PersonalInfo {
-    name: string;
-    title: string;
-    bio: string;
-    email: string;
-    phone: string;
-    location: string;
-    avatar: string;
-    socialLinks: {
-        github: string;
-        linkedin: string;
-        twitter: string;
-    }
+  name: string;
+  title: string;
+  bio: string;
+  email: string;
+  phone: string;
+  location: string;
+  avatar: string;
+  socialLinks: {
+    github: string;
+    linkedin: string;
+    twitter: string;
+  }
+}
+
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  credentialUrl?: string;
+  image?: string;
 }

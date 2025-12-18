@@ -4,10 +4,11 @@ module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
   ],
-  darkMode: 'class', // Managed manually or by system preference, but we'll enforce dark for this theme
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        // Modern Professional Palette
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -21,43 +22,44 @@ module.exports = {
           900: '#0c4a6e',
           950: '#082f49',
         },
-        // Cyberpunk / Tech Accents
-        neon: {
-          blue: '#00f3ff',
-          purple: '#bc13fe',
-          green: '#0aff00',
+        slate: {
+          850: '#151f32',
+          900: '#0f172a',
+          950: '#020617',
         },
-        dark: {
-          bg: '#050505',
-          surface: '#0a0a12',
+        // Accents (subtle instead of neon)
+        accent: {
+          blue: '#3b82f6',
+          purple: '#8b5cf6',
+          teal: '#14b8a6',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        tech: ['Orbitron', 'sans-serif'],
+        sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        heading: ['Outfit', 'Inter', 'sans-serif'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'fade-in': 'fadeIn 0.7s ease-in-out',
+        'fade-in-up': 'fadeInUp 0.8s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
-        'bounce-slow': 'bounce 2s infinite',
-        'pulse-glow': 'pulseGlow 2s infinite',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 10px rgba(0, 243, 255, 0.5)' },
-          '50%': { boxShadow: '0 0 20px rgba(0, 243, 255, 0.8)' },
-        }
       },
       backgroundImage: {
-        'tech-gradient': 'linear-gradient(to right, #050505, #0a0a12)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'hero-pattern': 'linear-gradient(to right bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95))',
       }
     },
   },

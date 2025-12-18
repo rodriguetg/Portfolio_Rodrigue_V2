@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/portfolioData';
 import { content } from '../data/content';
-import { Github, Code } from 'lucide-react';
+import { Github, Code, LayoutGrid } from 'lucide-react';
 import ProjectCard from './projects/ProjectCard';
 
 const Projects: React.FC = () => {
@@ -18,11 +18,11 @@ const Projects: React.FC = () => {
   );
 
   return (
-    <section id="projects" className="relative py-32 overflow-hidden">
-      {/* Tech Grid Background Overlay */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
+    <section id="projects" className="relative py-24 bg-slate-950 overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] opacity-20 pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,20 +35,18 @@ const Projects: React.FC = () => {
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-neon-purple/10 border border-neon-purple/30 text-neon-purple"
+            className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-primary-400"
           >
-            <Code size={16} />
-            <span className="text-sm font-mono tracking-wider">
-              {content.projects.badge}
-            </span>
+            <LayoutGrid size={16} />
+            <span className="text-sm font-medium">Portfolio</span>
           </motion.div>
 
           <h2 className="section-title">
-            {content.projects.title}
+            Projets Réalisés
           </h2>
 
           <p className="section-subtitle">
-            {content.projects.subtitle}
+            Une sélection de mes travaux récents, démontrant mon expertise en développement web et solutions logicielles.
           </p>
 
           <motion.div
@@ -62,15 +60,12 @@ const Projects: React.FC = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-lg font-mono text-sm transition-all duration-300 relative overflow-hidden group ${selectedCategory === category
-                  ? 'text-black bg-neon-blue shadow-[0_0_15px_rgba(0,243,255,0.4)]'
-                  : 'text-gray-400 border border-white/10 hover:border-neon-blue/50 hover:text-white bg-dark-surface/50'
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
+                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25'
+                    : 'bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-500'
                   }`}
               >
-                <span className="relative z-10">{category}</span>
-                {selectedCategory !== category && (
-                  <span className="absolute inset-0 bg-neon-blue/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                )}
+                {category}
               </button>
             ))}
           </motion.div>
@@ -89,25 +84,14 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-20"
         >
-          <p className="text-lg text-gray-400 mb-8 font-light">
-            {content.projects.viewAllSub}
-          </p>
           <a
             href="https://github.com/rodriguetg"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={content.projects.aria.viewAll}
-            className="btn btn-secondary group inline-flex"
+            className="btn btn-outline group inline-flex"
           >
             <Github size={20} />
-            {content.projects.viewAll}
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="ml-1"
-            >
-              →
-            </motion.div>
+            <span>Voir plus sur GitHub</span>
           </a>
         </motion.div>
       </div>

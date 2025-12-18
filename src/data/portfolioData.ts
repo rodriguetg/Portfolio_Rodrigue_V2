@@ -1,4 +1,4 @@
-import type { Experience, Project, Skill, Testimonial, Language, PersonalInfo } from '../types';
+import type { Experience, Project, Skill, Language, PersonalInfo, Certification } from '../types';
 
 export const personalInfo: PersonalInfo = {
   name: "Rodrigue GBADOU",
@@ -137,7 +137,7 @@ export const experiences: Experience[] = [
       "Gestion administrative et financière",
       "Développement de partenariats institutionnels"
     ],
-    type: "certification"
+    type: "work"
   },
   {
     id: "9",
@@ -218,11 +218,12 @@ export const skills: Skill[] = [
   { name: "Google Analytics", level: 85, category: "technical" },
   { name: "Zapier/Make/N8N", level: 90, category: "technical" },
   { name: "Web Scraping", level: 80, category: "technical" },
-  { name: "SEMRush", level: 85, category: "technical" },
+  { name: "Semrush", level: 85, category: "technical" },
+  { name: "AirOps", level: 90, category: "technical" },
   { name: "Prompt Engineering", level: 88, category: "technical" },
   { name: "API Integration", level: 78, category: "technical" },
   { name: "Content Management", level: 92, category: "technical" },
-  
+
   // Soft skills
   { name: "Proactivité", level: 95, category: "soft" },
   { name: "Adaptabilité", level: 90, category: "soft" },
@@ -234,29 +235,31 @@ export const skills: Skill[] = [
   { name: "Gestion de projet", level: 82, category: "soft" }
 ];
 
-export const testimonials: Testimonial[] = [
+
+
+export const certifications: Certification[] = [
+  {
+    id: "3",
+    title: "Content Engineer",
+    issuer: "AirOps",
+    date: "2025",
+    image: "/images/certifications/airops-content-engineer.png",
+    credentialUrl: "/images/certifications/airops-content-engineer.png"
+  },
   {
     id: "1",
-    name: "Sarah Martin",
-    role: "Chef de Projet Digital",
-    company: "Web Agency",
-    content: "Rodrigue a démontré une excellente maîtrise du SEO et des outils d'analyse. Sa capacité à intégrer l'IA dans nos stratégies marketing a vraiment apporté une valeur ajoutée à nos campagnes.",
-    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
+    title: "Les principes fondamentaux du marketing digital",
+    issuer: "Google",
+    date: "2023",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png",
+    credentialUrl: "https://skillshop.exceedlms.com/student/award/tsmesvD8nLuC6BwhyvymtXFV"
   },
   {
     id: "2",
-    name: "Thomas Dubois",
-    role: "Directeur Technique",
-    company: "Innovatech",
-    content: "Rodrigue maîtrise parfaitement les outils d'automatisation no-code. Son travail sur nos workflows Zapier et Make a considérablement optimisé nos processus internes. Un profil très prometteur !",
-    avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
-  },
-  {
-    id: "3",
-    name: "Julie Lambert",
-    role: "Responsable SEO",
-    company: "Digital Growth",
-    content: "Excellent sens analytique et grande rigueur dans l'optimisation SEO. Rodrigue a su améliorer significativement nos performances de référencement en peu de temps. Je recommande vivement !",
-    avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face"
+    title: "Préparer votre carrière dans l'IA générative",
+    issuer: "Microsoft & LinkedIn",
+    date: "2024",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Linkedin.svg/1200px-Linkedin.svg.png",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/764acfebc5a4477b1ce7ce7f4f07d4d4ec228148bfe2439ec618ea8b2f5510ea"
   }
 ];

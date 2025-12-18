@@ -9,14 +9,13 @@ const About = lazy(() => import('./components/About'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
 const Skills = lazy(() => import('./components/Skills'));
+const Certifications = lazy(() => import('./components/Certifications'));
 const Contact = lazy(() => import('./components/Contact'));
-const Testimonials = lazy(() => import('./components/Testimonials'));
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white transition-colors duration-300 relative">
+    <div className="min-h-screen bg-slate-950 text-slate-200 transition-colors duration-300 relative selection:bg-primary-500/30 selection:text-primary-200">
       <BackgroundCanvas />
-
       <div className="relative z-10">
         <Header />
         <main>
@@ -34,8 +33,9 @@ function App() {
             <Skills />
           </Suspense>
           <Suspense fallback={<Spinner />}>
-            <Testimonials />
+            <Certifications />
           </Suspense>
+
           <Suspense fallback={<Spinner />}>
             <Contact />
           </Suspense>

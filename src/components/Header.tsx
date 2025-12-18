@@ -1,23 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Terminal, Cpu } from 'lucide-react';
+import { Menu, X, Code2 } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    { href: '#home', label: 'HUB' },
-    { href: '#about', label: 'DATA' },
-    { href: '#experience', label: 'LOGS' },
-    { href: '#projects', label: 'PROJECTS' },
-    { href: '#skills', label: 'TECH' },
-    { href: '#contact', label: 'Signal' }
+    { href: '#home', label: 'Accueil' },
+    { href: '#about', label: 'À propos' },
+    { href: '#experience', label: 'Parcours' },
+    { href: '#projects', label: 'Projets' },
+    { href: '#skills', label: 'Compétences' },
+    { href: '#certifications', label: 'Certifications' },
+    { href: '#contact', label: 'Contact' }
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -34,35 +35,34 @@ const Header: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-          ? 'bg-dark-bg/80 backdrop-blur-md border-b border-neon-blue/20'
-          : 'bg-transparent'
+        ? 'bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-lg'
+        : 'bg-transparent py-4'
         }`}
     >
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-
-      <nav className="container mx-auto px-6 py-4 relative z-10">
-        <div className="flex items-center justify-between">
+      <nav className="container-custom mx-auto">
+        <div className="flex items-center justify-between h-16">
           <a
             href="#home"
             onClick={(e) => scrollToSection(e, '#home')}
-            className="group flex items-center gap-2 text-2xl font-bold font-tech text-white"
+            className="group flex items-center gap-2 text-2xl font-bold font-heading text-slate-100"
           >
-            <Terminal className="text-neon-blue group-hover:animate-pulse" />
-            <span className="tracking-widest group-hover:text-neon-blue transition-colors">RG_V2</span>
+            <div className="bg-primary-600 p-1.5 rounded-lg">
+              <Code2 className="text-white" size={24} />
+            </div>
+            <span className="tracking-tight group-hover:text-primary-400 transition-colors">RG.Dev</span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="relative px-4 py-2 text-sm font-mono text-gray-400 hover:text-neon-blue transition-colors duration-200 group overflow-hidden"
+                className="text-sm font-medium text-slate-400 hover:text-primary-400 transition-colors relative group py-2"
               >
-                <span className="relative z-10">{item.label}</span>
-                <span className="absolute inset-0 bg-neon-blue/10 transform -skew-x-12 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-neon-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                {item.label}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </a>
             ))}
           </div>
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg text-neon-blue hover:bg-neon-blue/10 transition-colors"
+              className="p-2 rounded-lg text-slate-300 hover:bg-slate-800 transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -84,7 +84,7 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 bg-dark-surface/95 backdrop-blur-xl border border-neon-blue/30 rounded-xl overflow-hidden"
+            className="md:hidden bg-slate-900 border-t border-slate-800 overflow-hidden"
           >
             <div className="flex flex-col p-4 space-y-2">
               {navItems.map((item) => (
@@ -92,9 +92,8 @@ const Header: React.FC = () => {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-neon-blue hover:bg-neon-blue/10 rounded-lg transition-all font-mono"
+                  className="block px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-all font-medium"
                 >
-                  <Cpu size={16} className="text-neon-purple" />
                   {item.label}
                 </a>
               ))}
