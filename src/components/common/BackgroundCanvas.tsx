@@ -31,8 +31,21 @@ const TechParticles = ({ count = 3000 }) => {
 
     useFrame((state, delta) => {
         if (mesh.current) {
+            // Rotate the entire system slightly
             mesh.current.rotation.y += delta * 0.05;
-            mesh.current.rotation.x += delta * 0.02;
+
+            // Make particles fall
+            const positions = mesh.current.geometry.attributes.position.array as Float32Array;
+            for (let i = 0; i < count; i++) {
+                // Y is at index i*3 + 1
+                positions[i * 3 + 1] -= delta * 2; // Falling speed
+
+                // Reset specific particle if it falls below -20
+                if (positions[i * 3 + 1] < -20) {
+                    positions[i * 3 + 1] = 20;
+                }
+            }
+            mesh.current.geometry.attributes.position.needsUpdate = true;
         }
     });
 
