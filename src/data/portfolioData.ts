@@ -186,6 +186,7 @@ export const projects: Project[] = [
     technologies: ["Python", "Flask", "Bootstrap", "fpdf2"],
     category: "Business Tool",
     codeUrl: "https://github.com/rodriguetg/Generateur-de-Persona",
+    demoUrl: "https://generateur-de-persona.onrender.com/",
     highlight: "Automatisation Marketing"
   },
   {
