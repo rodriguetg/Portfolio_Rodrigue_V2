@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-primary-400 mb-6 backdrop-blur-md"
           >
             <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-            <span className="text-sm font-medium tracking-wide">Disponible pour de nouveaux projets</span>
+            <span className="text-sm font-medium tracking-wide">Ouvert à un CDI en Marketing Automation</span>
           </motion.div>
 
           <motion.h1

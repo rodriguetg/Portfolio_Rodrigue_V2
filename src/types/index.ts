@@ -64,4 +64,6 @@ export interface Certification {
   date: string;
   credentialUrl?: string;
   image?: string;
+  featured?: boolean;
+  description?: string;
 }

@@ -15,11 +15,13 @@ export const personalInfo: PersonalInfo = {
   }
 };
 
-export const aboutText = `Étudiant en Master Brand Content & Management à Paris École de Management, je me spécialise dans la stratégie marketing digitale, l'automatisation et l'innovation technologique.
+export const aboutText = `Étudiant en Master Brand Content & Management à Paris École de Management, je me spécialise dans la stratégie marketing digitale, l’automatisation no-code et l’innovation technologique.
 
-Avec plus de 36 mois d'expérience en freelance et plusieurs stages enrichissants, j'ai développé une expertise solide en SEO, automatisation no-code, développement web et création de contenus. Mon parcours m'a permis de maîtriser des outils comme Zapier, Make, WordPress, et diverses technologies de web scraping.
+Avec plus de 3 ans d’expérience en freelance et en entreprise, j’ai développé une expertise opérationnelle en SEO, automatisation (Airops, n8n, Make, Zapier), développement web no code et création de contenus orientés performance.
 
-Je suis passionné par l'intersection entre créativité et technologie, cherchant toujours à optimiser les processus et créer des solutions innovantes. Mon engagement associatif et mes expériences variées m'ont appris l'importance du travail d'équipe et de l'adaptabilité dans un monde digital en constante évolution.`;
+J’accompagne les entreprises, agences et créateurs à transformer leurs tâches répétitives en workflows automatisés : connexion des outils (site, CRM, réseaux sociaux), optimisation des process marketing et meilleure exploitation de leurs données.
+
+Habitué au travail en équipe (associatif, agences, startups), je suis aujourd’hui ouvert à un CDI et à des partenariats sur des projets d’automatisation, de contenu et de marketing digital.`;
 
 export const languages: Language[] = [
   { name: "Français", level: "Langue maternelle" },
@@ -238,6 +240,16 @@ export const skills: Skill[] = [
 
 
 export const certifications: Certification[] = [
+  {
+    id: "n8n-creator",
+    title: "n8n Certified Creator",
+    issuer: "n8n",
+    date: "2025",
+    image: "https://static.cdnlogo.com/logos/n/6/n8n_800.png",
+    credentialUrl: "https://n8n.io/creators/gbadou/",
+    featured: true,
+    description: "Créateur certifié et contributeur actif avec plus de 9 workflows publiés pour aider la communauté à automatiser leurs processus et gagner en productivité."
+  },
   {
     id: "3",
     title: "Content Engineer",
