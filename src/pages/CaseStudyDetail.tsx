@@ -88,7 +88,7 @@ const CaseStudyDetail = () => {
                 </div>
             </section>
 
-            <div className="container-custom mx-auto px-4 py-20 max-w-6xl">
+            <div className="container-custom mx-auto px-4 py-20 max-w-6xl relative z-30">
 
                 {/* CONTEXT GRID (Challenge & Solution) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
@@ -96,7 +96,7 @@ const CaseStudyDetail = () => {
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="bg-slate-900/50 p-8 rounded-2xl border border-slate-800"
+                        className="bg-slate-900/80 backdrop-blur-md p-8 rounded-2xl border border-slate-700 shadow-xl shadow-red-900/10 hover:border-red-500/30 transition-colors"
                     >
                         <h3 className="text-2xl font-bold mb-6 text-red-400 flex items-center gap-2">
                             Le Défi
@@ -110,7 +110,7 @@ const CaseStudyDetail = () => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="bg-slate-900/50 p-8 rounded-2xl border border-primary-900/50 shadow-lg shadow-primary-900/10"
+                        className="bg-slate-900/80 backdrop-blur-md p-8 rounded-2xl border border-slate-700 shadow-xl shadow-emerald-900/10 hover:border-emerald-500/30 transition-colors"
                     >
                         <h3 className="text-2xl font-bold mb-6 text-emerald-400 flex items-center gap-2">
                             La Solution
@@ -137,7 +137,7 @@ const CaseStudyDetail = () => {
                             >
                                 <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-900 bg-slate-800 group-hover:bg-primary-500 transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow-lg" />
 
-                                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-primary-500/30 transition-colors">
+                                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-slate-900/90 backdrop-blur-sm border border-slate-700 rounded-xl hover:border-primary-500/50 shadow-lg transition-all group-hover:shadow-primary-900/20">
                                     <div className="flex items-center gap-3 mb-2">
                                         <span className="text-primary-400 font-bold text-lg">0{step.step}</span>
                                         <h3 className="font-bold text-xl">{step.title}</h3>
