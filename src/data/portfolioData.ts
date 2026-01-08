@@ -226,6 +226,8 @@ export const skills: Skill[] = [
   { name: "Prompt Engineering", level: 88, category: "technical" },
   { name: "API Integration", level: 78, category: "technical" },
   { name: "Content Management", level: 92, category: "technical" },
+  { name: "Créatomate", level: 85, category: "technical" },
+  { name: "Fal.ai", level: 80, category: "technical" },
 
   // Soft skills
   { name: "Proactivité", level: 95, category: "soft" },

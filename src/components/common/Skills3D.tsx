@@ -6,7 +6,7 @@ import * as THREE from 'three';
 const skills = [
     'AirOps', 'Python', 'AI/ML',
     'Automation', 'n8n', 'Zapier', 'API',
-    'Git', 'Vite', 'Firebase'
+    'Git', 'Fal.ai', 'Creatomate', 'Prompt Eng.'
 ];
 
 function Word({ children, ...props }: { children: string;[key: string]: any }) {

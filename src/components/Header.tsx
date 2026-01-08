@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Code2 } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,8 +14,12 @@ const Header: React.FC = () => {
     { href: '#projects', label: 'Projets' },
     { href: '#skills', label: 'Compétences' },
     { href: '#certifications', label: 'Certifications' },
+    { href: '/case-studies', label: 'Études de Cas' },
     { href: '#contact', label: 'Contact' }
   ];
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +29,27 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
-  }, []);
+
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(href);
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, navigate]);
 
   return (
     <motion.header
@@ -41,16 +62,16 @@ const Header: React.FC = () => {
     >
       <nav className="container-custom mx-auto">
         <div className="flex items-center justify-between h-16">
-          <a
-            href="#home"
-            onClick={(e) => scrollToSection(e, '#home')}
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="group flex items-center gap-2 text-2xl font-bold font-heading text-slate-100"
           >
             <div className="bg-primary-600 p-1.5 rounded-lg">
               <Code2 className="text-white" size={24} />
             </div>
             <span className="tracking-tight group-hover:text-primary-400 transition-colors">RG.Dev</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
@@ -58,11 +79,13 @@ const Header: React.FC = () => {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-sm font-medium text-slate-400 hover:text-primary-400 transition-colors relative group py-2"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`text-sm font-medium transition-colors relative group py-2 ${location.pathname === item.href ? 'text-primary-400' : 'text-slate-400 hover:text-primary-400'
+                  }`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 transform transition-transform duration-300 origin-left ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`} />
               </a>
             ))}
           </div>
@@ -91,7 +114,7 @@ const Header: React.FC = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => scrollToSection(e, item.href)}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="block px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-all font-medium"
                 >
                   {item.label}

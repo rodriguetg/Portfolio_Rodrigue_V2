@@ -20,6 +20,7 @@ export interface Project {
   demoUrl?: string;
   codeUrl?: string;
   highlight?: string;
+  internalLink?: string;
 }
 
 export interface Skill {

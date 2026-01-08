@@ -1,20 +1,37 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { projects } from '../data/portfolioData';
+import { projects as originalProjects } from '../data/portfolioData';
+import { caseStudies } from '../data/caseStudies';
 import { content } from '../data/content';
 import { Github, Code, LayoutGrid } from 'lucide-react';
 import ProjectCard from './projects/ProjectCard';
+import type { Project } from '../types';
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = useMemo(() => ['All', ...new Set(projects.map(project => project.category))], []);
+  // Convert Case Studies to Project format
+  const caseStudyProjects: Project[] = caseStudies.map(study => ({
+    id: study.id,
+    title: study.title,
+    description: study.excerpt, // Use excerpt for the card description
+    image: study.image,
+    technologies: study.technologies,
+    category: 'Case Study',
+    internalLink: `/case-studies/${study.id}`,
+    highlight: 'Premium'
+  }));
+
+  // Merge datasets: Case Studies first, then other projects
+  const allProjects = [...caseStudyProjects, ...originalProjects];
+
+  const categories = useMemo(() => ['All', ...new Set(allProjects.map(project => project.category))], [allProjects]);
 
   const filteredProjects = useMemo(() =>
     selectedCategory === 'All'
-      ? projects
-      : projects.filter(project => project.category === selectedCategory),
-    [selectedCategory]
+      ? allProjects
+      : allProjects.filter(project => project.category === selectedCategory),
+    [selectedCategory, allProjects]
   );
 
   return (
@@ -61,8 +78,8 @@ const Projects: React.FC = () => {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
-                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25'
-                    : 'bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-500'
+                  ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25'
+                  : 'bg-slate-900 border border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-500'
                   }`}
               >
                 {category}

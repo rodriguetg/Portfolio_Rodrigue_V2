@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -30,6 +31,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
           {/* Overlay Actions */}
           <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-950/60 backdrop-blur-sm">
+            {project.internalLink && (
+              <Link
+                to={project.internalLink}
+                className="p-3 rounded-full bg-primary-600 text-white hover:bg-primary-500 transition-colors transform hover:scale-110 duration-200 shadow-lg shadow-primary-600/30"
+                aria-label="Voir l'étude de cas"
+              >
+                <Eye size={20} />
+              </Link>
+            )}
             {project.demoUrl && (
               <a
                 href={project.demoUrl}

@@ -1,47 +1,41 @@
 import React, { Suspense, lazy } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Home from './pages/Home';
 import Header from './components/Header';
-import Hero from './components/Hero';
 import Footer from './components/Footer';
-import Spinner from './components/common/Spinner';
 import BackgroundCanvas from './components/common/BackgroundCanvas';
 
-const About = lazy(() => import('./components/About'));
-const Experience = lazy(() => import('./components/Experience'));
-const Projects = lazy(() => import('./components/Projects'));
-const Skills = lazy(() => import('./components/Skills'));
-const Certifications = lazy(() => import('./components/Certifications'));
-const Contact = lazy(() => import('./components/Contact'));
+// Lazy load pages
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
+const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
+
+// Loading component
+const Spinner = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 function App() {
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 transition-colors duration-300 relative selection:bg-primary-500/30 selection:text-primary-200">
-      <BackgroundCanvas />
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <Hero />
-          <Suspense fallback={<Spinner />}>
-            <About />
-          </Suspense>
-          <Suspense fallback={<Spinner />}>
-            <Experience />
-          </Suspense>
-          <Suspense fallback={<Spinner />}>
-            <Projects />
-          </Suspense>
-          <Suspense fallback={<Spinner />}>
-            <Skills />
-          </Suspense>
-          <Suspense fallback={<Spinner />}>
-            <Certifications />
-          </Suspense>
+  const location = useLocation();
 
+  return (
+    <div className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 relative selection:bg-primary-500/30 selection:text-primary-200">
+      <Header />
+      <BackgroundCanvas />
+      <main>
+        <AnimatePresence mode="wait">
           <Suspense fallback={<Spinner />}>
-            <Contact />
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
+            </Routes>
           </Suspense>
-        </main>
-        <Footer />
-      </div>
+        </AnimatePresence>
+      </main>
+      <Footer />
     </div>
   );
 }
