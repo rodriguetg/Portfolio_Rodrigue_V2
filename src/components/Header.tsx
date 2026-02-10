@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import { Menu, X, Code2 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -36,7 +35,6 @@ const Header: React.FC = () => {
     if (href.startsWith('#')) {
       if (location.pathname !== '/') {
         navigate('/');
-        // Wait for navigation then scroll
         setTimeout(() => {
           const element = document.querySelector(href);
           element?.scrollIntoView({ behavior: 'smooth' });
@@ -52,10 +50,8 @@ const Header: React.FC = () => {
   }, [location.pathname, navigate]);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 animate-slide-down ${scrolled
         ? 'bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-lg'
         : 'bg-transparent py-4'
         }`}
@@ -103,12 +99,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-slate-900 border-t border-slate-800 overflow-hidden"
-          >
+          <div className="md:hidden bg-slate-900 border-t border-slate-800 overflow-hidden animate-fade-in">
             <div className="flex flex-col p-4 space-y-2">
               {navItems.map((item) => (
                 <a
@@ -121,10 +112,10 @@ const Header: React.FC = () => {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </nav>
-    </motion.header>
+    </header>
   );
 };
 

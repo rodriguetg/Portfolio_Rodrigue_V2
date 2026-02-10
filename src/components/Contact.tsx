@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Send, CheckCircle, AlertTriangle } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
@@ -41,7 +40,12 @@ const Contact: React.FC = () => {
 
     dispatch({ type: 'SUBMIT' });
     try {
-      await axios.post(FORMSPREE_ENDPOINT, data);
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('Submission failed');
       dispatch({ type: 'SUCCESS' });
       reset();
       setTimeout(() => dispatch({ type: 'RESET' }), 5000);

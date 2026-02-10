@@ -1,8 +1,6 @@
 import React, { useCallback, Suspense, lazy, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, Download, Mail, ArrowRight } from 'lucide-react';
+import { ChevronDown, Download, ArrowRight } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import { content } from '../data/content';
 
 // Lazy-load the entire 3D scene
 const Hero3DScene = lazy(() => import('./hero/Hero3DScene'));
@@ -34,17 +32,11 @@ const Hero: React.FC = () => {
 
       <div className="container-custom relative z-10 grid md:grid-cols-2 gap-12 items-center">
         <div className="text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-primary-400 mb-6 backdrop-blur-md"
-          >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-primary-400 mb-6 backdrop-blur-md animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
             <span className="text-sm font-medium tracking-wide">Ouvert à un CDI en Marketing Automation</span>
-          </motion.div>
+          </div>
 
-          {/* H1 renders immediately - no animation delay to avoid blocking LCP */}
           <h1 className="text-5xl md:text-7xl font-bold font-heading leading-tight mb-6 text-slate-100 animate-fade-in">
             <span className="block text-slate-400 text-4xl md:text-5xl mb-2 font-normal">Bonjour, je suis</span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-purple">
@@ -52,22 +44,16 @@ const Hero: React.FC = () => {
             </span>
           </h1>
 
-          {/* Title renders immediately */}
           <div className="flex items-center gap-3 text-xl md:text-2xl text-slate-400 mb-8 font-light animate-fade-in">
             <span>{personalInfo.title}</span>
           </div>
 
-          {/* LCP element - NO animation delay, renders immediately */}
+          {/* LCP element - renders immediately */}
           <p className="text-lg text-slate-400 max-w-lg mb-10 leading-relaxed animate-fade-in">
             {personalInfo.bio}
           </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
+          <div className="flex flex-wrap gap-4 animate-fade-in-up">
             <button
               onClick={() => scrollTo('#contact')}
               className="btn btn-primary group"
@@ -84,18 +70,13 @@ const Hero: React.FC = () => {
               <Download size={20} className="group-hover:translate-y-1 transition-transform" />
               <span>Télécharger CV</span>
             </a>
-          </motion.div>
+          </div>
         </div>
 
         <div className="hidden md:block h-full min-h-[500px]"></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in">
         <button
           onClick={() => scrollTo('#about')}
           className="flex flex-col items-center gap-2 text-slate-500 hover:text-primary-400 transition-colors"
@@ -103,7 +84,7 @@ const Hero: React.FC = () => {
           <span className="text-xs font-medium tracking-widest uppercase">Découvrir</span>
           <ChevronDown size={24} className="animate-bounce" />
         </button>
-      </motion.div>
+      </div>
     </section>
   );
 };

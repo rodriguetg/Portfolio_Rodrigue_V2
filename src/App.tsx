@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -18,8 +17,6 @@ const Spinner = () => (
 );
 
 function App() {
-  const location = useLocation();
-
   return (
     <div className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 relative selection:bg-primary-500/30 selection:text-primary-200">
       <Header />
@@ -27,15 +24,13 @@ function App() {
         <BackgroundCanvas />
       </Suspense>
       <main>
-        <AnimatePresence mode="wait">
-          <Suspense fallback={<Spinner />}>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/case-studies" element={<CaseStudies />} />
-              <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
-            </Routes>
-          </Suspense>
-        </AnimatePresence>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>
