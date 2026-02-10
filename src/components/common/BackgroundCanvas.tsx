@@ -2,8 +2,9 @@ import { useRef, useMemo, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const TechParticles = ({ count = 1500 }) => {
+const TechParticles = ({ count = 800 }) => {
     const mesh = useRef<THREE.Points>(null!);
+    const frameSkip = useRef(0);
 
     const particlesPosition = useMemo(() => {
         const positions = new Float32Array(count * 3);
@@ -26,7 +27,11 @@ const TechParticles = ({ count = 1500 }) => {
         return { positions, colors };
     }, [count]);
 
+    // Update every other frame to reduce CPU usage
     useFrame((_, delta) => {
+        frameSkip.current++;
+        if (frameSkip.current % 2 !== 0) return;
+
         if (mesh.current) {
             mesh.current.rotation.y += delta * 0.05;
 
@@ -70,6 +75,13 @@ const TechParticles = ({ count = 1500 }) => {
     );
 };
 
+const CSSBackground = () => (
+    <div className="fixed inset-0 z-0 bg-[#050505] pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/80" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,243,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none" />
+    </div>
+);
+
 const BackgroundCanvas = () => {
     const [isMobile, setIsMobile] = useState(false);
 
@@ -81,21 +93,19 @@ const BackgroundCanvas = () => {
         return () => mql.removeEventListener('change', handler);
     }, []);
 
-    // On mobile, render a simple CSS background instead of 3D canvas
     if (isMobile) {
-        return (
-            <div className="fixed inset-0 z-0 bg-[#050505] pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/80" />
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,243,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none" />
-            </div>
-        );
+        return <CSSBackground />;
     }
 
     return (
         <div className="fixed inset-0 z-0 bg-[#050505] pointer-events-none">
-            <Canvas camera={{ position: [0, 0, 20], fov: 60 }} dpr={[1, 1.5]}>
+            <Canvas
+                camera={{ position: [0, 0, 20], fov: 60 }}
+                dpr={[1, 1.5]}
+                performance={{ min: 0.5 }}
+            >
                 <Suspense fallback={null}>
-                    <TechParticles count={1500} />
+                    <TechParticles count={800} />
                     <fog attach="fog" args={['#050505', 10, 40]} />
                 </Suspense>
             </Canvas>

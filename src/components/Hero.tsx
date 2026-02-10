@@ -6,10 +6,17 @@ import { personalInfo } from '../data/portfolioData';
 const Hero3DScene = lazy(() => import('./hero/Hero3DScene'));
 
 const Hero: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+  const [show3D, setShow3D] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
+    const mobile = window.innerWidth < 768;
+    setIsMobile(mobile);
+    if (!mobile) {
+      // Defer 3D loading until browser is idle
+      const id = requestIdleCallback(() => setShow3D(true), { timeout: 3000 });
+      return () => cancelIdleCallback(id);
+    }
   }, []);
 
   const scrollTo = useCallback((selector: string) => {
@@ -21,8 +28,8 @@ const Hero: React.FC = () => {
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-radial from-slate-900 via-slate-950 to-slate-950 opacity-50" />
 
-      {/* 3D Scene Layer - lazy loaded, skipped on mobile */}
-      {!isMobile && (
+      {/* 3D Scene Layer - deferred, skipped on mobile */}
+      {!isMobile && show3D && (
         <div className="absolute inset-0 z-0 opacity-60 pointer-events-auto">
           <Suspense fallback={null}>
             <Hero3DScene />
