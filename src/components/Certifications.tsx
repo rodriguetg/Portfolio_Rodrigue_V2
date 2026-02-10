@@ -49,7 +49,7 @@ const Certifications: React.FC = () => {
                             <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
                                 <div className="w-32 h-32 md:w-40 md:h-40 shrink-0 rounded-2xl bg-white p-4 flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-300">
                                     {cert.image ? (
-                                        <img src={cert.image} alt={cert.issuer} className="w-full h-full object-contain" />
+                                        <img src={cert.image} alt={cert.issuer} width={160} height={160} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                                     ) : (
                                         <Award className="w-16 h-16 text-primary-600" />
                                     )}
@@ -114,7 +114,7 @@ const Certifications: React.FC = () => {
                             <div className="flex items-start justify-between mb-4">
                                 <div className="w-16 h-16 rounded-xl bg-white p-2 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
                                     {cert.image ? (
-                                        <img src={cert.image} alt={cert.issuer} className="w-full h-full object-contain" />
+                                        <img src={cert.image} alt={cert.issuer} width={64} height={64} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                                     ) : (
                                         <Award className="w-8 h-8 text-primary-600" />
                                     )}
@@ -157,7 +157,7 @@ const Certifications: React.FC = () => {
                         <div className="flex justify-center bg-white/5 rounded-2xl p-8 mb-6">
                             <div className="w-32 h-32 md:w-48 md:h-48 bg-white rounded-xl p-4 flex items-center justify-center shadow-2xl">
                                 {selectedCert.image ? (
-                                    <img src={selectedCert.image} alt={selectedCert.issuer} className="w-full h-full object-contain" />
+                                    <img src={selectedCert.image} alt={selectedCert.issuer} width={192} height={192} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                                 ) : (
                                     <Award className="w-20 h-20 text-primary-600" />
                                 )}

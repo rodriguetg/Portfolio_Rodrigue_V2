@@ -4,9 +4,9 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import BackgroundCanvas from './components/common/BackgroundCanvas';
 
-// Lazy load pages
+// Lazy load heavy 3D background and pages
+const BackgroundCanvas = lazy(() => import('./components/common/BackgroundCanvas'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
 
@@ -23,7 +23,9 @@ function App() {
   return (
     <div className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 relative selection:bg-primary-500/30 selection:text-primary-200">
       <Header />
-      <BackgroundCanvas />
+      <Suspense fallback={null}>
+        <BackgroundCanvas />
+      </Suspense>
       <main>
         <AnimatePresence mode="wait">
           <Suspense fallback={<Spinner />}>

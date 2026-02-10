@@ -20,7 +20,7 @@ export const caseStudies: CaseStudy[] = [
         title: 'Générateur de Blog IA Autonome',
         subtitle: 'Une machine à contenu SEO qui tourne toute seule',
         excerpt: 'De la recherche de mots-clés à la publication WordPress : un pipeline de contenu SEO entièrement automatisé.',
-        image: '/images/blog-automation.png',
+        image: '/images/blog-automation.webp',
         technologies: ['n8n', 'OpenAI (GPT-4)', 'WordPress API', 'Perplexity', 'Midjourney'],
         stats: [
             { label: 'Gain de Temps', value: '-90%' },
@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
         title: 'Générateur de contenu Bluesky',
         subtitle: 'Votre veille tech transformée en posts viraux automatiquement',
         excerpt: 'Un système de veille et de publication automatique qui détecte les tendances tech et publie sur Bluesky & Twitter sans intervention.',
-        image: '/images/bluesky-generator.png',
+        image: '/images/bluesky-generator.webp',
         technologies: ['n8n', 'OpenAI', 'Bluesky API', 'Twitter API', 'RSS'],
         stats: [
             { label: 'Veille', value: '24/7' },

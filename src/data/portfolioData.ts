@@ -258,8 +258,8 @@ export const certifications: Certification[] = [
     title: "Content Engineer",
     issuer: "AirOps",
     date: "2025",
-    image: "/images/certifications/airops-content-engineer.png",
-    credentialUrl: "/images/certifications/airops-content-engineer.png"
+    image: "/images/certifications/airops-content-engineer.webp",
+    credentialUrl: "/images/certifications/airops-content-engineer.webp"
   },
   {
     id: "1",

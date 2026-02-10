@@ -25,6 +25,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           <img
             src={project.image}
             alt={project.title}
+            width={600}
+            height={400}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/0 transition-colors duration-300" />
