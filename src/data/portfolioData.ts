@@ -7,7 +7,7 @@ export const personalInfo: PersonalInfo = {
   email: "rodrigue.gbadou@gmail.com",
   phone: "07 53 98 24 80",
   location: "Paris, France",
-  avatar: "/rodrigue gbadou.webp",
+  avatar: "/rodrigue-gbadou.webp",
   socialLinks: {
     github: "https://github.com/rodriguetg",
     linkedin: "https://www.linkedin.com/in/rodrigue-gbadou/",

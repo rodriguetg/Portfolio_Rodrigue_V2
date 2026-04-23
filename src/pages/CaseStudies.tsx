@@ -2,8 +2,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { caseStudies } from '../data/caseStudies';
+import { useSEO } from '../hooks/useSEO';
 
 const CaseStudies = () => {
+    useSEO({
+        title: 'Études de Cas — Workflows & Automatisations | Rodrigue GBADOU',
+        description: 'Découvrez les études de cas de Rodrigue GBADOU : workflows automatisés avec N8N et Make, bots, intégrations complexes et outils IA créés pour des cas concrets.',
+        canonical: '/case-studies',
+        ogType: 'website',
+    });
+
     return (
         <div className="pt-24 pb-20 px-4 min-h-screen">
             <div className="max-w-7xl mx-auto">
@@ -33,6 +41,10 @@ const CaseStudies = () => {
                                 <img
                                     src={study.image}
                                     alt={study.title}
+                                    width={800}
+                                    height={450}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />

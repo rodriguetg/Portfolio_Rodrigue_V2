@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero';
 import Spinner from '../components/common/Spinner';
+import { useSEO } from '../hooks/useSEO';
 
 const About = lazy(() => import('../components/About'));
 const Experience = lazy(() => import('../components/Experience'));
@@ -10,9 +11,21 @@ const Certifications = lazy(() => import('../components/Certifications'));
 const Contact = lazy(() => import('../components/Contact'));
 
 function Home() {
+  useSEO({
+    title: 'Rodrigue GBADOU — Expert SEO & Automatisation No-Code | Paris',
+    description: "Portfolio de Rodrigue GBADOU — Spécialiste en marketing digital, SEO technique, automatisation no-code (Make, N8N, Zapier) et création de contenu. Alternance chez Primelis, Paris.",
+    canonical: '/',
+  });
+
   return (
     <>
       <Hero />
+      <Suspense fallback={<Spinner />}>
+        <Certifications />
+      </Suspense>
+      <Suspense fallback={<Spinner />}>
+        <Projects />
+      </Suspense>
       <Suspense fallback={<Spinner />}>
         <About />
       </Suspense>
@@ -20,13 +33,7 @@ function Home() {
         <Experience />
       </Suspense>
       <Suspense fallback={<Spinner />}>
-        <Projects />
-      </Suspense>
-      <Suspense fallback={<Spinner />}>
         <Skills />
-      </Suspense>
-      <Suspense fallback={<Spinner />}>
-        <Certifications />
       </Suspense>
       <Suspense fallback={<Spinner />}>
         <Contact />

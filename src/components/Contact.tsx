@@ -27,16 +27,10 @@ const Contact: React.FC = () => {
   const [submissionState, dispatch] = useReducer(submissionReducer, 'idle');
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
 
-  // ⚠️ ACTION REQUIRED: Replace 'YOUR_FORM_ID' with your actual Formspree ID (e.g., 'xpznqrzb')
-  const FORMSPREE_ID = "YOUR_FORM_ID";
+  const FORMSPREE_ID = "xojndkoe";
   const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 
   const onSubmit = async (data: FormData) => {
-    // Basic validation check to prevent sending with default ID
-    if (FORMSPREE_ID === "YOUR_FORM_ID") {
-      alert("Erreur de configuration : L'ID du formulaire Formspree n'a pas été défini dans le code.");
-      return;
-    }
 
     dispatch({ type: 'SUBMIT' });
     try {
@@ -188,6 +182,8 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-8 rounded-3xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-2xl">
+              {/* Honeypot anti-spam : champ invisible pour piéger les bots */}
+              <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
               <div>
                 <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Nom</label>
                 <input

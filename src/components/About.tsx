@@ -62,13 +62,13 @@ const About: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-blue-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
             <div className="relative overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop"
-                alt="Stratégie marketing digitale et création de contenu"
+                src={personalInfo.avatar}
+                alt="Portrait de Rodrigue GBADOU — Expert SEO et automatisation no-code Paris"
                 width={600}
                 height={450}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0 transition-all"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
             </div>

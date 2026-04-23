@@ -8,11 +8,11 @@ const Header: React.FC = () => {
 
   const navItems = [
     { href: '#home', label: 'Accueil' },
+    { href: '#certifications', label: 'Certifications' },
+    { href: '#projects', label: 'Projets' },
     { href: '#about', label: 'À propos' },
     { href: '#experience', label: 'Parcours' },
-    { href: '#projects', label: 'Projets' },
     { href: '#skills', label: 'Compétences' },
-    { href: '#certifications', label: 'Certifications' },
     { href: '/case-studies', label: 'Études de Cas' },
     { href: '#contact', label: 'Contact' }
   ];

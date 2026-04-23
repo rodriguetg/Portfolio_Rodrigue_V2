@@ -3,10 +3,53 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Download, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { caseStudies } from '../data/caseStudies';
+import { useSEO } from '../hooks/useSEO';
 
 const CaseStudyDetail = () => {
     const { id } = useParams<{ id: string }>();
     const study = caseStudies.find((s) => s.id === id);
+
+    // Build structured data for this case study
+    const pageSchema = study ? {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'CreativeWork',
+                name: study.title,
+                description: study.subtitle,
+                url: `https://rodespe.com/case-studies/${study.id}`,
+                author: {
+                    '@type': 'Person',
+                    name: 'Rodrigue GBADOU',
+                    url: 'https://rodespe.com',
+                },
+                keywords: study.technologies.join(', '),
+            },
+            ...(study.faq && study.faq.length > 0 ? [{
+                '@type': 'FAQPage',
+                mainEntity: study.faq.map((item: { question: string; answer: string }) => ({
+                    '@type': 'Question',
+                    name: item.question,
+                    acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: item.answer,
+                    },
+                })),
+            }] : []),
+        ],
+    } : null;
+
+    useSEO({
+        title: study
+            ? `${study.title} — Étude de Cas | Rodrigue GBADOU`
+            : 'Étude de Cas introuvable | Rodrigue GBADOU',
+        description: study
+            ? `${study.subtitle} — Découvrez le workflow et les résultats de ce projet d'automatisation réalisé par Rodrigue GBADOU.`
+            : 'Cette étude de cas est introuvable.',
+        canonical: `/case-studies/${id}`,
+        ogType: 'article',
+        schema: pageSchema,
+    });
 
     useEffect(() => {
         window.scrollTo(0, 0);
