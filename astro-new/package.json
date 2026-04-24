@@ -1,0 +1,36 @@
+{
+  "name": "astro-new",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5.0.4",
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/orbitron": "^5.2.8",
+    "@fontsource/outfit": "^5.2.8",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.1.9",
+    "astro-seo": "^1.1.0",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.9.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-hook-form": "^7.73.1",
+    "tailwindcss": "^4.2.4",
+    "three": "^0.184.0"
+  }
+}
