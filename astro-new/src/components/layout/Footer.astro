@@ -1,0 +1,131 @@
+---
+import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { personalInfo } from '../../data/portfolioData';
+
+const year = new Date().getFullYear();
+
+const sitemap = [
+  {
+    heading: 'Navigation',
+    links: [
+      { label: 'Accueil', href: '/' },
+      { label: 'Services', href: '/services' },
+      { label: 'Études de cas', href: '/case-studies' },
+      { label: 'À propos', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+  {
+    heading: 'Services',
+    links: [
+      { label: 'SEO', href: '/services#seo' },
+      { label: 'Automatisation', href: '/services#automation' },
+      { label: 'Intelligence Artificielle', href: '/services#ia' },
+      { label: 'Développement Web', href: '/services#dev' },
+    ],
+  },
+  {
+    heading: 'Informations',
+    links: [
+      { label: 'Mentions légales', href: '/legal' },
+      { label: 'Politique de confidentialité', href: '/privacy' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
+---
+
+<footer class="relative mt-24 border-t border-slate-900 bg-slate-950">
+  <div class="container-custom py-14">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div>
+        <p class="font-heading text-xl font-bold text-slate-100">
+          {personalInfo.name}
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">
+          Freelance SEO, Automatisation, IA &amp; Développement Web.<br />
+          Basé à {personalInfo.location}.
+        </p>
+        <ul class="mt-5 flex items-center gap-3" aria-label="Réseaux sociaux">
+          <li>
+            <a
+              href={personalInfo.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer me"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={16} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={personalInfo.socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer me"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={16} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={personalInfo.socialLinks.twitter}
+              target="_blank"
+              rel="noopener noreferrer me"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+              aria-label="Twitter / X"
+            >
+              <Twitter size={16} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+              aria-label="Envoyer un email"
+            >
+              <Mail size={16} />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {sitemap.map((group) => (
+        <nav aria-labelledby={`footer-${group.heading}`}>
+          <h2
+            id={`footer-${group.heading}`}
+            class="text-sm font-semibold uppercase tracking-wider text-slate-200"
+          >
+            {group.heading}
+          </h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            {group.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-slate-400 hover:text-primary-400 transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div
+      class="mt-12 flex flex-col-reverse md:flex-row items-center justify-between gap-4 border-t border-slate-900 pt-6"
+    >
+      <p class="text-xs text-slate-500">
+        © {year} {personalInfo.name}. Tous droits réservés.
+      </p>
+      <p class="text-xs text-slate-500">
+        Construit avec <a href="https://astro.build" rel="noopener noreferrer" target="_blank" class="text-slate-300 hover:text-primary-400">Astro</a>
+        &middot; Hébergé sur VPS Docker
+      </p>
+    </div>
+  </div>
+</footer>

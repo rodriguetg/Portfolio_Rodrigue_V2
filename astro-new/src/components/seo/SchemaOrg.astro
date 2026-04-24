@@ -1,0 +1,138 @@
+---
+import { personalInfo } from '../../data/portfolioData';
+
+interface Props {
+  pageType?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'Article' | 'CollectionPage';
+  pageTitle?: string;
+  pageDescription?: string;
+  pageUrl?: string;
+  imageUrl?: string;
+}
+
+const {
+  pageType = 'WebPage',
+  pageTitle,
+  pageDescription,
+  pageUrl,
+  imageUrl,
+} = Astro.props;
+
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://rodespe.com';
+const url = pageUrl ?? new URL(Astro.url.pathname, Astro.site ?? site).toString();
+const image = imageUrl ?? `${site}/og-image.png`;
+const portrait = `${site}/rodrigue-gbadou.webp`;
+
+const person = {
+  '@type': 'Person',
+  '@id': `${site}/#person`,
+  name: personalInfo.name,
+  givenName: 'Rodrigue',
+  familyName: 'Gbadou',
+  url: site,
+  image: portrait,
+  jobTitle: 'SEO, Automatisation, IA & Développement Web',
+  email: `mailto:${personalInfo.email}`,
+  telephone: personalInfo.phone,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Paris',
+    addressCountry: 'FR',
+  },
+  sameAs: [
+    personalInfo.socialLinks.linkedin,
+    personalInfo.socialLinks.github,
+    personalInfo.socialLinks.twitter,
+  ],
+  knowsAbout: [
+    'SEO',
+    'SEO technique',
+    'Automatisation no-code',
+    'n8n',
+    'Make',
+    'Zapier',
+    'Intelligence artificielle',
+    'LLM',
+    'Prompt Engineering',
+    'Développement web',
+    'Astro',
+    'WordPress',
+    'Docker',
+  ],
+  alumniOf: [
+    {
+      '@type': 'EducationalOrganization',
+      name: 'Paris École de Management',
+      url: 'https://www.pem.fr/',
+    },
+    {
+      '@type': 'EducationalOrganization',
+      name: 'Université de Strasbourg',
+      url: 'https://www.unistra.fr/',
+    },
+  ],
+};
+
+const organization = {
+  '@type': 'Organization',
+  '@id': `${site}/#organization`,
+  name: 'Rodrigue GBADOU — Freelance',
+  url: site,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${site}/og-image.png`,
+    width: 1200,
+    height: 630,
+  },
+  founder: { '@id': `${site}/#person` },
+  sameAs: [
+    personalInfo.socialLinks.linkedin,
+    personalInfo.socialLinks.github,
+    personalInfo.socialLinks.twitter,
+  ],
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': `${site}/#website`,
+  url: site,
+  name: personalInfo.name,
+  description:
+    'Portfolio de Rodrigue GBADOU — expert SEO, automatisation n8n, IA appliquée et développement web basé à Paris.',
+  inLanguage: 'fr-FR',
+  publisher: { '@id': `${site}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${site}/?s={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const webpage = {
+  '@type': pageType,
+  '@id': `${url}#webpage`,
+  url,
+  name: pageTitle,
+  description: pageDescription,
+  isPartOf: { '@id': `${site}/#website` },
+  about: { '@id': `${site}/#person` },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: image,
+  },
+  inLanguage: 'fr-FR',
+};
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [person, organization, website, webpage],
+};
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(graph)}
+/>

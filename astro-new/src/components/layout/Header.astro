@@ -1,0 +1,87 @@
+---
+import { Code2 } from 'lucide-react';
+import ThemeToggle from '../react/ThemeToggle.tsx';
+import MobileMenuToggle from '../react/MobileMenuToggle.tsx';
+
+const navItems = [
+  { href: '/', label: 'Accueil' },
+  { href: '/services', label: 'Services' },
+  { href: '/case-studies', label: 'Études de cas' },
+  { href: '/about', label: 'À propos' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 animate-slide-down"
+>
+  <nav class="container-custom" aria-label="Navigation principale">
+    <div class="flex items-center justify-between h-16">
+      <a
+        href="/"
+        class="group flex items-center gap-2 text-2xl font-bold font-heading text-slate-100"
+        aria-label="Retour à l'accueil"
+      >
+        <span
+          class="bg-primary-600 p-1.5 rounded-lg flex items-center justify-center"
+          aria-hidden="true"
+        >
+          <Code2 className="text-white" size={24} />
+        </span>
+        <span class="tracking-tight group-hover:text-primary-400 transition-colors">
+          RG.Dev
+        </span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-7" role="menubar">
+        {navItems.map((item) => {
+          const active =
+            item.href === '/'
+              ? path === '/'
+              : path === item.href || path.startsWith(item.href + '/');
+          return (
+            <li role="none">
+              <a
+                role="menuitem"
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                class:list={[
+                  'link-underline text-sm font-medium py-2 transition-colors',
+                  active ? 'text-primary-400 active' : 'text-slate-400 hover:text-primary-400',
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <ThemeToggle client:load />
+        <MobileMenuToggle client:load />
+      </div>
+    </div>
+
+    <div
+      id="mobile-nav"
+      class="hidden md:hidden border-t border-slate-800 animate-fade-in"
+      aria-hidden="true"
+    >
+      <ul class="flex flex-col p-4 gap-1">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-all font-medium"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
