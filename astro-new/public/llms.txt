@@ -1,20 +1,25 @@
-# Rodrigue GBADOU — rodespe.com
-> Spécialiste en marketing digital, SEO et automatisation no-code basé à Paris
+# Rodrigue GBADOU, rodespe.com
+> Freelance SEO/GEO, automatisation n8n, IA et développement web à Paris
 
 ## Profil professionnel
-Rodrigue GBADOU est étudiant en Master Brand Content & Management à Paris École de Management (PEM).
-Il se spécialise en SEO technique, automatisation no-code et création de contenus orientés performance.
+Rodrigue GBADOU est freelance à Paris, positionné sur quatre pôles : SEO/GEO, automatisation, intelligence artificielle appliquée et développement web.
+Étudiant en Master Brand Content & Management à Paris École de Management (PEM).
 Actuellement en alternance chez Primelis (agence SEO de référence en France).
-Ouvert à un CDI en Marketing Automation.
+Certifié n8n Creator avec plusieurs workflows publics.
+Ouvert à un CDI en Marketing Automation et à des missions freelance.
 
 ## Compétences clés
-- SEO technique et on-page (audits, optimisation, suivi)
-- Automatisation no-code : Make (Integromat), N8N, Zapier, Airops
+- SEO technique et on-page (audits, Core Web Vitals, indexation, maillage)
+- GEO (Generative Engine Optimization) : citabilité IA pour ChatGPT, Perplexity, Google AI Overviews, Bing Copilot
+- pSEO (programmatic SEO) : pages à grande échelle via templates et sources de données
+- Automatisation no-code et low-code : n8n, Make (Integromat), Zapier, Airops
+- IA appliquée : LLM (Claude, OpenAI, Gemini), agents autonomes, RAG, MCP servers
+- Prompt engineering avancé (structured outputs, caching, tool use)
 - WordPress / Adobe Experience Manager (AEM)
-- Python, HTML/CSS/JavaScript
-- Web Scraping et intégration d'API
+- Développement web : Astro, Next.js, React, Python, HTML/CSS/JavaScript
+- Infrastructure : Docker, Traefik, VPS, GitHub Actions
+- Web Scraping (Playwright, Browserless) et intégration d'API
 - Google Analytics 4, Google Search Console
-- Prompt Engineering et IA générative
 - Création de contenu multimédia (audio, vidéo, texte)
 
 ## Expériences professionnelles
@@ -27,14 +32,14 @@ Ouvert à un CDI en Marketing Automation.
 - Secrétaire Général - Association des Étudiants Béninois de Strasbourg (AEBS)
 
 ## Formation
-- Master Brand Content & Management — Paris École de Management (2024-2026)
-- Licence Lettres Modernes — Université de Strasbourg
+- Master Brand Content & Management, Paris École de Management (2024-2026)
+- Licence Lettres Modernes, Université de Strasbourg
 
 ## Projets notables
 - Générateur de Blog IA Autonome (workflow N8N : veille → rédaction → publication SEO automatique)
 - Générateur de contenu Bluesky (automatisation de posts viraux depuis veille tech)
 - Générateur de Persona Marketing (outil automatisé avec export PDF professionnel)
-- Nails Generator (IA créative — génération d'images personnalisées)
+- Nails Generator (IA créative, génération d'images personnalisées)
 - Love Chat Assistant (chatbot IA conversationnel)
 - Anime Quotes Generator
 

@@ -1,4 +1,4 @@
-# Rapport de migration — Vite+React (SPA) → Astro (SSG)
+# Rapport de migration, Vite+React (SPA) → Astro (SSG)
 
 > **Branche :** `refonte-astro`
 > **Date :** 24 avril 2026
@@ -55,7 +55,7 @@ mais il est désormais :
 
 | Sujet | Valeur |
 |-------|--------|
-| Framework | Astro 6.1.9 — TypeScript strict |
+| Framework | Astro 6.1.9, TypeScript strict |
 | Rendu | `output: 'static'` (SSG) |
 | Styling | Tailwind CSS **v4** via `@tailwindcss/vite` (nouveauté vs le v3 d'origine) |
 | React islands | React 19.2 sur les 3 zones interactives : ThemeToggle, MobileMenuToggle, CookieBanner |
@@ -107,47 +107,47 @@ Tout le reste est rendu HTML pur côté serveur → performances et SEO maximum.
 
 ---
 
-## 4. Mapping — items de l'audit résolus
+## 4. Mapping, items de l'audit résolus
 
 ### Failures
 
-- [x] `core-h1-present` / `core-h1-single` — 1 H1 par page, vérifié par grep
-- [x] `technical-404-page` — `/404.html` statique + `error_page 404 /404.html;` dans nginx.conf
-- [x] `cwv-fcp` — HTML complet dès la première réponse (SSG)
-- [x] `content-word-count` — contenu en prose : 981 mots rien que sur `/services`
-- [x] `content-heading-hierarchy` — H1 → H2 → H3 respecté
-- [x] `content-text-html-ratio` — naturellement élevé grâce au SSG
-- [x] `content-description-pixel-width` — meta descriptions calibrées 120-160 chars
-- [x] `js-ssr-check` — Astro produit du HTML complet
-- [x] `geo-semantic-html` — `<header>`, `<main>`, `<nav>`, `<footer>`, `<article>`, `<section>` partout
-- [x] `geo-content-structure` — prose en `<p>` + `<ul>` + `<ol>` + `<dl>`
-- [x] `geo-schema-drift` — les champs `name` / `headline` du JSON-LD reflètent le H1 visible
+- [x] `core-h1-present` / `core-h1-single`, 1 H1 par page, vérifié par grep
+- [x] `technical-404-page`, `/404.html` statique + `error_page 404 /404.html;` dans nginx.conf
+- [x] `cwv-fcp`, HTML complet dès la première réponse (SSG)
+- [x] `content-word-count`, contenu en prose : 981 mots rien que sur `/services`
+- [x] `content-heading-hierarchy`, H1 → H2 → H3 respecté
+- [x] `content-text-html-ratio`, naturellement élevé grâce au SSG
+- [x] `content-description-pixel-width`, meta descriptions calibrées 120-160 chars
+- [x] `js-ssr-check`, Astro produit du HTML complet
+- [x] `geo-semantic-html`, `<header>`, `<main>`, `<nav>`, `<footer>`, `<article>`, `<section>` partout
+- [x] `geo-content-structure`, prose en `<p>` + `<ul>` + `<ol>` + `<dl>`
+- [x] `geo-schema-drift`, les champs `name` / `headline` du JSON-LD reflètent le H1 visible
 
 ### Warnings
 
-- [x] `core-title-length` — titles calibrés
-- [x] `core-description-length` — descriptions calibrées
-- [x] `core-nosnippet` — `max-snippet:-1` retiré ; robots à `index, follow, max-image-preview:large`
-- [x] `cwv-lcp` — image LCP (portrait home) : `fetchpriority="high"` + `loading="eager"`
-- [x] `perf-preconnect` — preconnect GTM + GA
-- [ ] `perf-brotli` — gzip niveau 6 conservé. Brotli nécessite une image nginx custom. **À traiter plus tard si besoin.**
-- [ ] `perf-http2` — dépend de Traefik (informatif)
-- [x] `links-internal-present` / `links-dead-end-pages` — chaque page linke vers Services + Case Studies + Contact
-- [x] `security-csp` — `Content-Security-Policy` ajoutée dans nginx.conf (adapter si scripts tiers)
-- [x] `crawl-sitemap-orphan-urls` — case studies listées dans CaseStudiesPreview de la home
-- [x] `schema-required-fields` — Person avec `image` + `sameAs`, WebSite avec `potentialAction` et `publisher`
-- [x] `schema-organization` — Organization avec `logo` + `sameAs`
-- [x] `schema-website-search` — `SearchAction` dans WebSite
-- [x] `a11y-heading-order` — hiérarchie respectée, skip link "Aller au contenu principal"
-- [x] `a11y-landmark-regions` — `<header>`, `<main id="main-content">`, `<nav>`, `<footer>`
-- [x] `content-mime-type` — `charset utf-8;` ajouté au `server {}` nginx + `<meta charset="utf-8">`
-- [x] `social-share-buttons` — `ShareButtons.astro` sur les case studies
-- [x] `eeat-about-page` — `/about`
-- [x] `eeat-author-expertise` — bio + credentials + `sameAs` social + `knowsAbout` schema
-- [x] `eeat-contact-page` — `/contact`
-- [x] `eeat-privacy-policy` — `/privacy`
-- [x] `legal-cookie-consent` — `CookieBanner.tsx` homemade, léger, avec GA4 conditionnel
-- [x] `geo-llms-txt` — `<link rel="llms" href="/llms.txt">` dans le `<head>`
+- [x] `core-title-length`, titles calibrés
+- [x] `core-description-length`, descriptions calibrées
+- [x] `core-nosnippet`, `max-snippet:-1` retiré ; robots à `index, follow, max-image-preview:large`
+- [x] `cwv-lcp`, image LCP (portrait home) : `fetchpriority="high"` + `loading="eager"`
+- [x] `perf-preconnect`, preconnect GTM + GA
+- [ ] `perf-brotli`, gzip niveau 6 conservé. Brotli nécessite une image nginx custom. **À traiter plus tard si besoin.**
+- [ ] `perf-http2`, dépend de Traefik (informatif)
+- [x] `links-internal-present` / `links-dead-end-pages`, chaque page linke vers Services + Case Studies + Contact
+- [x] `security-csp`, `Content-Security-Policy` ajoutée dans nginx.conf (adapter si scripts tiers)
+- [x] `crawl-sitemap-orphan-urls`, case studies listées dans CaseStudiesPreview de la home
+- [x] `schema-required-fields`, Person avec `image` + `sameAs`, WebSite avec `potentialAction` et `publisher`
+- [x] `schema-organization`, Organization avec `logo` + `sameAs`
+- [x] `schema-website-search`, `SearchAction` dans WebSite
+- [x] `a11y-heading-order`, hiérarchie respectée, skip link "Aller au contenu principal"
+- [x] `a11y-landmark-regions`, `<header>`, `<main id="main-content">`, `<nav>`, `<footer>`
+- [x] `content-mime-type`, `charset utf-8;` ajouté au `server {}` nginx + `<meta charset="utf-8">`
+- [x] `social-share-buttons`, `ShareButtons.astro` sur les case studies
+- [x] `eeat-about-page`, `/about`
+- [x] `eeat-author-expertise`, bio + credentials + `sameAs` social + `knowsAbout` schema
+- [x] `eeat-contact-page`, `/contact`
+- [x] `eeat-privacy-policy`, `/privacy`
+- [x] `legal-cookie-consent`, `CookieBanner.tsx` homemade, léger, avec GA4 conditionnel
+- [x] `geo-llms-txt`, `<link rel="llms" href="/llms.txt">` dans le `<head>`
 
 ### À surveiller post-merge
 
@@ -158,14 +158,14 @@ Tout le reste est rendu HTML pur côté serveur → performances et SEO maximum.
 
 ---
 
-## 5. Infrastructure — changements côté Docker / nginx
+## 5. Infrastructure, changements côté Docker / nginx
 
-**Tout se trouve dans `astro-new/`** — la racine du repo reste intacte tant que la
+**Tout se trouve dans `astro-new/`**, la racine du repo reste intacte tant que la
 refonte n'est pas validée, conformément au brief.
 
 | Fichier | Changement |
 |---------|-----------|
-| `astro-new/Dockerfile` | Quasi identique à l'existant — `npm ci` + `npm run build` + copy `dist/` vers nginx |
+| `astro-new/Dockerfile` | Quasi identique à l'existant, `npm ci` + `npm run build` + copy `dist/` vers nginx |
 | `astro-new/nginx.conf` | `charset utf-8`, CSP complète, vraie 404 (plus de SPA fallback), cache `/_astro/` 1 an immutable, HTML no-cache |
 | `astro-new/docker-compose.prod.yml` | Miroir de l'existant : labels Traefik identiques (cert `mytlschallenge`, redirect www, HTTP→HTTPS) |
 | `astro-new/.dockerignore` | Étendu : `.astro/`, `.env.*`, logs |
@@ -222,7 +222,7 @@ cd portfolio
 | Preview locale | `cd astro-new && npm run preview` puis http://localhost:4321 |
 | HTML complet côté serveur | `curl -A "Googlebot" http://localhost:4321/services \| head -50` |
 | Lighthouse mobile | DevTools → Lighthouse → Mobile → toutes les catégories |
-| Rich Results | https://search.google.com/test/rich-results — coller l'URL de preview |
+| Rich Results | https://search.google.com/test/rich-results, coller l'URL de preview |
 | Test IA | Demander "qui est Rodrigue Gbadou" à ChatGPT / Perplexity après déploiement |
 
 ---
