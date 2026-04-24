@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap auto-généré par Astro (sitemap-index.xml + sitemap-0.xml...)
+Sitemap: https://rodespe.com/sitemap-index.xml
+
+# AI crawlers : pas de blocage, on veut être cité
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

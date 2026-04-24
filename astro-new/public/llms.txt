@@ -1,0 +1,51 @@
+# Rodrigue GBADOU — rodespe.com
+> Spécialiste en marketing digital, SEO et automatisation no-code basé à Paris
+
+## Profil professionnel
+Rodrigue GBADOU est étudiant en Master Brand Content & Management à Paris École de Management (PEM).
+Il se spécialise en SEO technique, automatisation no-code et création de contenus orientés performance.
+Actuellement en alternance chez Primelis (agence SEO de référence en France).
+Ouvert à un CDI en Marketing Automation.
+
+## Compétences clés
+- SEO technique et on-page (audits, optimisation, suivi)
+- Automatisation no-code : Make (Integromat), N8N, Zapier, Airops
+- WordPress / Adobe Experience Manager (AEM)
+- Python, HTML/CSS/JavaScript
+- Web Scraping et intégration d'API
+- Google Analytics 4, Google Search Console
+- Prompt Engineering et IA générative
+- Création de contenu multimédia (audio, vidéo, texte)
+
+## Expériences professionnelles
+- Alternance - Automatisation No-Code & Développement Web @ Primelis (2026)
+- Stage - Automatisation No-Code & Développement Web @ Haskn (2026)
+- Stage - Marketing Digital & SEO @ Marketkit (2024)
+- Stage - SEO Specialist @ (entreprise)
+- Stage - Chef de Projet Social Media
+- Freelance - Créateur de contenu (3+ ans)
+- Secrétaire Général - Association des Étudiants Béninois de Strasbourg (AEBS)
+
+## Formation
+- Master Brand Content & Management — Paris École de Management (2024-2026)
+- Licence Lettres Modernes — Université de Strasbourg
+
+## Projets notables
+- Générateur de Blog IA Autonome (workflow N8N : veille → rédaction → publication SEO automatique)
+- Générateur de contenu Bluesky (automatisation de posts viraux depuis veille tech)
+- Générateur de Persona Marketing (outil automatisé avec export PDF professionnel)
+- Nails Generator (IA créative — génération d'images personnalisées)
+- Love Chat Assistant (chatbot IA conversationnel)
+- Anime Quotes Generator
+
+## Certifications
+- Google : Les principes fondamentaux du marketing digital
+- Google : Préparer votre carrière dans l'IA générative
+- Microsoft & LinkedIn Learning
+
+## Contact
+- Site web : https://rodespe.com
+- LinkedIn : https://www.linkedin.com/in/rodrigue-gbadou/
+- GitHub : https://github.com/rodriguetg
+- Twitter/X : https://twitter.com/EsperantRodrigu
+- Localisation : Paris, France
