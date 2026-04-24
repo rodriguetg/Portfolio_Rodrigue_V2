@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  personalInfo,
+  aboutText,
+  experiences,
+  certifications,
+} from '../data/portfolioData';
+import { ExternalLink, Briefcase, GraduationCap, Award } from 'lucide-react';
+
+const paragraphs = aboutText.split('\n\n').filter(Boolean);
+const workExperiences = experiences.filter((e) => e.type === 'work');
+const education = experiences.filter((e) => e.type === 'education');
+---
+
+<BaseLayout
+  pageType="AboutPage"
+  title="À propos de Rodrigue GBADOU — freelance SEO, IA & Automatisation"
+  description="Parcours, formation et expertise de Rodrigue GBADOU. Master Brand Content PEM, alternance Primelis, n8n Certified Creator. 3+ ans d'expérience en marketing digital et automatisation."
+>
+  <section class="pt-32 pb-10 md:pt-40 md:pb-14">
+    <div class="container-custom">
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+        À propos
+      </p>
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-100 leading-tight mb-6">
+        Un profil hybride, au croisement du <span class="gradient-text">marketing</span> et du <span class="gradient-text">code</span>.
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
+        {personalInfo.bio}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12" aria-labelledby="about-bio-title">
+    <div class="container-custom grid md:grid-cols-12 gap-12">
+      <aside class="md:col-span-4">
+        <div class="glass-card p-6 sticky top-24">
+          <img
+            src="/rodrigue-gbadou.webp"
+            alt={`Portrait de ${personalInfo.name}`}
+            width="320"
+            height="400"
+            loading="lazy"
+            decoding="async"
+            class="w-full aspect-[4/5] object-cover rounded-xl mb-5"
+          />
+          <dl class="space-y-3 text-sm">
+            <div>
+              <dt class="text-slate-500">Nom</dt>
+              <dd class="text-slate-100 font-semibold">{personalInfo.name}</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Localisation</dt>
+              <dd class="text-slate-100 font-semibold">{personalInfo.location}</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Email</dt>
+              <dd>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  class="text-primary-400 hover:text-primary-300 break-all"
+                >{personalInfo.email}</a>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-slate-500">Téléphone</dt>
+              <dd class="text-slate-100 font-semibold">{personalInfo.phone}</dd>
+            </div>
+          </dl>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <a
+              href={personalInfo.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer me"
+              class="btn btn-outline text-xs px-3 py-1.5"
+            >LinkedIn</a>
+            <a
+              href={personalInfo.socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer me"
+              class="btn btn-outline text-xs px-3 py-1.5"
+            >GitHub</a>
+            <a
+              href={personalInfo.socialLinks.twitter}
+              target="_blank"
+              rel="noopener noreferrer me"
+              class="btn btn-outline text-xs px-3 py-1.5"
+            >Twitter / X</a>
+          </div>
+        </div>
+      </aside>
+
+      <article class="md:col-span-8 prose prose-invert prose-slate max-w-none">
+        <h2 id="about-bio-title">Mon parcours</h2>
+        {paragraphs.map((p) => <p>{p}</p>)}
+
+        <h2 class="flex items-center gap-2 mt-12">
+          <Briefcase size={22} className="text-primary-400" />
+          <span>Expérience professionnelle</span>
+        </h2>
+        <ul class="not-prose space-y-5">
+          {workExperiences.map((exp) => (
+            <li class="glass-card p-5">
+              <div class="flex items-start justify-between gap-3 mb-1">
+                <h3 class="text-base font-bold text-slate-100">
+                  {exp.title}
+                </h3>
+                <span class="text-xs text-slate-500 whitespace-nowrap">{exp.period}</span>
+              </div>
+              <p class="text-sm text-primary-400 font-medium mb-2">{exp.company}</p>
+              <p class="text-sm text-slate-400 leading-relaxed mb-3">{exp.description}</p>
+              <ul class="text-sm text-slate-400 space-y-1">
+                {exp.achievements.map((a) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-1.5 h-1 w-1 rounded-full bg-primary-500 shrink-0" aria-hidden="true"></span>
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+
+        <h2 class="flex items-center gap-2 mt-12">
+          <GraduationCap size={22} className="text-primary-400" />
+          <span>Formation</span>
+        </h2>
+        <ul class="not-prose space-y-5">
+          {education.map((exp) => (
+            <li class="glass-card p-5">
+              <div class="flex items-start justify-between gap-3 mb-1">
+                <h3 class="text-base font-bold text-slate-100">{exp.title}</h3>
+                <span class="text-xs text-slate-500 whitespace-nowrap">{exp.period}</span>
+              </div>
+              <p class="text-sm text-primary-400 font-medium mb-2">{exp.company}</p>
+              <p class="text-sm text-slate-400 leading-relaxed">{exp.description}</p>
+            </li>
+          ))}
+        </ul>
+
+        <h2 class="flex items-center gap-2 mt-12">
+          <Award size={22} className="text-primary-400" />
+          <span>Certifications</span>
+        </h2>
+        <ul class="not-prose grid sm:grid-cols-2 gap-4">
+          {certifications.map((c) => (
+            <li class="glass-card p-5 flex items-start gap-4">
+              {c.image && (
+                <img
+                  src={c.image}
+                  alt={`Logo ${c.issuer}`}
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-12 w-12 object-contain rounded-md bg-white/5 p-1"
+                />
+              )}
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-bold text-slate-100 leading-tight">
+                  {c.title}
+                </h3>
+                <p class="text-xs text-primary-400 mt-0.5">{c.issuer} · {c.date}</p>
+                {c.credentialUrl && (
+                  <a
+                    href={c.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-primary-400 mt-2"
+                  >
+                    <span>Voir le certificat</span>
+                    <ExternalLink size={12} />
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

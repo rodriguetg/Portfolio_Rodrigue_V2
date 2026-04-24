@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { services } from '../data/services';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+---
+
+<BaseLayout
+  title="Services — SEO, Automatisation, IA & Développement Web | Rodrigue GBADOU"
+  description="4 pôles d'expertise freelance : SEO technique et pSEO, automatisation n8n, IA appliquée (LLM, agents), développement web (Astro, WordPress, Docker). Basé à Paris."
+>
+  <section class="pt-32 pb-10 md:pt-40 md:pb-14">
+    <div class="container-custom max-w-4xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+        Services
+      </p>
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-100 leading-tight mb-6">
+        4 pôles d'expertise, <span class="gradient-text">1 seul interlocuteur</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 leading-relaxed">
+        Le SEO, l'automatisation, l'IA et le développement web ne sont pas des
+        silos. Un pipeline de contenu moderne peut mélanger les quatre : un
+        workflow n8n qui utilise un LLM pour rédiger, publie sur un site Astro
+        optimisé SEO, et se monitore via une automatisation custom. Je livre
+        cette convergence en tant que freelance unique.
+      </p>
+    </div>
+  </section>
+
+  <nav
+    aria-label="Aller à un service"
+    class="sticky top-16 z-30 border-y border-slate-800 bg-slate-950/80 backdrop-blur-md"
+  >
+    <div class="container-custom">
+      <ul class="flex gap-1 md:gap-2 overflow-x-auto py-3 text-sm">
+        {services.map((s) => (
+          <li class="shrink-0">
+            <a
+              href={`#${s.slug}`}
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-400 hover:text-primary-400 hover:bg-slate-800/60 transition-colors"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-primary-500" aria-hidden="true"></span>
+              <span>{s.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  {services.map((service, index) => {
+    const Icon = service.icon;
+    const isAlt = index % 2 === 1;
+    return (
+      <section
+        id={service.slug}
+        class:list={[
+          'py-20 md:py-28 scroll-mt-28',
+          isAlt ? 'bg-slate-900/30' : '',
+        ]}
+        aria-labelledby={`${service.slug}-title`}
+      >
+        <div class="container-custom grid md:grid-cols-12 gap-10 md:gap-14 items-start">
+          <div class="md:col-span-5 md:sticky md:top-32">
+            <div class="flex items-center gap-3 mb-5">
+              <div
+                class="flex items-center justify-center h-14 w-14 rounded-2xl bg-primary-500/10 text-primary-400 border border-primary-500/20"
+                aria-hidden="true"
+              >
+                <Icon size={28} />
+              </div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-primary-400">
+                Pôle {index + 1} / 4
+              </p>
+            </div>
+            <h2
+              id={`${service.slug}-title`}
+              class="text-3xl md:text-5xl font-bold text-slate-100 mb-3"
+            >
+              {service.title}
+            </h2>
+            <p class="text-primary-400 font-medium text-sm uppercase tracking-wide mb-5">
+              {service.tagline}
+            </p>
+            <a href={service.cta.href} class="btn btn-primary group">
+              <span>{service.cta.label}</span>
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          <div class="md:col-span-7">
+            <p class="text-base md:text-lg text-slate-300 leading-relaxed mb-8">
+              {service.longDescription}
+            </p>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">
+              Ce que je livre concrètement
+            </h3>
+            <ul class="space-y-3 mb-10">
+              {service.bullets.map((b) => (
+                <li class="flex items-start gap-3">
+                  <CheckCircle2
+                    size={18}
+                    className="text-primary-400 shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span class="text-sm md:text-base text-slate-300 leading-relaxed">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-3">
+              Outils maîtrisés
+            </h3>
+            <ul class="flex flex-wrap gap-2">
+              {service.tools.map((t) => (
+                <li class="text-xs px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="py-20" aria-labelledby="services-cta-title">
+    <div class="container-custom">
+      <div class="glass-card px-6 py-12 md:px-12 md:py-16 text-center">
+        <h2 id="services-cta-title" class="text-2xl md:text-4xl font-bold text-slate-100 mb-4">
+          Un sujet hybride à challenger ?
+        </h2>
+        <p class="max-w-xl mx-auto text-slate-400 mb-8">
+          La plupart des projets intéressants croisent 2 ou 3 pôles. Parlons-en
+          pour cadrer votre besoin et voir ce qui a vraiment du sens.
+        </p>
+        <a href="/contact" class="btn btn-primary">Prendre contact</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

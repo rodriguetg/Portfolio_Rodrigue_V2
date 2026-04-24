@@ -1,0 +1,51 @@
+---
+import { personalInfo } from '../../data/portfolioData';
+import { Mail, Calendar, ArrowRight } from 'lucide-react';
+---
+
+<section
+  id="contact-cta"
+  class="py-20 md:py-28"
+  aria-labelledby="contact-cta-title"
+>
+  <div class="container-custom">
+    <div
+      class="relative glass-card overflow-hidden px-6 py-14 md:px-14 md:py-20 text-center"
+    >
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-500/10 via-transparent to-accent-purple/10"
+        aria-hidden="true"
+      >
+      </div>
+      <div class="relative">
+        <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+          On en discute ?
+        </p>
+        <h2
+          id="contact-cta-title"
+          class="text-3xl md:text-5xl font-bold text-slate-100 mb-5"
+        >
+          Un projet SEO, IA, automatisation ou développement ?
+        </h2>
+        <p class="max-w-xl mx-auto text-base md:text-lg text-slate-300 mb-10 leading-relaxed">
+          Racontez-moi votre contexte : je réponds sous 24 h avec un premier
+          avis honnête et des pistes concrètes. Pas d'argumentaire de vente, pas
+          de jargon inutile.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="/contact" class="btn btn-primary group">
+            <span>Me contacter</span>
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href={`mailto:${personalInfo.email}`}
+            class="btn btn-outline"
+          >
+            <Mail size={18} />
+            <span>{personalInfo.email}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
