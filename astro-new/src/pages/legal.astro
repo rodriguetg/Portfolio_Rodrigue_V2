@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { personalInfo } from '../data/portfolioData';
+---
+
+<BaseLayout
+  title="Mentions légales — Rodrigue GBADOU (rodespe.com)"
+  description="Mentions légales du site rodespe.com : éditeur, responsable de publication, hébergeur, propriété intellectuelle, conformité LCEN."
+>
+  <section class="pt-32 pb-10 md:pt-40 md:pb-14">
+    <div class="container-custom max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+        Mentions légales
+      </p>
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-100 leading-tight mb-4">
+        Mentions légales
+      </h1>
+      <p class="text-sm text-slate-500">
+        Conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans
+        l'économie numérique (LCEN).
+      </p>
+    </div>
+  </section>
+
+  <article class="py-10">
+    <div class="container-custom max-w-3xl prose prose-invert prose-slate max-w-none">
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Le site <strong>rodespe.com</strong> est édité par :
+      </p>
+      <ul>
+        <li><strong>Nom</strong> : {personalInfo.name}</li>
+        <li><strong>Statut</strong> : Particulier / freelance (statut à préciser selon situation administrative)</li>
+        <li><strong>Adresse</strong> : {personalInfo.location}</li>
+        <li><strong>Email</strong> : <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a></li>
+        <li><strong>Téléphone</strong> : {personalInfo.phone}</li>
+      </ul>
+
+      <h2>2. Responsable de la publication</h2>
+      <p>
+        Le responsable de la publication est <strong>{personalInfo.name}</strong>,
+        joignable à l'adresse
+        <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>.
+      </p>
+
+      <h2>3. Hébergeur</h2>
+      <p>
+        Le site est hébergé par :
+      </p>
+      <ul>
+        <li><strong>Contabo GmbH</strong></li>
+        <li>Aschauer Straße 32a, 81549 München, Allemagne</li>
+        <li>Site web : <a href="https://contabo.com" target="_blank" rel="noopener">contabo.com</a></li>
+      </ul>
+
+      <h2>4. Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus présents sur ce site (textes, images, logos,
+        illustrations, éléments graphiques, code source original) est protégé
+        par le droit d'auteur et reste la propriété exclusive de
+        {' '}{personalInfo.name}, sauf mention contraire.
+      </p>
+      <p>
+        Toute reproduction, représentation, modification, publication ou
+        adaptation — totale ou partielle — est interdite sans autorisation
+        écrite préalable. Les marques et logos tiers mentionnés (Primelis, n8n,
+        Google, Microsoft, AirOps, etc.) restent la propriété de leurs
+        détenteurs respectifs.
+      </p>
+
+      <h2>5. Liens hypertextes</h2>
+      <p>
+        Le site peut contenir des liens vers des sites tiers. Ces liens sont
+        fournis à titre informatif. {personalInfo.name} n'exerce aucun contrôle
+        sur leur contenu et décline toute responsabilité quant aux informations
+        qu'ils diffusent.
+      </p>
+
+      <h2>6. Responsabilité</h2>
+      <p>
+        Les informations publiées sur ce site sont données à titre indicatif et
+        sont susceptibles d'évoluer. Malgré le soin apporté à leur actualisation,
+        {personalInfo.name} ne peut être tenu responsable d'éventuelles erreurs
+        ou omissions.
+      </p>
+
+      <h2>7. Droit applicable</h2>
+      <p>
+        Les présentes mentions légales sont régies par le droit français. Tout
+        litige relatif à leur interprétation ou leur exécution relève des
+        tribunaux compétents français.
+      </p>
+
+      <h2>8. Protection des données</h2>
+      <p>
+        Pour toute information relative à la collecte et au traitement de vos
+        données personnelles, consultez la
+        <a href="/privacy">politique de confidentialité</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

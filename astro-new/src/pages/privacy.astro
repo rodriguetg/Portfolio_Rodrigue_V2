@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { personalInfo } from '../data/portfolioData';
+
+const lastUpdate = '24 avril 2026';
+---
+
+<BaseLayout
+  title="Politique de confidentialité — Rodrigue GBADOU (rodespe.com)"
+  description="Politique de confidentialité du site rodespe.com : données collectées, finalités, durée, cookies, droits RGPD, contact. Conforme au RGPD et à la loi Informatique et Libertés."
+>
+  <section class="pt-32 pb-10 md:pt-40 md:pb-14">
+    <div class="container-custom max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+        Politique de confidentialité
+      </p>
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-100 leading-tight mb-4">
+        Vos données, simplement
+      </h1>
+      <p class="text-sm text-slate-500">
+        Dernière mise à jour : {lastUpdate}
+      </p>
+    </div>
+  </section>
+
+  <article class="py-10">
+    <div class="container-custom max-w-3xl prose prose-invert prose-slate max-w-none">
+      <p>
+        Cette politique décrit comment le site <strong>rodespe.com</strong>
+        (ci-après « le site ») collecte, utilise et protège vos données
+        personnelles, conformément au Règlement général sur la protection des
+        données (RGPD) et à la loi « Informatique et Libertés ».
+      </p>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>
+        Le responsable du traitement est <strong>{personalInfo.name}</strong>,
+        freelance domicilié à {personalInfo.location}.<br />
+        Contact : <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
+      </p>
+
+      <h2>2. Données collectées</h2>
+      <p>
+        Le site collecte uniquement les données que vous fournissez
+        volontairement et les données techniques anonymes nécessaires à son
+        fonctionnement :
+      </p>
+      <ul>
+        <li>
+          <strong>Formulaire de contact</strong> : nom, adresse email, sujet et
+          message. Ces informations sont transmises par email au responsable et
+          ne sont stockées sur aucune base de données tierce.
+        </li>
+        <li>
+          <strong>Cookies de mesure d'audience</strong> : Google Analytics 4
+          avec IP anonymisée, uniquement si vous acceptez explicitement via la
+          bannière de consentement.
+        </li>
+        <li>
+          <strong>Logs techniques</strong> : adresse IP, user-agent, horodatage
+          des requêtes, conservés temporairement par l'hébergeur à des fins de
+          sécurité.
+        </li>
+      </ul>
+
+      <h2>3. Finalités et base légale</h2>
+      <ul>
+        <li>
+          <strong>Répondre aux demandes de contact</strong> — base légale :
+          exécution de mesures précontractuelles à votre demande (art. 6.1.b du RGPD).
+        </li>
+        <li>
+          <strong>Mesurer l'audience</strong> pour améliorer le contenu —
+          base légale : consentement (art. 6.1.a du RGPD).
+        </li>
+        <li>
+          <strong>Sécurité du site</strong> — base légale : intérêt légitime
+          (art. 6.1.f du RGPD).
+        </li>
+      </ul>
+
+      <h2>4. Durée de conservation</h2>
+      <ul>
+        <li>Messages reçus via le formulaire : 3 ans maximum après le dernier échange.</li>
+        <li>Cookies Google Analytics : 13 mois maximum.</li>
+        <li>Logs serveur de l'hébergeur : selon la politique de Contabo (voir leurs conditions).</li>
+      </ul>
+
+      <h2>5. Destinataires des données</h2>
+      <p>
+        Vos données ne sont jamais vendues ni partagées à des fins publicitaires.
+        Les seuls destinataires sont :
+      </p>
+      <ul>
+        <li>Le responsable du traitement ({personalInfo.name}).</li>
+        <li>Google LLC pour la mesure d'audience (GA4), uniquement après consentement.</li>
+        <li>Contabo GmbH, hébergeur du serveur.</li>
+      </ul>
+
+      <h2>6. Transfert hors Union européenne</h2>
+      <p>
+        Google Analytics peut impliquer un transfert de données aux États-Unis
+        sous les clauses contractuelles types de la Commission européenne et le
+        Data Privacy Framework (DPF). Vous pouvez refuser ce traitement dans la
+        bannière cookies.
+      </p>
+
+      <h2>7. Cookies</h2>
+      <p>
+        Le site utilise des cookies de deux natures :
+      </p>
+      <ul>
+        <li>
+          <strong>Cookies strictement nécessaires</strong> (préférence de thème
+          clair/sombre) — dispensés de consentement.
+        </li>
+        <li>
+          <strong>Cookies de mesure d'audience</strong> (GA4) — soumis à
+          consentement via la bannière.
+        </li>
+      </ul>
+      <p>
+        Vous pouvez à tout moment modifier vos choix en effaçant les cookies
+        du site dans votre navigateur ; la bannière réapparaîtra à votre
+        prochaine visite.
+      </p>
+
+      <h2>8. Vos droits</h2>
+      <p>
+        Conformément au RGPD, vous disposez des droits suivants :
+      </p>
+      <ul>
+        <li>Droit d'accès à vos données</li>
+        <li>Droit de rectification</li>
+        <li>Droit à l'effacement (« droit à l'oubli »)</li>
+        <li>Droit à la limitation du traitement</li>
+        <li>Droit d'opposition</li>
+        <li>Droit à la portabilité</li>
+        <li>Droit de retirer votre consentement à tout moment</li>
+        <li>Droit d'introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>)</li>
+      </ul>
+      <p>
+        Pour exercer ces droits, contactez-moi à
+        <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>.
+        Je vous réponds sous 30 jours maximum.
+      </p>
+
+      <h2>9. Sécurité</h2>
+      <p>
+        Le site est servi en HTTPS (TLS) via Let's Encrypt. Les données transitent
+        chiffrées. Aucune donnée personnelle n'est stockée dans une base de données
+        applicative : les messages du formulaire sont simplement relayés par email.
+      </p>
+
+      <h2>10. Modifications</h2>
+      <p>
+        Cette politique peut être mise à jour à tout moment. La date de dernière
+        modification est indiquée en haut de cette page.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

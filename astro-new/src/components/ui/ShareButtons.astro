@@ -1,0 +1,67 @@
+---
+import { Twitter, Linkedin, Link as LinkIcon, Mail } from 'lucide-react';
+
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+const encodedTitle = encodeURIComponent(title);
+const encodedUrl = encodeURIComponent(url);
+---
+
+<div class="flex items-center gap-2" aria-label="Partager cet article">
+  <span class="text-xs text-slate-500 uppercase tracking-wider mr-1">Partager</span>
+  <a
+    href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Partager sur Twitter / X"
+    class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+  >
+    <Twitter size={14} />
+  </a>
+  <a
+    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Partager sur LinkedIn"
+    class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+  >
+    <Linkedin size={14} />
+  </a>
+  <a
+    href={`mailto:?subject=${encodedTitle}&body=${encodedUrl}`}
+    aria-label="Partager par email"
+    class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+  >
+    <Mail size={14} />
+  </a>
+  <button
+    type="button"
+    data-copy-url={url}
+    aria-label="Copier le lien"
+    class="copy-link inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-primary-400 hover:border-primary-500/50 transition-colors"
+  >
+    <LinkIcon size={14} />
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('button.copy-link').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.copyUrl;
+      if (!url) return;
+      try {
+        await navigator.clipboard.writeText(url);
+        btn.setAttribute('aria-label', 'Lien copié !');
+        btn.classList.add('text-primary-400', 'border-primary-500/50');
+        setTimeout(() => {
+          btn.setAttribute('aria-label', 'Copier le lien');
+          btn.classList.remove('text-primary-400', 'border-primary-500/50');
+        }, 1800);
+      } catch (_) {}
+    });
+  });
+</script>

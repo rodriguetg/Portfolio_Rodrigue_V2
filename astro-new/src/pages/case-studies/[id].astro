@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ShareButtons from '../../components/ui/ShareButtons.astro';
+import { caseStudies } from '../../data/caseStudies';
+import { personalInfo } from '../../data/portfolioData';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+
+export function getStaticPaths() {
+  return caseStudies.map((cs) => ({
+    params: { id: cs.id },
+    props: { caseStudy: cs },
+  }));
+}
+
+const { caseStudy: cs } = Astro.props;
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, '') ?? 'https://rodespe.com';
+const fullUrl = `${siteOrigin}/case-studies/${cs.id}`;
+const fullImage = cs.image.startsWith('http') ? cs.image : `${siteOrigin}${cs.image}`;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: cs.title,
+  alternativeHeadline: cs.subtitle,
+  description: cs.excerpt,
+  image: fullImage,
+  author: { '@id': `${siteOrigin}/#person` },
+  publisher: { '@id': `${siteOrigin}/#organization` },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': fullUrl },
+  inLanguage: 'fr-FR',
+  keywords: cs.technologies.join(', '),
+};
+
+const faqJsonLd = cs.faq && cs.faq.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: cs.faq.map((q) => ({
+        '@type': 'Question',
+        name: q.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: q.answer,
+        },
+      })),
+    }
+  : null;
+
+const allStudies = caseStudies;
+const currentIndex = allStudies.findIndex((c) => c.id === cs.id);
+const prev = currentIndex > 0 ? allStudies[currentIndex - 1] : null;
+const next = currentIndex < allStudies.length - 1 ? allStudies[currentIndex + 1] : null;
+---
+
+<BaseLayout
+  pageType="Article"
+  title={`${cs.title} — Étude de cas | Rodrigue GBADOU`}
+  description={cs.excerpt}
+  image={cs.image}
+  canonical={fullUrl}
+>
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(articleJsonLd)}
+  />
+  {faqJsonLd && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(faqJsonLd)}
+    />
+  )}
+
+  <nav
+    aria-label="Fil d'Ariane"
+    class="pt-28 md:pt-32"
+  >
+    <div class="container-custom">
+      <ol class="flex items-center gap-2 text-xs text-slate-500">
+        <li><a href="/" class="hover:text-primary-400">Accueil</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/case-studies" class="hover:text-primary-400">Études de cas</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-slate-300" aria-current="page">{cs.title}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <article class="pt-8 pb-20">
+    <header class="py-8 md:py-12">
+      <div class="container-custom max-w-4xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+          Étude de cas
+        </p>
+        <h1 class="text-3xl md:text-5xl font-bold text-slate-100 leading-tight mb-4">
+          {cs.title}
+        </h1>
+        <p class="text-lg md:text-2xl text-slate-400 mb-8">{cs.subtitle}</p>
+
+        <div class="flex flex-wrap items-center gap-4 mb-8">
+          <address class="flex items-center gap-3 not-italic">
+            <img
+              src="/rodrigue-gbadou.webp"
+              alt={personalInfo.name}
+              width="36"
+              height="36"
+              loading="lazy"
+              decoding="async"
+              class="h-9 w-9 rounded-full object-cover border border-slate-700"
+            />
+            <div>
+              <p class="text-sm text-slate-200 font-semibold">{personalInfo.name}</p>
+              <p class="text-xs text-slate-500">Freelance · Paris</p>
+            </div>
+          </address>
+          <div class="ml-auto"><ShareButtons title={cs.title} url={fullUrl} /></div>
+        </div>
+
+        <img
+          src={cs.image}
+          alt={`Illustration du projet ${cs.title}`}
+          width="1280"
+          height="720"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full rounded-2xl aspect-video object-cover border border-slate-800"
+        />
+
+        <dl class="mt-8 grid grid-cols-3 gap-4">
+          {cs.stats.map((stat) => (
+            <div class="glass-card p-5 text-center">
+              <dt class="text-[10px] uppercase tracking-wider text-slate-500">{stat.label}</dt>
+              <dd class="text-xl md:text-2xl font-bold text-slate-100 mt-1">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </header>
+
+    <div class="container-custom max-w-4xl prose prose-invert prose-slate max-w-none">
+      <h2>Contexte &amp; défi</h2>
+      <p>{cs.challenge}</p>
+
+      <h2>Solution</h2>
+      <p>{cs.solution}</p>
+
+      <h2>Technologies utilisées</h2>
+      <ul class="flex flex-wrap gap-2 list-none pl-0 not-prose">
+        {cs.technologies.map((t) => (
+          <li class="text-sm px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+            {t}
+          </li>
+        ))}
+      </ul>
+
+      <h2>Processus étape par étape</h2>
+      <ol class="not-prose space-y-4 list-none pl-0">
+        {cs.process.map((p) => (
+          <li class="glass-card p-5">
+            <div class="flex items-start gap-4">
+              <div
+                class="shrink-0 flex items-center justify-center h-10 w-10 rounded-xl bg-primary-500/10 text-primary-400 border border-primary-500/20 font-bold"
+                aria-hidden="true"
+              >
+                {p.step}
+              </div>
+              <div>
+                <h3 class="text-base md:text-lg font-bold text-slate-100 mb-1.5">{p.title}</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">{p.description}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      {cs.faq && cs.faq.length > 0 && (
+        <>
+          <h2>Foire aux questions</h2>
+          <dl class="not-prose space-y-4">
+            {cs.faq.map((q) => (
+              <div class="glass-card p-5">
+                <dt class="font-semibold text-slate-100 mb-2">{q.question}</dt>
+                <dd class="text-sm text-slate-400 leading-relaxed">{q.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      )}
+    </div>
+
+    <div class="container-custom max-w-4xl mt-12 flex items-center justify-between gap-4">
+      <ShareButtons title={cs.title} url={fullUrl} />
+      {cs.downloadUrl && cs.downloadUrl !== '#' && (
+        <a
+          href={cs.downloadUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline text-xs px-4 py-2"
+        >
+          <ExternalLink size={14} />
+          <span>Télécharger les ressources</span>
+        </a>
+      )}
+    </div>
+  </article>
+
+  <nav
+    class="py-12 border-t border-slate-900"
+    aria-label="Navigation entre études de cas"
+  >
+    <div class="container-custom max-w-4xl flex items-center justify-between gap-4">
+      {prev ? (
+        <a href={`/case-studies/${prev.id}`} class="group text-sm max-w-[45%]">
+          <span class="flex items-center gap-1 text-slate-500 mb-1">
+            <ArrowLeft size={14} />
+            <span class="text-xs uppercase tracking-wider">Précédent</span>
+          </span>
+          <span class="text-slate-200 font-semibold group-hover:text-primary-400 transition-colors line-clamp-2">
+            {prev.title}
+          </span>
+        </a>
+      ) : <div></div>}
+
+      {next ? (
+        <a href={`/case-studies/${next.id}`} class="group text-sm max-w-[45%] text-right ml-auto">
+          <span class="flex items-center gap-1 text-slate-500 mb-1 justify-end">
+            <span class="text-xs uppercase tracking-wider">Suivant</span>
+            <ArrowRight size={14} />
+          </span>
+          <span class="text-slate-200 font-semibold group-hover:text-primary-400 transition-colors line-clamp-2">
+            {next.title}
+          </span>
+        </a>
+      ) : <div></div>}
+    </div>
+  </nav>
+</BaseLayout>

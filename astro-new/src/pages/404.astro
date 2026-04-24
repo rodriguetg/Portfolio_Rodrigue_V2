@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ArrowRight, Home, Mail } from 'lucide-react';
+---
+
+<BaseLayout
+  noindex
+  title="Page introuvable (404) — Rodrigue GBADOU"
+  description="La page que vous cherchez n'existe pas ou a été déplacée. Retrouvez le portfolio de Rodrigue GBADOU via la navigation principale."
+>
+  <section class="min-h-[70vh] flex items-center pt-28 pb-16">
+    <div class="container-custom max-w-2xl text-center">
+      <p
+        class="font-heading text-7xl md:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-purple mb-4"
+        aria-hidden="true"
+      >
+        404
+      </p>
+      <h1 class="text-3xl md:text-5xl font-bold text-slate-100 mb-4">
+        Cette page s'est perdue
+      </h1>
+      <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-10 max-w-lg mx-auto">
+        L'URL que vous avez demandée n'existe pas ou a été déplacée. Pas de
+        souci, voici quelques pistes utiles :
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <a href="/" class="btn btn-primary group">
+          <Home size={18} />
+          <span>Retour à l'accueil</span>
+        </a>
+        <a href="/contact" class="btn btn-outline">
+          <Mail size={18} />
+          <span>Me contacter</span>
+        </a>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 gap-3 text-left">
+        <li>
+          <a
+            href="/services"
+            class="glass-card flex items-center justify-between gap-3 p-4 group"
+          >
+            <span class="text-sm text-slate-300">Découvrir mes services</span>
+            <ArrowRight size={16} className="text-slate-500 group-hover:text-primary-400" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/case-studies"
+            class="glass-card flex items-center justify-between gap-3 p-4 group"
+          >
+            <span class="text-sm text-slate-300">Voir les études de cas</span>
+            <ArrowRight size={16} className="text-slate-500 group-hover:text-primary-400" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="glass-card flex items-center justify-between gap-3 p-4 group"
+          >
+            <span class="text-sm text-slate-300">À propos de moi</span>
+            <ArrowRight size={16} className="text-slate-500 group-hover:text-primary-400" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="glass-card flex items-center justify-between gap-3 p-4 group"
+          >
+            <span class="text-sm text-slate-300">Prendre contact</span>
+            <ArrowRight size={16} className="text-slate-500 group-hover:text-primary-400" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

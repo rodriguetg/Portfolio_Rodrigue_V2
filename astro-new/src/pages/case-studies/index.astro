@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { caseStudies } from '../../data/caseStudies';
+import { ArrowRight } from 'lucide-react';
+---
+
+<BaseLayout
+  pageType="CollectionPage"
+  title="Études de cas — Automatisation, IA, SEO, Dev | Rodrigue GBADOU"
+  description="Plongez dans mes projets concrets : workflows n8n, générateurs de contenu IA, audits SEO, pipelines d'automatisation. Stats, process, choix techniques."
+>
+  <section class="pt-32 pb-10 md:pt-40 md:pb-14">
+    <div class="container-custom max-w-4xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-primary-400 mb-3">
+        Études de cas
+      </p>
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-100 leading-tight mb-6">
+        Ce que j'ai construit, <span class="gradient-text">en détail</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 leading-relaxed">
+        Chaque étude détaille un projet réel : le défi initial, la solution
+        retenue, les étapes du process et les chiffres concrets. Pas de
+        storytelling inflaté, juste ce qui a été livré et ce que j'en ai appris.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12" aria-label="Liste des études de cas">
+    <div class="container-custom">
+      <ul class="grid gap-8 md:grid-cols-2" role="list">
+        {caseStudies.map((cs) => (
+          <li>
+            <a
+              href={`/case-studies/${cs.id}`}
+              class="group glass-card block p-6 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400"
+            >
+              <img
+                src={cs.image}
+                alt={`Illustration du projet ${cs.title}`}
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
+                class="rounded-xl mb-5 aspect-video w-full object-cover border border-slate-800"
+              />
+              <h2 class="text-xl md:text-2xl font-bold text-slate-100 mb-1.5 group-hover:text-primary-300 transition-colors">
+                {cs.title}
+              </h2>
+              <p class="text-sm text-primary-400 mb-3 font-medium">{cs.subtitle}</p>
+              <p class="text-sm text-slate-400 leading-relaxed mb-5">{cs.excerpt}</p>
+
+              <dl class="grid grid-cols-3 gap-3 mb-5">
+                {cs.stats.map((stat) => (
+                  <div class="text-center">
+                    <dt class="text-[10px] uppercase tracking-wider text-slate-500">{stat.label}</dt>
+                    <dd class="text-base font-bold text-slate-100 mt-0.5">{stat.value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                {cs.technologies.map((t) => (
+                  <span class="text-[11px] px-2 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-primary-400 text-sm font-medium">
+                <span>Lire l'étude complète</span>
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
