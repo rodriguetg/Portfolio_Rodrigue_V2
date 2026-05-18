@@ -2,8 +2,8 @@ import type { Experience, Project, Skill, Language, PersonalInfo, Certification 
 
 export const personalInfo: PersonalInfo = {
   name: "Rodrigue GBADOU",
-  title: "No-Code Automation Specialist & Content Creator",
-  bio: "J'aide les entreprises et les équipes à gagner en efficacité grâce à l'automatisation et des solutions digitales créatives : chaque organisation mérite des outils modernes et une stratégie de contenu adaptée.",
+  title: "Marketing Automation Engineer",
+  bio: "J'aide les équipes marketing à arrêter de perdre du temps sur les tâches répétitives. SEO technique, automatisation no-code, intégrations API et IA.",
   email: "rodrigue.gbadou@gmail.com",
   phone: "07 53 98 24 80",
   location: "Paris, France",
@@ -47,7 +47,7 @@ export const experiences: Experience[] = [
     id: "2",
     title: "Alternance - Automatisation No code / low code & Développement Web",
     company: "Primelis",
-    period: "2026",
+    period: "Sept. 2025 - Août 2026",
     description: "Intégration WordPress/AEM, développement de workflows no-code et automatisation d'API.",
     achievements: [
       "Intégration WordPress et AEM",
@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
     id: "3",
     title: "Stage - Automatisation No code / low code & Développement Web",
     company: "Haskn",
-    period: "2026",
+    period: "Avr. - Août 2025",
     description: "Intégration WordPress/AEM, développement de workflows no-code et automatisation d'API.",
     achievements: [
       "Intégration WordPress et AEM",

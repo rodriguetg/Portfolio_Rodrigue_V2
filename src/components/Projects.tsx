@@ -63,7 +63,7 @@ const Projects: React.FC = () => {
           </h2>
 
           <p className="section-subtitle">
-            Une sélection de mes travaux récents, démontrant mon expertise en développement web et solutions logicielles.
+            Une sélection de mes travaux récents en automatisation, SEO et développement web.
           </p>
 
           <motion.div

@@ -41,10 +41,10 @@ const CaseStudyDetail = () => {
 
     useSEO({
         title: study
-            ? `${study.title} — Étude de Cas | Rodrigue GBADOU`
+            ? `${study.title} : Étude de Cas | Rodrigue GBADOU`
             : 'Étude de Cas introuvable | Rodrigue GBADOU',
         description: study
-            ? `${study.subtitle} — Découvrez le workflow et les résultats de ce projet d'automatisation réalisé par Rodrigue GBADOU.`
+            ? `${study.subtitle}. Découvrez le workflow et les résultats de ce projet d'automatisation réalisé par Rodrigue GBADOU.`
             : 'Cette étude de cas est introuvable.',
         canonical: `/case-studies/${id}`,
         ogType: 'article',

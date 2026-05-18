@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
             Me Contacter
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Ouvert à un CDI en marketing digital / automatisation, ainsi qu'à des collaborations sur des projets d'automatisation.
+            Ouvert à de nouvelles opportunités, alternance ou CDI, ainsi qu'à des collaborations freelance sur des projets d'automatisation.
           </p>
         </motion.div>
 

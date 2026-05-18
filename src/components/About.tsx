@@ -63,7 +63,7 @@ const About: React.FC = () => {
             <div className="relative overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
               <img
                 src={personalInfo.avatar}
-                alt="Portrait de Rodrigue GBADOU — Expert SEO et automatisation no-code Paris"
+                alt="Portrait de Rodrigue GBADOU, Marketing Automation Engineer"
                 width={600}
                 height={450}
                 loading="lazy"

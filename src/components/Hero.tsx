@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
         <div className="text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-primary-400 mb-6 backdrop-blur-md animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-            <span className="text-sm font-medium tracking-wide">Ouvert à un CDI en Marketing Automation</span>
+            <span className="text-sm font-medium tracking-wide">Ouvert à de nouvelles opportunités : alternance ou CDI</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold font-heading leading-tight mb-6 text-slate-100 animate-fade-in">

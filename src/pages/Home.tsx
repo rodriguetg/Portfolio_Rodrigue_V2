@@ -12,8 +12,8 @@ const Contact = lazy(() => import('../components/Contact'));
 
 function Home() {
   useSEO({
-    title: 'Rodrigue GBADOU — Expert SEO & Automatisation No-Code | Paris',
-    description: "Portfolio de Rodrigue GBADOU — Spécialiste en marketing digital, SEO technique, automatisation no-code (Make, N8N, Zapier) et création de contenu. Alternance chez Primelis, Paris.",
+    title: 'Rodrigue GBADOU, Marketing Automation Engineer | Paris',
+    description: "Portfolio de Rodrigue GBADOU, Marketing Automation Engineer. SEO technique, automatisation no-code (n8n, Make, Zapier), intégrations API et IA. Alternance chez Primelis, Paris.",
     canonical: '/',
   });
 

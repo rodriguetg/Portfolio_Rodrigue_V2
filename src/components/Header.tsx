@@ -66,7 +66,7 @@ const Header: React.FC = () => {
             <div className="bg-primary-600 p-1.5 rounded-lg">
               <Code2 className="text-white" size={24} />
             </div>
-            <span className="tracking-tight group-hover:text-primary-400 transition-colors">RG.Dev</span>
+            <span className="tracking-tight group-hover:text-primary-400 transition-colors">Rodrigue</span>
           </Link>
 
           {/* Desktop Navigation */}

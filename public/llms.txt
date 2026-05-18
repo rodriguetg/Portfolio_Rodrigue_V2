@@ -1,51 +1,61 @@
-# Rodrigue GBADOU — rodespe.com
-> Spécialiste en marketing digital, SEO et automatisation no-code basé à Paris
+# Rodrigue GBADOU, rodespe.com
+> Marketing Automation Engineer basé à Paris. SEO technique, automatisation no-code, intégrations API et IA.
 
 ## Profil professionnel
-Rodrigue GBADOU est étudiant en Master Brand Content & Management à Paris École de Management (PEM).
-Il se spécialise en SEO technique, automatisation no-code et création de contenus orientés performance.
-Actuellement en alternance chez Primelis (agence SEO de référence en France).
-Ouvert à un CDI en Marketing Automation.
+Rodrigue GBADOU est Marketing Automation Engineer.
+Il aide les équipes marketing à arrêter de perdre du temps sur les tâches répétitives : SEO technique, automatisation no-code (n8n, Make, Zapier, AirOps), intégrations API et IA générative (Claude, GPT, MCP).
+Actuellement en Master Brand Content & Management à Paris École de Management (PEM), en alternance SEO chez Primelis (agence SEO de référence en France) de septembre 2025 à août 2026.
+Ouvert à de nouvelles opportunités, alternance ou CDI, ainsi qu'à des collaborations freelance d'ici la rentrée.
 
 ## Compétences clés
-- SEO technique et on-page (audits, optimisation, suivi)
-- Automatisation no-code : Make (Integromat), N8N, Zapier, Airops
-- WordPress / Adobe Experience Manager (AEM)
-- Python, HTML/CSS/JavaScript
-- Web Scraping et intégration d'API
-- Google Analytics 4, Google Search Console
-- Prompt Engineering et IA générative
-- Création de contenu multimédia (audio, vidéo, texte)
+- SEO technique et on-page (audits, optimisation Core Web Vitals, indexation, Schema.org)
+- SEO programmatique (templates × données pour scaler la production de pages)
+- Automatisation no-code : n8n (certifié Creator, 9+ workflows publiés), Make (Integromat), Zapier, AirOps
+- Intégrations API et webhooks (REST, GraphQL)
+- IA générative et orchestration : Claude API, GPT, Gemini, DeepSeek, Model Context Protocol (MCP)
+- Développement web : TypeScript, JavaScript, Python, PHP, Bash
+- Frameworks : React, Vite, Tailwind, Flask
+- CMS : WordPress, Adobe Experience Manager (AEM)
+- DevOps & infra : Docker, Docker Compose, Traefik, Nginx, administration VPS Linux
+- Web scraping : Firecrawl, Apify, Algolia API
+- Analytics : Google Analytics 4, Google Search Console, Semrush, DataForSEO
+- Prompt engineering et création de contenu multimédia
 
 ## Expériences professionnelles
-- Alternance - Automatisation No-Code & Développement Web @ Primelis (2026)
-- Stage - Automatisation No-Code & Développement Web @ Haskn (2026)
-- Stage - Marketing Digital & SEO @ Marketkit (2024)
-- Stage - SEO Specialist @ (entreprise)
-- Stage - Chef de Projet Social Media
-- Freelance - Créateur de contenu (3+ ans)
-- Secrétaire Général - Association des Étudiants Béninois de Strasbourg (AEBS)
+- Alternance, Automation No-Code/Low-Code & Dev Web @ Primelis (Sept. 2025 à Août 2026, en cours)
+- Stage, Automation No-Code/Low-Code & Dev Web @ Haskn (Avr. à Août 2025)
+- Stage, Marketing Digital & SEO @ Marketkit (2024)
+- Stage, SEO Specialist @ InnovQube (2024)
+- Stage, Chef de Projet Social Media @ StudHelp (2024)
+- Freelance, Créateur de contenu (2021 à 2024, 3+ ans)
+- Secrétaire Général, Association des Étudiants Béninois de Strasbourg (AEBS) (2023 à 2024)
 
 ## Formation
-- Master Brand Content & Management — Paris École de Management (2024-2026)
-- Licence Lettres Modernes — Université de Strasbourg
+- Master Brand Content & Management, Paris École de Management (2024 à 2026)
+- Licence Lettres Modernes, Université de Strasbourg (2021 à 2023)
+- BTS Mécatronique (avant 2021)
 
 ## Projets notables
-- Générateur de Blog IA Autonome (workflow N8N : veille → rédaction → publication SEO automatique)
+- Générateur de Blog IA Autonome (workflow n8n : veille, rédaction, publication SEO automatique)
 - Générateur de contenu Bluesky (automatisation de posts viraux depuis veille tech)
+- Moteur de SEO Programmatique (templates × data pour générer des milliers de pages SEO)
+- Audit SEO en continu (radar quotidien sur Core Web Vitals, indexation, balises)
 - Générateur de Persona Marketing (outil automatisé avec export PDF professionnel)
-- Nails Generator (IA créative — génération d'images personnalisées)
-- Love Chat Assistant (chatbot IA conversationnel)
+- Love Chat Assistant (chatbot IA conversationnel, projet de classe PEM)
 - Anime Quotes Generator
+- Nails Generator (IA créative, génération d'images personnalisées)
 
 ## Certifications
-- Google : Les principes fondamentaux du marketing digital
-- Google : Préparer votre carrière dans l'IA générative
-- Microsoft & LinkedIn Learning
+- n8n Certified Creator (2025), créateur certifié et contributeur actif, 9+ workflows publiés
+- AirOps Content Engineer (2025)
+- Google : Les principes fondamentaux du marketing digital (2023)
+- Microsoft & LinkedIn Learning : Préparer votre carrière dans l'IA générative (2024)
 
 ## Contact
 - Site web : https://rodespe.com
+- Email : rodrigue.gbadou@gmail.com
+- Téléphone : +33 7 53 98 24 80
 - LinkedIn : https://www.linkedin.com/in/rodrigue-gbadou/
 - GitHub : https://github.com/rodriguetg
 - Twitter/X : https://twitter.com/EsperantRodrigu
-- Localisation : Paris, France
+- Localisation : Paris (alternance) / Olivet (Loiret)

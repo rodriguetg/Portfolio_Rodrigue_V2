@@ -60,7 +60,7 @@ export function useSEO(config: SEOConfig) {
     setMeta('meta[name="twitter:description"]', 'content', ogDescription || description);
     setMeta('meta[name="twitter:image"]', 'content', ogImage || DEFAULT_IMAGE);
 
-    // Structured data — inject or update
+    // Structured data: inject or update
     const schemaId = 'seo-page-schema';
     let schemaEl = document.getElementById(schemaId) as HTMLScriptElement | null;
     if (schema) {

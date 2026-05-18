@@ -6,7 +6,7 @@ import { useSEO } from '../hooks/useSEO';
 
 const CaseStudies = () => {
     useSEO({
-        title: 'Études de Cas — Workflows & Automatisations | Rodrigue GBADOU',
+        title: 'Études de Cas : Workflows & Automatisations | Rodrigue GBADOU',
         description: 'Découvrez les études de cas de Rodrigue GBADOU : workflows automatisés avec N8N et Make, bots, intégrations complexes et outils IA créés pour des cas concrets.',
         canonical: '/case-studies',
         ogType: 'website',
