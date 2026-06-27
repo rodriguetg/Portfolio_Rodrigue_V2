@@ -1,45 +1,36 @@
-import React from 'react';
-import { ArrowUp } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
-
-const Footer: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const year = new Date().getFullYear();
-
+import { personalInfo } from "@/data/site";
+export default function Footer() {
+  const { socials, email, phone } = personalInfo;
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-12 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold mb-4">{personalInfo.name}</h3>
-            <p className="text-gray-400 max-w-md mx-auto">
-              Marketing Automation Engineer. SEO technique, automatisation no-code, intégrations API et IA.
-            </p>
+    <>
+      <footer className="footer">
+        <div className="footer-inner">
+          <div>
+            <a className="logo" href="/"><i>&lt;/&gt;</i> Rodrigue</a>
+            <p className="tagline">Marketing Automation Engineer. SEO technique, automatisation no code, intégrations API et IA.</p>
           </div>
-
-          <div className="border-t border-gray-800 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                © {year} {personalInfo.name}. Tous droits réservés
-              </p>
+          <div className="fnav">
+            <div className="fcol"><h4>Navigation</h4>
+              <a href="/#certifications">Certifications</a><a href="/#projets">Projets</a><a href="/#parcours">Parcours</a><a href="/#contact">Contact</a>
+            </div>
+            <div className="fcol"><h4>Liens</h4>
+              <a href="/etudes-de-cas">Études de cas</a>
+              <a href={socials.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+              <a href={socials.github} target="_blank" rel="noopener">GitHub</a>
+              <a href={socials.twitter} target="_blank" rel="noopener">X / Twitter</a>
+            </div>
+            <div className="fcol"><h4>Contact</h4>
+              <a href={`mailto:${email}`}>{email}</a>
+              <a href={`tel:+33${phone.replace(/\s/g, "").replace(/^0/, "")}`}>{phone}</a>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="absolute bottom-8 right-8 p-3 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
-        title="Retour en haut"
-      >
-        <ArrowUp size={20} />
-      </button>
-    </footer>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Rodrigue GBADOU — rodespe.com</span>
+          <span>Marketing Automation Engineer · Paris</span>
+        </div>
+      </footer>
+      <button className="to-top" aria-label="Haut de page">↑</button>
+    </>
   );
-};
-
-export default Footer;
+}

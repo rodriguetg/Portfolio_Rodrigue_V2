@@ -1,31 +1,36 @@
 services:
-  portfolio:
+  rodespe:
     build: .
-    container_name: portfolio_app
-    restart: always
-    networks:
-      - traefik_public
+    container_name: rodespe_v3
+    restart: unless-stopped
+    networks: [traefik_public]
+    environment:
+      - NODE_ENV=production
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_public"
-      # Routeur principal HTTPS (non-www uniquement)
-      - "traefik.http.routers.portfolio.rule=Host(`rodespe.com`)"
-      - "traefik.http.routers.portfolio.entrypoints=websecure"
-      - "traefik.http.routers.portfolio.tls.certresolver=mytlschallenge"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=80"
-      # Routeur www → redirect 301 vers non-www
-      - "traefik.http.routers.portfolio-www.rule=Host(`www.rodespe.com`)"
-      - "traefik.http.routers.portfolio-www.entrypoints=websecure"
-      - "traefik.http.routers.portfolio-www.tls.certresolver=mytlschallenge"
-      - "traefik.http.routers.portfolio-www.middlewares=redirect-www-to-nonwww"
-      - "traefik.http.middlewares.redirect-www-to-nonwww.redirectregex.regex=^https://www\\.rodespe\\.com/(.*)"
-      - "traefik.http.middlewares.redirect-www-to-nonwww.redirectregex.replacement=https://rodespe.com/$${1}"
-      - "traefik.http.middlewares.redirect-www-to-nonwww.redirectregex.permanent=true"
-      # Redirection HTTP → HTTPS
-      - "traefik.http.routers.portfolio-http.rule=Host(`rodespe.com`) || Host(`www.rodespe.com`)"
-      - "traefik.http.routers.portfolio-http.entrypoints=web"
-      - "traefik.http.routers.portfolio-http.middlewares=portfolio-redirect-to-https"
-      - "traefik.http.middlewares.portfolio-redirect-to-https.redirectscheme.scheme=https"
+      # --- HTTPS apex ---
+      - "traefik.http.routers.rodespe.rule=Host(`rodespe.com`)"
+      - "traefik.http.routers.rodespe.entrypoints=websecure"
+      - "traefik.http.routers.rodespe.tls=true"
+      - "traefik.http.routers.rodespe.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.rodespe.loadbalancer.server.port=3000"
+      # --- www -> apex (301) ---
+      - "traefik.http.routers.rodespe-www.rule=Host(`www.rodespe.com`)"
+      - "traefik.http.routers.rodespe-www.entrypoints=websecure"
+      - "traefik.http.routers.rodespe-www.tls=true"
+      - "traefik.http.routers.rodespe-www.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.rodespe-www.middlewares=rodespe-www-redir"
+      - "traefik.http.middlewares.rodespe-www-redir.redirectregex.regex=^https?://www\\.rodespe\\.com/(.*)"
+      - "traefik.http.middlewares.rodespe-www-redir.redirectregex.replacement=https://rodespe.com/$${1}"
+      - "traefik.http.middlewares.rodespe-www-redir.redirectregex.permanent=true"
+      # --- HTTP -> HTTPS ---
+      - "traefik.http.routers.rodespe-http.rule=Host(`rodespe.com`) || Host(`www.rodespe.com`)"
+      - "traefik.http.routers.rodespe-http.entrypoints=web"
+      - "traefik.http.routers.rodespe-http.middlewares=rodespe-https"
+      - "traefik.http.middlewares.rodespe-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.rodespe-https.redirectscheme.permanent=true"
+
 networks:
   traefik_public:
     external: true
