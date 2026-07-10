@@ -67,7 +67,7 @@ export const projects: Project[] = [
   { title: `Love Chat Assistant`, category: `IA/ML`, cat: `iaml`,
     description: `IA de coaching amoureux : chatbot intelligent qui donne des conseils personnalisés sur les relations amoureuses avec une approche empathique et moderne.`,
     image: `https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop`,
-    tags: [`Python`, `Flask`, `IA`, `SQLite`, `+1`], url: `https://github.com/rodriguetg/love-chat-assistant` },
+    tags: [`Python`, `Flask`, `IA`, `SQLite`, `+1`], url: `https://love-chat-assistant.netlify.app/` },
   { title: `Anime Quotes Generator`, category: `Web App`, cat: `webapp`,
     description: `Générateur de citations d'anime avec interface interactive, citations aléatoires et fonctionnalité de partage sur les réseaux sociaux pour les fans d'anime.`,
     image: `https://images.pexels.com/photos/7991316/pexels-photo-7991316.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop`,
