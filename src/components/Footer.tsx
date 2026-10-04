@@ -11,10 +11,12 @@ export default function Footer() {
           </div>
           <div className="fnav">
             <div className="fcol"><h4>Navigation</h4>
-              <a href="/#certifications">Certifications</a><a href="/#projets">Projets</a><a href="/#parcours">Parcours</a><a href="/#contact">Contact</a>
+              <a href="/outils">Outils SEO</a><a href="/#certifications">Certifications</a><a href="/#projets">Projets</a><a href="/#parcours">Parcours</a><a href="/#contact">Contact</a>
             </div>
             <div className="fcol"><h4>Liens</h4>
               <a href="/etudes-de-cas">Études de cas</a>
+              <a href="/blog">Blog</a>
+              <a href="https://ai.rodespe.com" target="_blank" rel="noopener">ai.rodespe.com ↗</a>
               <a href={socials.linkedin} target="_blank" rel="noopener">LinkedIn</a>
               <a href={socials.github} target="_blank" rel="noopener">GitHub</a>
               <a href={socials.twitter} target="_blank" rel="noopener">X / Twitter</a>

@@ -23,7 +23,10 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
     <main>
       <section className="wrap page-head">
         <div className="breadcrumb"><a href="/etudes-de-cas">← Retour aux projets</a></div>
-        <h1 dangerouslySetInnerHTML={{ __html: cs.title.replace(/(\S+)\s*$/, '<span class="grad">$1</span>') }} />
+        <h1>
+          {cs.title.split(" ").slice(0, -1).join(" ")}{" "}
+          <span className="grad">{cs.title.split(" ").slice(-1)}</span>
+        </h1>
         <p>{cs.subtitle}</p>
         <div className="cs-meta" style={{ marginTop: 22 }}>
           {cs.technologies.map((t) => <span className="badge" key={t}>{t}</span>)}

@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     networks: [traefik_public]
     environment:
+      - PSI_API_KEY=${PSI_API_KEY}
       - NODE_ENV=production
     labels:
       - "traefik.enable=true"
@@ -13,6 +14,8 @@ services:
       - "traefik.http.routers.rodespe.rule=Host(`rodespe.com`)"
       - "traefik.http.routers.rodespe.entrypoints=websecure"
       - "traefik.http.routers.rodespe.tls=true"
+      - "traefik.http.routers.rodespe.middlewares=rodespe-compress"
+      - "traefik.http.middlewares.rodespe-compress.compress=true"
       - "traefik.http.routers.rodespe.tls.certresolver=mytlschallenge"
       - "traefik.http.services.rodespe.loadbalancer.server.port=3000"
       # --- www -> apex (301) ---

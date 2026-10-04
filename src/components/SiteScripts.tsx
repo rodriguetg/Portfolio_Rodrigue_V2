@@ -17,6 +17,7 @@ export default function SiteScripts() {
     if (burger && links) burger.addEventListener('click', function () {
       var open = links!.style.display === 'flex';
       links!.style.cssText = open ? '' : 'display:flex;position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:18px;background:#0c0c10;border-bottom:1px solid rgba(255,255,255,.08);padding:22px 26px;z-index:50';
+      burger!.setAttribute('aria-expanded', String(!open));
     });
     var tt = document.querySelector('.to-top');
     if (tt) tt.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
@@ -32,19 +33,6 @@ export default function SiteScripts() {
     }, { threshold: .15 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
-    var tw = document.getElementById('tw');
-    if (tw) {
-      var words = (tw.dataset.words || '').split('|').filter(Boolean);
-      if (words.length) {
-        var w = 0, c = 0, del = false;
-        (function tick() {
-          var cur = words[w]; tw!.textContent = cur.slice(0, c);
-          if (!del) { c++; if (c > cur.length) { del = true; return setTimeout(tick, 1300); } }
-          else { c--; if (c < 0) { del = false; w = (w + 1) % words.length; c = 0; } }
-          setTimeout(tick, del ? 34 : 70);
-        })();
-      }
-    }
 
     function relayoutTimeline() {
       var visible = ([] as Element[]).slice.call(document.querySelectorAll('.tl-item')).filter(function (it) { return !it.classList.contains('hide'); });

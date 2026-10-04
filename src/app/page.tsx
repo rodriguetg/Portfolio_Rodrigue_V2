@@ -2,6 +2,7 @@ import {
   personalInfo, aboutParagraphs, certifications, projects, projectFilters,
   experiences, techSkills, softSkills,
 } from "@/data/site";
+import BlogSection from "@/components/BlogSection";
 
 function cloudSize(level: number) {
   if (level >= 90) return "s4";
@@ -24,10 +25,46 @@ export default function Home() {
         </div>
         <p className="intro">{personalInfo.bio}</p>
         <div className="cta">
-          <span className="shine"><a href="#contact">Me contacter</a></span>
-          <a className="btn btn-ghost" href="#">Télécharger CV</a>
+          <span className="shine"><a href="/outils">🧰 Essayer mes outils SEO gratuits</a></span>
+          <a className="btn btn-ghost" href="#contact">Me contacter</a>
         </div>
-        <a href="#certifications" style={{ marginTop: 54, color: "var(--mut)", fontSize: 12, letterSpacing: ".2em", textDecoration: "none" }}>DÉCOUVRIR ↓</a>
+        <div className="tools-strip">
+          <a className="tchip" href="/outils/simulateur-serp">🔍 Simulateur SERP</a>
+          <a className="tchip" href="/outils/audit-seo">⚡ Audit SEO express</a>
+          <a className="tchip" href="/outils">🤖 Générateur title &amp; meta</a>
+        </div>
+        <a href="#outils" style={{ marginTop: 54, color: "var(--mut)", fontSize: 12, letterSpacing: ".2em", textDecoration: "none" }}>DÉCOUVRIR ↓</a>
+      </section>
+
+      {/* OUTILS SEO */}
+      <section className="wrap section" id="outils">
+        <div className="section-head reveal">
+          <span className="eyebrow">Nouveau</span>
+          <h2>Des outils SEO <span className="grad">gratuits</span>, pas juste des promesses</h2>
+          <p>Le meilleur moyen de montrer ce que je fais, c&apos;est de vous laisser l&apos;essayer. Sans inscription, résultats immédiats.</p>
+        </div>
+        <div className="cards c3 reveal">
+          <a className="card" href="/outils/simulateur-serp">
+            <span className="go">↗</span>
+            <span className="ico">🔍</span>
+            <h3>Simulateur SERP</h3>
+            <p>Prévisualisez votre résultat Google en temps réel. Largeur en pixels, troncature, aperçu desktop.</p>
+            <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
+          </a>
+          <a className="card" href="/outils/audit-seo">
+            <span className="go">↗</span>
+            <span className="ico">⚡</span>
+            <h3>Audit SEO express</h3>
+            <p>Collez une URL, obtenez un score /100 en 30 secondes : balises, indexabilité, performance PageSpeed.</p>
+            <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
+          </a>
+          <a className="card" href="/outils">
+            <span className="go">↗</span>
+            <span className="ico">🤖</span>
+            <h3>Générateur title &amp; meta<span className="soon">BIENTÔT</span></h3>
+            <p>Un mot-clé, un type de page : trois propositions de balises optimisées par IA, calibrées à la bonne longueur.</p>
+          </a>
+        </div>
       </section>
 
       {/* CERTIFICATIONS */}
@@ -103,7 +140,7 @@ export default function Home() {
         <div className="section-head reveal"><span className="eyebrow">À propos de moi</span><h2>Mon <span className="grad">Histoire</span></h2></div>
         <div className="about reveal">
           <div className="avatar" style={{ padding: 0, overflow: "hidden" }}>
-            <img src={personalInfo.avatar} alt={personalInfo.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={personalInfo.avatar} alt={personalInfo.name} fetchPriority="high" loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <div className="body">
             {aboutParagraphs.map((p, i) => <p key={i}>{p}</p>)}
@@ -173,6 +210,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BLOG (ai.rodespe.com) */}
+      <BlogSection />
+
       {/* CONTACT */}
       <section className="wrap section" id="contact">
         <div className="contact reveal">
@@ -192,9 +232,9 @@ export default function Home() {
             </div>
           </div>
           <form className="form" action="https://formspree.io/f/xojndkoe" method="POST">
-            <div className="field"><label>Nom</label><input type="text" name="name" placeholder="Votre nom" required /></div>
-            <div className="field"><label>Email</label><input type="email" name="email" placeholder="vous@exemple.com" required /></div>
-            <div className="field"><label>Message</label><textarea name="message" placeholder="Votre message…" required /></div>
+            <div className="field"><label htmlFor="cf-name">Nom</label><input id="cf-name" type="text" name="name" autoComplete="name" placeholder="Votre nom" required /></div>
+            <div className="field"><label htmlFor="cf-email">Email</label><input id="cf-email" type="email" name="email" autoComplete="email" placeholder="vous@exemple.com" required /></div>
+            <div className="field"><label htmlFor="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Votre message…" required /></div>
             <button type="submit" className="btn" style={{ width: "100%", background: "linear-gradient(100deg,var(--accent),var(--accent2))", color: "#07090c", fontWeight: 700, justifyContent: "center" }}>Envoyer</button>
           </form>
         </div>
