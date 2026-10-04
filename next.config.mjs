@@ -5,7 +5,7 @@
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
-  "img-src 'self' data: https:",
+  "img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
   "font-src 'self' data: https://cdn.fontshare.com",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",

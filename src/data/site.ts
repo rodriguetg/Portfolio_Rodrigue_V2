@@ -28,17 +28,17 @@ export const languages = [
 
 export const certifications = [
   { title: `n8n Certified Creator`, issuer: `n8n`, date: `2025`, featured: true,
-    logo: `https://static.cdnlogo.com/logos/n/6/n8n_800.png`,
+    logo: `/images/logos/n8n.png`,
     url: `https://n8n.io/creators/gbadou/`,
     description: `Créateur certifié et contributeur actif avec plus de 9 workflows publiés pour aider la communauté à automatiser leurs processus et gagner en productivité.` },
   { title: `Content Engineer`, issuer: `AirOps`, date: `2025`,
-    logo: `https://logo.clearbit.com/airops.com`,
+    logo: `/images/logos/airops.png`,
     url: `https://www.airops.com/` },
   { title: `Les principes fondamentaux du marketing digital`, issuer: `Google`, date: `2023`,
-    logo: `https://logo.clearbit.com/google.com`,
+    logo: `/images/logos/google.png`,
     url: `https://skillshop.exceedlms.com/student/award/tsmesvD8nLuC6BwhyvymtXFV` },
   { title: `Préparer votre carrière dans l'IA générative`, issuer: `Microsoft & LinkedIn`, date: `2024`,
-    logo: `https://logo.clearbit.com/linkedin.com`,
+    logo: `/images/logos/linkedin.png`,
     url: `https://www.linkedin.com/learning/certificates/764acfebc5a4477b1ce7ce7f4f07d4d4ec228148bfe2439ec618ea8b2f5510ea` },
 ];
 
