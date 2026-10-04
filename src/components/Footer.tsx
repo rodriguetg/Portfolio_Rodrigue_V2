@@ -15,8 +15,6 @@ export default function Footer() {
             </div>
             <div className="fcol"><h4>Liens</h4>
               <a href="/etudes-de-cas">Études de cas</a>
-              <a href="/blog">Blog</a>
-              <a href="https://ai.rodespe.com" target="_blank" rel="noopener">ai.rodespe.com ↗</a>
               <a href={socials.linkedin} target="_blank" rel="noopener">LinkedIn</a>
               <a href={socials.github} target="_blank" rel="noopener">GitHub</a>
               <a href={socials.twitter} target="_blank" rel="noopener">X / Twitter</a>

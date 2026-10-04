@@ -11,7 +11,6 @@ export default function Nav() {
           <a href="/#parcours">Parcours</a>
           <a href="/#competences">Compétences</a>
           <a href="/etudes-de-cas">Études de Cas</a>
-          <a href="/blog">Blog</a>
           <a href="/#contact">Contact</a>
         </nav>
         <a className="pill" href="/#contact">Me contacter →</a>

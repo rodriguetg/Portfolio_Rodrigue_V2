@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/outils/simulateur-serp`, lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/outils/audit-seo`, lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/outils/generateur-schema`, lastModified, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/blog`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${base}/etudes-de-cas`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     ...caseStudies.map((c) => ({
       url: `${base}/etudes-de-cas/${c.slug}`,

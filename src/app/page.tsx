@@ -2,7 +2,6 @@ import {
   personalInfo, aboutParagraphs, certifications, projects, projectFilters,
   experiences, techSkills, softSkills,
 } from "@/data/site";
-import BlogSection from "@/components/BlogSection";
 
 function cloudSize(level: number) {
   if (level >= 90) return "s4";
@@ -210,8 +209,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BLOG (ai.rodespe.com) */}
-      <BlogSection />
 
       {/* CONTACT */}
       <section className="wrap section" id="contact">
