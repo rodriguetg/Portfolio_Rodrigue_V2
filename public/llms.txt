@@ -1,9 +1,9 @@
 # Rodrigue GBADOU - Marketing Automation Engineer & SEO Specialist
 
-> Portfolio & profil : https://rodespe.com
+> Portfolio & profil : [https://rodespe.com](https://rodespe.com)
 
 ## Présentation
-Rodrigue GBADOU est ingénieur en automatisation marketing et spécialiste SEO technique basé en France. Il conçoit des architectures d'automatisation no-code/code, des intégrations d'API avancées et des pipelines de contenu pilotés par IA.
+Rodrigue GBADOU est ingénieur en automatisation marketing et spécialiste SEO technique basé en France. Diplômé d'un Master Brand Content & Management (Paris École de Management, 2026), il est disponible pour un CDI ou un CDD et ouvert aux missions freelance d'automatisation. Il conçoit des architectures d'automatisation no-code/code, des intégrations d'API avancées et des pipelines de contenu pilotés par IA.
 
 ## Compétences Clés
 - **Marketing Automation :** n8n (workflows avancés, auto-hébergement Docker), Make, Zapier, AirOps.
@@ -11,12 +11,19 @@ Rodrigue GBADOU est ingénieur en automatisation marketing et spécialiste SEO t
 - **Développement & Intégrations :** TypeScript, Python, Next.js, FastAPI, REST API, Model Context Protocol (MCP), Docker Compose.
 - **IA Générative :** Intégration LLMs (Google AI Studio, Claude API, modèles GGUF locaux), prompt engineering, agents autonomes.
 
-## Outils & Projets
-- Simulateur SERP : https://rodespe.com/outils/simulateur-serp
-- Audit SEO Express : https://rodespe.com/outils/audit-seo
+## Études de cas
+- Générateur de Blog IA Autonome : [https://rodespe.com/etudes-de-cas/blog-content-automation](https://rodespe.com/etudes-de-cas/blog-content-automation)
+- Générateur de contenu Bluesky : [https://rodespe.com/etudes-de-cas/bluesky-content-generator](https://rodespe.com/etudes-de-cas/bluesky-content-generator)
+- Moteur de SEO Programmatique : [https://rodespe.com/etudes-de-cas/programmatic-seo-engine](https://rodespe.com/etudes-de-cas/programmatic-seo-engine)
+- Audit SEO en continu : [https://rodespe.com/etudes-de-cas/continuous-seo-audit](https://rodespe.com/etudes-de-cas/continuous-seo-audit)
+
+## Outils gratuits
+- Simulateur SERP : [https://rodespe.com/outils/simulateur-serp](https://rodespe.com/outils/simulateur-serp)
+- Audit SEO Express : [https://rodespe.com/outils/audit-seo](https://rodespe.com/outils/audit-seo)
+- Générateur de schema JSON-LD : [https://rodespe.com/outils/generateur-schema](https://rodespe.com/outils/generateur-schema)
 
 ## Contact & Réseaux
-- Profil : https://rodespe.com
-- LinkedIn : https://www.linkedin.com/in/rodrigue-gbadou/
-- GitHub : https://github.com/rodriguetg
-- X : https://x.com/EsperantRodrigu
+- Profil : [https://rodespe.com](https://rodespe.com)
+- LinkedIn : [https://www.linkedin.com/in/rodrigue-gbadou/](https://www.linkedin.com/in/rodrigue-gbadou/)
+- GitHub : [https://github.com/rodriguetg](https://github.com/rodriguetg)
+- X : [https://x.com/EsperantRodrigu](https://x.com/EsperantRodrigu)

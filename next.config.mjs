@@ -26,6 +26,7 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+  poweredByHeader: false,
   output: 'standalone',
   eslint: { ignoreDuringBuilds: true },
   images: {
