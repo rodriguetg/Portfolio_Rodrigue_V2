@@ -66,7 +66,7 @@ export default function Home() {
           </a>
           <a className="card" href="/outils/checker-geo">
             <span className="go">↗</span>
-            <span className="ico">🤖</span>
+            <span className="ico">🛰️</span>
             <h3>Checker visibilité IA (GEO)</h3>
             <p>Votre page est-elle lisible et citable par ChatGPT, Claude ou Perplexity ? 10 contrôles en quelques secondes.</p>
             <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
