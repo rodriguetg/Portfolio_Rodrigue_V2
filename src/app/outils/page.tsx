@@ -50,6 +50,13 @@ export default function OutilsPage() {
           <p>Un mot-clé, un type de page : des titles et metas calibrés en pixels, vérifiés et prêts à copier.</p>
           <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
         </a>
+        <a className="card" href="/outils/checker-geo">
+          <span className="go">↗</span>
+          <span className="ico">🛰️</span>
+          <h3>Checker visibilité IA (GEO)</h3>
+          <p>Votre page est-elle lisible et citable par ChatGPT, Claude ou Perplexity ? 10 contrôles en quelques secondes.</p>
+          <span className="tag" style={{ marginTop: 14 }}>Nouveau</span>
+        </a>
         <div className="card is-soon" aria-disabled="true">
           <span className="ico">🤖</span>
           <h3>Générateur title &amp; meta<span className="soon">BIENTÔT</span></h3>
