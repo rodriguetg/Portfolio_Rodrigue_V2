@@ -44,7 +44,7 @@ function Gauge({ label, width, max }: { label: string; width: number; max: numbe
 }
 
 export default function SerpSimulator() {
-  const [title, setTitle] = useState("Marketing Automation Engineer | Rodrigue GBADOU");
+  const [title, setTitle] = useState("SEO/GEO & Marketing Automation | Rodrigue GBADOU");
   const [desc, setDesc] = useState(
     "J'aide les équipes marketing à automatiser leurs tâches répétitives : SEO technique, workflows n8n, intégrations API et IA."
   );

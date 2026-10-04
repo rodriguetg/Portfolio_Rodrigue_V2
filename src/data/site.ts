@@ -1,8 +1,8 @@
 // rodespe.com v3 — données réelles (source : site rodespe.com + repo Portfolio_Rodrigue_V2)
 export const personalInfo = {
   name: `Rodrigue GBADOU`,
-  title: `Marketing Automation Engineer`,
-  bio: `J'aide les équipes marketing à arrêter de perdre du temps sur les tâches répétitives. SEO technique, automatisation no code, intégrations API et IA.`,
+  title: `SEO/GEO & Marketing Automation`,
+  bio: `J'aide les équipes marketing à gagner en visibilité sur Google et dans les IA, et à arrêter de perdre du temps sur les tâches répétitives. SEO/GEO, automatisation no code, intégrations API et IA.`,
   email: `rodrigue.gbadou@gmail.com`,
   phone: `07 53 98 24 80`,
   location: `Paris, France`,
@@ -17,8 +17,8 @@ export const personalInfo = {
 export const aboutParagraphs = [
   `Diplômé d'un Master Brand Content & Management de la Paris École de Management (2026), je me spécialise dans la stratégie marketing digitale, l'automatisation no code et l'innovation technologique.`,
   `Avec plus de 5 ans d'expérience en freelance et en entreprise, j'ai développé une expertise opérationnelle en SEO, automatisation (Airops, n8n, Make, Zapier), développement web no code et création de contenus orientés performance.`,
-  `J'accompagne les entreprises, agences et créateurs à transformer leurs tâches répétitives en workflows automatisés : connexion des outils (site, CRM, réseaux sociaux), optimisation des process marketing et meilleure exploitation de leurs données.`,
-  `Habitué au travail en équipe (associatif, agences, startups), je suis aujourd'hui ouvert à un CDI et à des partenariats sur des projets d'automatisation, de contenu et de marketing digital.`,
+  `J'aide les annonceurs et les PME à gagner en visibilité sur Google et dans les moteurs IA (GEO), et à transformer leurs tâches répétitives en workflows automatisés : connexion des outils (site, CRM, réseaux sociaux), process marketing optimisés et données mieux exploitées.`,
+  `Habitué au travail en équipe (startups, agence, associatif), je recherche aujourd'hui un CDI en SEO/GEO et marketing automation chez un annonceur ou une PME, à Paris.`,
 ];
 
 export const languages = [
@@ -64,32 +64,14 @@ export const projects: Project[] = [
     description: `Crawl planifié, monitoring des Core Web Vitals et détection de régressions techniques. Le rapport hebdomadaire arrive directement dans Slack.`,
     image: `/images/cover-seo-audit.webp`,
     tags: [`n8n`, `Google Search Console API`, `PageSpeed Insights API`, `Firecrawl`], caseStudy: `continuous-seo-audit` },
-  { title: `Love Chat Assistant`, category: `IA/ML`, cat: `iaml`,
-    description: `IA de coaching amoureux : chatbot intelligent qui donne des conseils personnalisés sur les relations amoureuses avec une approche empathique et moderne.`,
-    image: `/images/cover-love-chat.webp`,
-    tags: [`Python`, `Flask`, `IA`, `SQLite`], url: `https://love-chat-assistant.netlify.app/` },
-  { title: `Anime Quotes Generator`, category: `Web App`, cat: `webapp`,
-    description: `Générateur de citations d'anime avec interface interactive, citations aléatoires et fonctionnalité de partage sur les réseaux sociaux pour les fans d'anime.`,
-    image: `/images/cover-anime-quotes.webp`,
-    tags: [`React`, `Node.js`, `MongoDB`, `Material UI`], url: `https://github.com/rodriguetg/anime-quotes-generator` },
   { title: `Générateur de Persona Marketing`, category: `Business Tool`, cat: `biz`,
     description: `Outil automatisé qui génère des personas marketing complets et détaillés avec export PDF professionnel pour optimiser les stratégies marketing.`,
     image: `/images/cover-persona-generator.webp`,
     tags: [`Python`, `Flask`, `Bootstrap`, `fpdf2`], url: `https://generateur-de-persona.onrender.com/` },
-  { title: `Nails Generator`, category: `Creative AI`, cat: `creative`,
-    description: `Générateur d'art d'ongles par IA avec prompts personnalisés et adaptation automatique aux différents formats de réseaux sociaux pour nail artists.`,
-    image: `/images/cover-nails-generator.webp`,
-    tags: [`React`, `TypeScript`, `Tailwind`, `API IA`], url: `https://github.com/rodriguetg/nails-generator` },
-  { title: `Bande Annonce · Projet Vidéo`, category: `Production Vidéo`, cat: `video`,
-    description: `Création collaborative d'une bande annonce captivante, démontrant nos compétences en production vidéo et storytelling.`,
-    image: `/images/cover-video-trailer.webp`,
-    tags: [`Production Vidéo`, `Montage`, `Storytelling`, `Travail d'équipe`], url: `https://www.youtube.com/watch?v=hLpx2YvBJ6k` },
 ];
 
 export const projectFilters = [
-  { key: `all`, label: `Tout` }, { key: `cs`, label: `Case Study` }, { key: `iaml`, label: `IA/ML` },
-  { key: `webapp`, label: `Web App` }, { key: `biz`, label: `Business Tool` },
-  { key: `creative`, label: `Creative AI` }, { key: `video`, label: `Production Vidéo` },
+  { key: `all`, label: `Tout` }, { key: `cs`, label: `Case Study` }, { key: `biz`, label: `Business Tool` },
 ];
 
 export type Experience = { type: `work` | `education`; title: string; org: string; when: string; description: string; achievements: string[] };
@@ -100,7 +82,7 @@ export const experiences: Experience[] = [
     achievements: [`Stratégie marketing et communication`, `SEO/SEA avancé`, `Créativité et automatisation`, `Droit de la propriété intellectuelle`] },
   { type: `work`, title: `Alternance · Automatisation no code / low code & Développement Web`, org: `Primelis`, when: `Sept. 2025 → Août 2026`,
     description: `Alternance de 12 mois en agence SEO : conception de workflows d'automatisation et d'outils internes pour réduire le temps passé sur les tâches répétitives des équipes.`,
-    achievements: [`Workflows no code (n8n, Make, Zapier) pour automatiser des tâches SEO récurrentes`, `Intégration WordPress et AEM`, `Scripts Python/JS et appels d'API pour industrialiser la collecte et le traitement de données`, `Documentation des workflows et transfert aux équipes`] },
+    achievements: [`SEO et relocalisation de contenus pour des clients comme Allianz et Manutan`, `Workflows no code (n8n, Make, Zapier) pour automatiser des tâches SEO récurrentes`, `Intégration WordPress et AEM`, `Scripts Python/JS et appels d'API pour industrialiser la collecte et le traitement de données`, `Documentation des workflows et transfert aux équipes`] },
   { type: `work`, title: `Stage · Automatisation no code / low code & Développement Web`, org: `Haskn`, when: `Avr. → Août 2025`,
     description: `Stage de 5 mois : prise en main des outils d'automatisation et premiers développements web, avec une montée en autonomie sur les workflows no code.`,
     achievements: [`Prise en main de WordPress et AEM`, `Premiers workflows Zapier, Make et n8n`, `Développement HTML/CSS/JS et scripts Python`, `Connexion d'outils via API`] },

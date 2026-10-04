@@ -1,6 +1,6 @@
 import {
   personalInfo, aboutParagraphs, certifications, projects, projectFilters,
-  experiences, techSkills, softSkills,
+  experiences, techSkills,
 } from "@/data/site";
 
 function cloudSize(level: number) {
@@ -195,26 +195,12 @@ export default function Home() {
           <span className="eyebrow">Expertise</span><h2>Mes <span className="grad">Compétences</span></h2>
         </div>
         <div className="reveal" style={{ textAlign: "center" }}>
-          <div className="tabs" style={{ justifyContent: "center" }}>
-            <button className="tab active" data-tab="tech">Compétences Techniques</button>
-            <button className="tab" data-tab="soft">Soft Skills</button>
-          </div>
           <div className="tabpane active" data-pane="tech">
             <div className="cloud">
               {techSkills.map((s) => <span className={"w " + cloudSize(s.level)} key={s.name}>{s.name}</span>)}
             </div>
           </div>
-          <div className="tabpane" data-pane="soft">
-            <div className="bars" style={{ margin: "0 auto", textAlign: "left" }}>
-              {softSkills.map((s) => (
-                <div className="bar" key={s.name}>
-                  <div className="top"><span>{s.name}</span><span>{s.level}%</span></div>
-                  <div className="track"><div className="fill" data-w={`${s.level}%`} /></div>
-                </div>
-              ))}
-            </div>
           </div>
-        </div>
       </section>
 
 
@@ -224,7 +210,7 @@ export default function Home() {
           <div className="info">
             <span className="eyebrow">Contact</span>
             <h2 style={{ marginTop: 14 }}>Me <span className="grad">Contacter</span></h2>
-            <p className="lead">Disponible pour un CDI ou un CDD en marketing automation et SEO technique, et ouvert aux collaborations freelance sur des projets d'automatisation.</p>
+            <p className="lead">Disponible pour un CDI en SEO/GEO et marketing automation, à Paris. Ouvert aussi aux collaborations sur des projets d'automatisation.</p>
             <div className="rows">
               <a className="crow" href={`mailto:${email}`}><span className="ic">✉</span><span><span className="k">Email</span><span className="v">{email}</span></span></a>
               <a className="crow" href={`tel:+33${phone.replace(/\s/g, "").replace(/^0/, "")}`}><span className="ic">☎</span><span><span className="k">Téléphone</span><span className="v">{phone}</span></span></a>
