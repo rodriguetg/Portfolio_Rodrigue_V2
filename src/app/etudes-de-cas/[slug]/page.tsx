@@ -19,8 +19,42 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 export default function CaseStudyDetail({ params }: { params: { slug: string } }) {
   const cs = caseStudies.find((c) => c.slug === params.slug);
   if (!cs) notFound();
+  const base = "https://rodespe.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${base}/etudes-de-cas/${cs.slug}#work`,
+        name: cs.title,
+        description: cs.subtitle,
+        url: `${base}/etudes-de-cas/${cs.slug}`,
+        image: `${base}${cs.image}`,
+        inLanguage: "fr-FR",
+        about: cs.technologies,
+        author: { "@type": "Person", name: "Rodrigue GBADOU", url: base },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: base },
+          { "@type": "ListItem", position: 2, name: "Études de cas", item: `${base}/etudes-de-cas` },
+          { "@type": "ListItem", position: 3, name: cs.title, item: `${base}/etudes-de-cas/${cs.slug}` },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: cs.faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      },
+    ],
+  };
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="wrap page-head">
         <div className="breadcrumb"><a href="/etudes-de-cas">← Retour aux projets</a></div>
         <h1>
