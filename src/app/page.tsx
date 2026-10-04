@@ -16,7 +16,7 @@ export default function Home() {
     <main>
       {/* HERO */}
       <section className="wrap hero">
-        <span className="badge"><span className="live" />Ouvert à de nouvelles opportunités : alternance ou CDI</span>
+        <span className="badge"><span className="live" />Disponible : CDI ou CDD en marketing automation</span>
         <p style={{ color: "var(--mut)", fontSize: 16, marginTop: 26 }}>Bonjour, je suis</p>
         <div className="frame">
           <span className="plus p1" /><span className="plus p2" /><span className="plus p3" /><span className="plus p4" />
@@ -216,7 +216,7 @@ export default function Home() {
           <div className="info">
             <span className="eyebrow">Contact</span>
             <h2 style={{ marginTop: 14 }}>Me <span className="grad">Contacter</span></h2>
-            <p className="lead">Ouvert à de nouvelles opportunités, alternance ou CDI, ainsi qu'à des collaborations freelance sur des projets d'automatisation.</p>
+            <p className="lead">Disponible pour un CDI ou un CDD en marketing automation et SEO technique, et ouvert aux collaborations freelance sur des projets d'automatisation.</p>
             <div className="rows">
               <a className="crow" href={`mailto:${email}`}><span className="ic">✉</span><span><span className="k">Email</span><span className="v">{email}</span></span></a>
               <a className="crow" href={`tel:+33${phone.replace(/\s/g, "").replace(/^0/, "")}`}><span className="ic">☎</span><span><span className="k">Téléphone</span><span className="v">{phone}</span></span></a>

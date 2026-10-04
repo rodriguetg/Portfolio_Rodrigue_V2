@@ -15,7 +15,7 @@ export const personalInfo = {
 };
 
 export const aboutParagraphs = [
-  `En Master Brand Content & Management à Paris École de Management (fin août 2026), je me spécialise dans la stratégie marketing digitale, l'automatisation no code et l'innovation technologique.`,
+  `Diplômé d'un Master Brand Content & Management de la Paris École de Management (2026), je me spécialise dans la stratégie marketing digitale, l'automatisation no code et l'innovation technologique.`,
   `Avec plus de 5 ans d'expérience en freelance et en entreprise, j'ai développé une expertise opérationnelle en SEO, automatisation (Airops, n8n, Make, Zapier), développement web no code et création de contenus orientés performance.`,
   `J'accompagne les entreprises, agences et créateurs à transformer leurs tâches répétitives en workflows automatisés : connexion des outils (site, CRM, réseaux sociaux), optimisation des process marketing et meilleure exploitation de leurs données.`,
   `Habitué au travail en équipe (associatif, agences, startups), je suis aujourd'hui ouvert à un CDI et à des partenariats sur des projets d'automatisation, de contenu et de marketing digital.`,
@@ -95,15 +95,15 @@ export const projectFilters = [
 export type Experience = { type: `work` | `education`; title: string; org: string; when: string; description: string; achievements: string[] };
 
 export const experiences: Experience[] = [
-  { type: `education`, title: `Master Brand Content & Management`, org: `Paris École de Management (PEM)`, when: `2024 → 2026`,
+  { type: `education`, title: `Master Brand Content & Management · Diplômé`, org: `Paris École de Management (PEM)`, when: `2024 → 2026`,
     description: `Formation spécialisée en stratégie marketing, communication digitale et management de contenu.`,
     achievements: [`Stratégie marketing et communication`, `SEO/SEA avancé`, `Créativité et automatisation`, `Droit de la propriété intellectuelle`] },
   { type: `work`, title: `Alternance · Automatisation no code / low code & Développement Web`, org: `Primelis`, when: `Sept. 2025 → Août 2026`,
-    description: `Intégration WordPress/AEM, développement de workflows no code et automatisation d'API.`,
-    achievements: [`Intégration WordPress et AEM`, `Workflows avec Zapier, Make, N8N`, `Développement HTML/CSS/JS/Python`, `Automatisation de processus via API`] },
+    description: `Alternance de 12 mois en agence SEO : conception de workflows d'automatisation et d'outils internes pour réduire le temps passé sur les tâches répétitives des équipes.`,
+    achievements: [`Workflows no code (n8n, Make, Zapier) pour automatiser des tâches SEO récurrentes`, `Intégration WordPress et AEM`, `Scripts Python/JS et appels d'API pour industrialiser la collecte et le traitement de données`, `Documentation des workflows et transfert aux équipes`] },
   { type: `work`, title: `Stage · Automatisation no code / low code & Développement Web`, org: `Haskn`, when: `Avr. → Août 2025`,
-    description: `Intégration WordPress/AEM, développement de workflows no code et automatisation d'API.`,
-    achievements: [`Intégration WordPress et AEM`, `Workflows avec Zapier, Make, N8N`, `Développement HTML/CSS/JS/Python`, `Automatisation de processus via API`] },
+    description: `Stage de 5 mois : prise en main des outils d'automatisation et premiers développements web, avec une montée en autonomie sur les workflows no code.`,
+    achievements: [`Prise en main de WordPress et AEM`, `Premiers workflows Zapier, Make et n8n`, `Développement HTML/CSS/JS et scripts Python`, `Connexion d'outils via API`] },
   { type: `work`, title: `Stage · Marketing Digital & SEO`, org: `Marketkit`, when: `2024`,
     description: `Optimisation SEO, analyses de mots clés et utilisation d'IA pour le marketing digital.`,
     achievements: [`Analyses approfondies de mots clés`, `Optimisation de contenus SEO`, `Intégration d'IA dans les stratégies marketing`, `Amélioration du référencement naturel`] },
