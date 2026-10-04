@@ -5,7 +5,7 @@ const desc =
   "Audit SEO express gratuit : collez une URL et obtenez un score sur 100 en 30 secondes — balises, indexabilité, robots.txt, sitemap et performance PageSpeed, avec les corrections prioritaires.";
 
 export const metadata: Metadata = {
-  title: "Audit SEO express gratuit : score /100 en 30 secondes | Rodrigue GBADOU",
+  title: "Audit SEO gratuit : score /100 en 30 s | Rodrigue GBADOU",
   description: desc,
   alternates: { canonical: "/outils/audit-seo" },
   openGraph: {

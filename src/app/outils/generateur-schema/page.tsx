@@ -5,7 +5,7 @@ const desc =
   "Générateur de données structurées Schema.org gratuit : FAQ, entreprise locale, article, fil d'Ariane. JSON-LD généré en direct, prêt à coller dans votre page pour obtenir des résultats enrichis Google.";
 
 export const metadata: Metadata = {
-  title: "Générateur Schema.org gratuit : FAQ, LocalBusiness, Article | Rodrigue GBADOU",
+  title: "Générateur Schema.org gratuit (JSON-LD) | Rodrigue GBADOU",
   description: desc,
   alternates: { canonical: "/outils/generateur-schema" },
   openGraph: {

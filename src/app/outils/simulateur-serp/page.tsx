@@ -5,7 +5,7 @@ const desc =
   "Simulateur SERP gratuit : prévisualisez votre résultat Google en temps réel avec la largeur en pixels de vos balises title et meta description. Évitez la troncature.";
 
 export const metadata: Metadata = {
-  title: "Simulateur SERP gratuit : testez vos balises title & meta | Rodrigue GBADOU",
+  title: "Simulateur SERP gratuit : title & meta | Rodrigue GBADOU",
   description: desc,
   alternates: { canonical: "/outils/simulateur-serp" },
   openGraph: {
