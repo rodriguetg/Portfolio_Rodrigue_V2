@@ -43,6 +43,13 @@ export default function OutilsPage() {
           <p>FAQ, entreprise locale, article, fil d&apos;Ariane : le JSON-LD se génère en direct, prêt à coller pour viser les résultats enrichis Google.</p>
           <span className="tag" style={{ marginTop: 14 }}>4 types · gratuit</span>
         </a>
+        <a className="card" href="/outils/generateur-title-meta">
+          <span className="go">↗</span>
+          <span className="ico">🤖</span>
+          <h3>Générateur title &amp; meta</h3>
+          <p>Un mot-clé, un type de page : des titles et metas calibrés en pixels, vérifiés et prêts à copier.</p>
+          <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
+        </a>
         <div className="card is-soon" aria-disabled="true">
           <span className="ico">🤖</span>
           <h3>Générateur title &amp; meta<span className="soon">BIENTÔT</span></h3>

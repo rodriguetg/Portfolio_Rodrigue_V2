@@ -57,11 +57,12 @@ export default function Home() {
             <p>Collez une URL, obtenez un score /100 en 30 secondes : balises, indexabilité, performance PageSpeed.</p>
             <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
           </a>
-          <a className="card" href="/outils">
+          <a className="card" href="/outils/generateur-title-meta">
             <span className="go">↗</span>
             <span className="ico">🤖</span>
-            <h3>Générateur title &amp; meta<span className="soon">BIENTÔT</span></h3>
-            <p>Un mot-clé, un type de page : trois propositions de balises optimisées par IA, calibrées à la bonne longueur.</p>
+            <h3>Générateur title &amp; meta</h3>
+            <p>Un mot-clé, un type de page : des titles et metas calibrés en pixels, vérifiés et prêts à copier.</p>
+            <span className="tag" style={{ marginTop: 14 }}>Disponible</span>
           </a>
         </div>
       </section>

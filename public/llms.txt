@@ -21,6 +21,7 @@ Rodrigue GBADOU est ingénieur en automatisation marketing et spécialiste SEO t
 - Simulateur SERP : [https://rodespe.com/outils/simulateur-serp](https://rodespe.com/outils/simulateur-serp)
 - Audit SEO Express : [https://rodespe.com/outils/audit-seo](https://rodespe.com/outils/audit-seo)
 - Générateur de schema JSON-LD : [https://rodespe.com/outils/generateur-schema](https://rodespe.com/outils/generateur-schema)
+- Générateur title & meta : [https://rodespe.com/outils/generateur-title-meta](https://rodespe.com/outils/generateur-title-meta)
 
 ## Contact & Réseaux
 - Profil : [https://rodespe.com](https://rodespe.com)
