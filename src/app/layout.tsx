@@ -6,15 +6,15 @@ import Footer from "@/components/Footer";
 import SiteScripts from "@/components/SiteScripts";
 
 const desc =
-  "Portfolio de Rodrigue GBADOU, SEO/GEO & Marketing Automation. SEO/GEO, automatisation no code, intégrations API et IA.";
+  "Portfolio de Rodrigue GBADOU, Chargé de marketing digital SEO/GEO. SEO/GEO, automatisation no code, intégrations API et IA.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rodespe.com"),
-  title: "Rodrigue GBADOU, SEO/GEO & Marketing Automation | Paris",
+  title: "Rodrigue GBADOU, Chargé de marketing digital SEO/GEO | Paris",
   description: desc,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Rodrigue GBADOU, SEO/GEO & Marketing Automation | Paris",
+    title: "Rodrigue GBADOU, Chargé de marketing digital SEO/GEO | Paris",
     description: desc,
     url: "https://rodespe.com",
     siteName: "Rodrigue GBADOU Portfolio",
@@ -41,7 +41,7 @@ const jsonLd = {
       name: "Rodrigue GBADOU",
       url: "https://rodespe.com",
       image: "https://rodespe.com/rodrigue-gbadou.webp",
-      jobTitle: "SEO/GEO & Marketing Automation",
+      jobTitle: "Chargé de marketing digital SEO/GEO",
       email: "mailto:rodrigue.gbadou@gmail.com",
       description: desc,
       address: { "@type": "PostalAddress", addressLocality: "Paris", addressCountry: "FR" },

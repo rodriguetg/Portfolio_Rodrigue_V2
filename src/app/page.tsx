@@ -16,7 +16,7 @@ export default function Home() {
     <main>
       {/* HERO */}
       <section className="wrap hero">
-        <span className="badge"><span className="live" />Disponible : CDI ou CDD en marketing automation</span>
+        <span className="badge"><span className="live" />Disponible immédiatement : CDI en marketing digital, SEO/GEO et automatisation</span>
         <p style={{ color: "var(--mut)", fontSize: 16, marginTop: 26 }}>Bonjour, je suis</p>
         <div className="frame">
           <span className="plus p1" /><span className="plus p2" /><span className="plus p3" /><span className="plus p4" />
@@ -26,6 +26,7 @@ export default function Home() {
         <div className="cta">
           <span className="shine"><a href="/outils">🧰 Essayer mes outils SEO gratuits</a></span>
           <a className="btn btn-ghost" href="#contact">Me contacter</a>
+          <a className="btn btn-ghost" href="/cv-rodrigue-gbadou.pdf" target="_blank" rel="noopener">Télécharger mon CV</a>
         </div>
         <div className="tools-strip">
           <a className="tchip" href="/outils/simulateur-serp">🔍 Simulateur SERP</a>
@@ -210,13 +211,14 @@ export default function Home() {
           <div className="info">
             <span className="eyebrow">Contact</span>
             <h2 style={{ marginTop: 14 }}>Me <span className="grad">Contacter</span></h2>
-            <p className="lead">Disponible pour un CDI en SEO/GEO et marketing automation, à Paris. Ouvert aussi aux collaborations sur des projets d'automatisation.</p>
+            <p className="lead">Disponible immédiatement pour un CDI de chargé de marketing digital (SEO, GEO, contenu, automatisation), à Noisy-le-Grand / Paris.</p>
             <div className="rows">
               <a className="crow" href={`mailto:${email}`}><span className="ic">✉</span><span><span className="k">Email</span><span className="v">{email}</span></span></a>
               <a className="crow" href={`tel:+33${phone.replace(/\s/g, "").replace(/^0/, "")}`}><span className="ic">☎</span><span><span className="k">Téléphone</span><span className="v">{phone}</span></span></a>
               <div className="crow"><span className="ic">📍</span><span><span className="k">Localisation</span><span className="v">{personalInfo.location}</span></span></div>
             </div>
             <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
+              <a className="btn btn-ghost" href="/cv-rodrigue-gbadou.pdf" target="_blank" rel="noopener" style={{ padding: "10px 16px", fontSize: 14 }}>CV (PDF)</a>
               <a className="btn btn-ghost" href={socials.linkedin} target="_blank" rel="noopener" style={{ padding: "10px 16px", fontSize: 14 }}>LinkedIn</a>
               <a className="btn btn-ghost" href={socials.github} target="_blank" rel="noopener" style={{ padding: "10px 16px", fontSize: 14 }}>GitHub</a>
               <a className="btn btn-ghost" href={socials.twitter} target="_blank" rel="noopener" style={{ padding: "10px 16px", fontSize: 14 }}>X (@EsperantRodrigu)</a>

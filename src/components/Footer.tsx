@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer-inner">
           <div>
             <a className="logo" href="/"><i>&lt;/&gt;</i> Rodrigue</a>
-            <p className="tagline">SEO/GEO & Marketing Automation. SEO/GEO, automatisation no code, intégrations API et IA.</p>
+            <p className="tagline">Chargé de marketing digital SEO/GEO. SEO/GEO, automatisation no code, intégrations API et IA.</p>
           </div>
           <div className="fnav">
             <div className="fcol"><h4>Navigation</h4>
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Rodrigue GBADOU — rodespe.com</span>
-          <span>SEO/GEO & Marketing Automation · Paris</span>
+          <span>Chargé de marketing digital SEO/GEO · Noisy-le-Grand / Paris</span>
         </div>
       </footer>
       <button className="to-top" aria-label="Haut de page">↑</button>
